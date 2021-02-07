@@ -7,6 +7,7 @@ function LetterOptions({changeDisplayOutput}){
         <>
             <div className='cover-letters' onClick={changeDisplayPanelOutput}>Cover Letters</div>
             <div className='ty-letters' onClick={changeDisplayPanelOutput}>Thank You Letters</div>
+            <div className='' onClick={changeDisplayPanelOutput}>Back</div>
         </>
     )
 }

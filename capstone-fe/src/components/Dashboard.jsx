@@ -7,7 +7,6 @@ import { useState } from 'react'
 
 function Dashboard(){
     const [displayOutPut, changeDisplayOutput] = useState('');
-    
     return (
         <div>
             <Sidebar changeDisplayOutput={changeDisplayOutput}/>

@@ -1,6 +1,6 @@
 function Settings(){
     return(
-        <div>Settings</div>
+        <div>Settings: Need Gear Icon</div>
     )
 }
 export default Settings
