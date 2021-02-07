@@ -12,21 +12,22 @@ import CLSummary from './CLSummary';
 import LetterOptions from './LetterOptions'
 
 function DisplayPanel({displayOutPut, changeDisplayOutput}){
+   
     switch(displayOutPut){
         case 'job-tracker':
-            return <JobsAppliedTo />
+            return <JobsAppliedTo changeDisplayOutput={changeDisplayOutput}/>
         case 'resumes':
-            return <ResumeSummary />
+            return <ResumeSummary changeDisplayOutput={changeDisplayOutput}/>
         case 'letters':
             return <LetterOptions changeDisplayOutput={changeDisplayOutput}/>
         case 'interview-questions':
-            return <InterviewQuestions />
+            return <InterviewQuestions changeDisplayOutput={changeDisplayOutput}/>
         case 'ty-letters':
-            return <TYLettersSummary />
+            return <TYLettersSummary changeDisplayOutput={changeDisplayOutput}/>
         case 'cover-letters':
-            return <CLSummary />
+            return <CLSummary changeDisplayOutput={changeDisplayOutput}/>
         case '':
-            return <ResumeSummary />
+            return <JobsAppliedTo changeDisplayOutput={changeDisplayOutput}/>
 
     }
 
