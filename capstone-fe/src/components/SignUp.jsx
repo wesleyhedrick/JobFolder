@@ -1,3 +1,5 @@
+
+import States from '../States.json'
 import {
     Link
 } from 'react-router-dom';
@@ -25,6 +27,8 @@ function SignUp({setWhichCredPage}) {
         }
         setWhichCredPage('sign-in')
     }
+        
+
 
     return (
         <> 
@@ -54,10 +58,36 @@ function SignUp({setWhichCredPage}) {
                 <input type="text" name="zip" id="zip"/>
 
                 <label htmlFor="state">State</label>
-                <input type="text" name="state" id="state"/>
+                <select id="state" name="state">
+                <option value="--"></option>
 
+                {
+                    Object.entries(States).map(([abbr, name] ) => (
+                    <option value={name}>{abbr}</option>
+                    ))
+                }
+
+               </select>
                 <label htmlFor="daily_app_goal">Daily Application Quota</label>
-                <input type="text" name="daily_app_goal" id="daily_app_goal"/>
+                <select id="number" name="quota">
+                <option value="--"></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                </select>
+
                 <input type="submit" value="Sign Up"/>
 
             </form>
