@@ -1,22 +1,19 @@
 const { Users } = require('../models');
 const bcrypt = require('bcryptjs');
 
-// const loginLanding = (req, res) => {
-//     res.render('login')
-// };
 
-const loginVerify = async (req, res) => {
-    const {username, password} = req.body;
-    console.log('Username: ', username)
+const signInVerify = async (req, res) => {
+    const {email, password} = req.body;
+    // console.log('Username: ', username)
+    console.log('Email: ', email)
     console.log('Password: ', password)
-
     //Store username in session
-    req.session.username = username;
-    
+    // req.session.username = username;
     // Check to see if they exist in the database. If so redirect to quiz selection page
+    
     const user = await Users.findOne({
         where: {
-            username
+            email
         }
     })
 
@@ -27,18 +24,12 @@ const loginVerify = async (req, res) => {
         if(isValid){
             req.session.user_id = user.id;
             //CHANGE LINE BELOW TO A REACT ROUTE
-            res.json('Logging you in')
-            return
-            res.json('/dashboard');
+            res.send('success')
         } else {
-            res.send('line 34 couldn\'t find you')
-            return
-            res.redirect('/sign-up');
+            res.send('no password')
         }
     } else {
-        res.send('line 39 couldn\'t find you')
-        return
-        res.redirect('/sign-up');
+        res.send('no username')
     }
 
 
@@ -50,6 +41,6 @@ const loginVerify = async (req, res) => {
 
 module.exports = {
 
-    loginVerify
+    signInVerify
 };
 

@@ -13,6 +13,7 @@ const hostname = '127.0.0.1';
 //Register Middleware
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static('public'));
 // disabling for local development
 // app.use(helmet());
@@ -29,16 +30,19 @@ app.use(session({
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
-const { loginRouter,signUpRouter, dashboardRouter, fileTransferRouter, profileRouter, settingsRouter } = require('./routes')
+const { signInRouter,signUpRouter, dashboardRouter, fileTransferRouter, profileRouter, settingsRouter } = require('./routes')
 
 const server = http.createServer(app);
-app.use('/login', loginRouter)
-app.use('/fileTransfer', fileTransferRouter)
+app.use('/sign-in', signInRouter)
+// app.use('/file-transfer', fileTransferRouter)
 app.use('/sign-up', signUpRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/profile', profileRouter)
 // app.use('/settings', settingsRouter)
+<<<<<<< HEAD
 
+=======
+>>>>>>> c316fe05028462c84e86939ef374329f56129639
 
 //Error Handling for Bad Routes
 app.get('*', (req, res) => {

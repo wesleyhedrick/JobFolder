@@ -11,17 +11,17 @@ import Dashboard from './components/Dashboard';
 import Hero from './components/Hero';
 
 function App() {
-    
+    const [loggedIn, setLoggedIn] = useState(false);
 
     return (
     <Router>
             <Route exact path='/'>
                 <Hero />    
-            </Route>
-            <Route path='/credentials'>
+            </Route>        
+            <Route exact path='/credentials'>
                 <Credentials />
             </Route>    
-            <Route path='/dashboard'>
+            <Route exact path='/dashboard'>
                 <Dashboard />
             </Route>    
     </Router>

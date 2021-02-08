@@ -2,31 +2,34 @@ const bcrypt = require('bcryptjs');
 const { Users } = require('../models');
 
 const createNewUser = async (req, res) => {
-    const { first, last, username, email, password, address_line_1, address_line_2, zip, state} = req.body
+    const { first, last, email, password, address_line1,
+        address_line2, zipcode, state, daily_app_goal} = req.body
     const hash = bcrypt.hashSync(password, 10);
-    console.log(first, last, username, email, hash);
-
+    console.log(first, last, email, hash,daily_app_goal, address_line1, address_line2);
+    console.log('Create new user is working')
+    
     try {
         await Users.create({
             first,
             last,
-            username,
             email,
             password: hash, 
-            address_line_1,
-            address_line_2,
-            zip,
-            state
+            address_line1,
+            address_line2,
+            zip:zipcode,
+            state, 
+            daily_app_goal
         });
-        //res.redirect('/login') chris' notes have a res.redirect here after the information is created
+        res.send('success')
+
     } catch (e) {
         if(e.name === "SequelizeUniqueConstraintError") {
-            res.redirect('/signup/user-exists');
+            console.log('user exists')
+            res.send('user exists')
+        }else{
+            console.log(e)
         }
     };
-    res.send('successfully signed up')
-    return
-    res.redirect('/login');
 };
 
 const userNameExists = (req, res) => {
