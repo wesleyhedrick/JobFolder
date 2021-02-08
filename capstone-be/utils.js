@@ -1,12 +1,12 @@
-// function getDocSummary(docType, user_id){
-//     const docList = Documents.findAll({
-//         attributes: docType,
-//         where: {
-//             user_id
-//         }
-//     })
-//     return docList
-// }
+function getDocSummary(docType, user_id){
+    const docList = Documents.findAll({
+        attributes: [docType, user_id],
+        where: {
+            user_id
+        }
+    })
+    return docList
+}
 
 // const { Users } = require('./models')
 // const schedule = require('node-schedule');
@@ -97,4 +97,4 @@
 
 
 
-// module.exports = { getDocSummary }
+module.exports = { getDocSummary }

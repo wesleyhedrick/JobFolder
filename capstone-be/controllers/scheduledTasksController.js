@@ -9,8 +9,6 @@ const refresh_token = '1//044OmdMJ-hZZECgYIARAAGAQSNwF-L9Ir0Imfnzb37JGvGwkbCM5Ga
 const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uri)
 oAuth2Client.setCredentials({refresh_token: refresh_token})
 
-
-
 async function sendMail(recipient, subject, body){
     
     try{

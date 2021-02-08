@@ -29,13 +29,16 @@
 }
 
 .success {
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .error {
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
+.error-message {
+    color: red;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

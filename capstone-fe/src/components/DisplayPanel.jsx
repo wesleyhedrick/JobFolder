@@ -11,25 +11,15 @@ import TYLettersSummary from './TYLettersSummary';
 import CLSummary from './CLSummary';
 import LetterOptions from './LetterOptions'
 
-function DisplayPanel({displayOutPut, changeDisplayOutput}){
-   
-    switch(displayOutPut){
-        case 'job-tracker':
-            return <JobsAppliedTo changeDisplayOutput={changeDisplayOutput}/>
-        case 'resumes':
-            return <ResumeSummary changeDisplayOutput={changeDisplayOutput}/>
-        case 'letters':
-            return <LetterOptions changeDisplayOutput={changeDisplayOutput}/>
-        case 'interview-questions':
-            return <InterviewQuestions changeDisplayOutput={changeDisplayOutput}/>
-        case 'ty-letters':
-            return <TYLettersSummary changeDisplayOutput={changeDisplayOutput}/>
-        case 'cover-letters':
-            return <CLSummary changeDisplayOutput={changeDisplayOutput}/>
-        case '':
-            return <JobsAppliedTo changeDisplayOutput={changeDisplayOutput}/>
 
-    }
+
+function DisplayPanel({displayOutPut, changeDisplayOutput}){
+
+    return(
+        <div>
+            {displayOutPut.map(item => <div>{item.title}</div>)}
+        </div>
+    )
 
 }
 export default DisplayPanel

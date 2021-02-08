@@ -11,15 +11,11 @@ const navBarItems = [
     {value: 'calendar', content: 'Calendar'}
 ]    
 
-
-function Sidebar({changeDisplayOutput}) {
-    function changeDisplayPanelOutput(e){
-        changeDisplayOutput(e.target.className)
-    }
+function Sidebar({getSummaryData}) {
     return (
         <nav>
             <h1>.jobfolder</h1>
-            {navBarItems.map(item => <div onClick={changeDisplayPanelOutput} className={item.value}>{item.content}</div>)}
+            {navBarItems.map(item => <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)}
         </nav>
     )
 }

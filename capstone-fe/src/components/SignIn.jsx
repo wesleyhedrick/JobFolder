@@ -1,6 +1,7 @@
 import {
     Link,
-    Redirect
+    Redirect,
+    useHistory
 } from 'react-router-dom';
 import axios from 'axios'
 import {useState} from 'react'
@@ -8,6 +9,7 @@ import {useState} from 'react'
 function SignIn({credStatus, setCredStatus, setWhichCredPage}) {
     const [emailError, showEmailError] = useState(false)
     const [passwordError,showPasswordError] = useState(false)
+    const history = useHistory()
 
    async function sendSignInCreds (e) {
         e.preventDefault()
@@ -26,18 +28,19 @@ function SignIn({credStatus, setCredStatus, setWhichCredPage}) {
         console.log('Here are your creds', creds.data)
         switch(creds.data){
             case 'success':
-                <Redirect to='/dashboard' />
+                console.log(creds.data);
+                history.push('/dashboard');
                 break;
-                case 'no username':
-                    showEmailError(true)
-                    let emailCredential = document.querySelector('.email-credential')
-                    emailCredential.classList.replace('success', 'error')
-                    break;
-                case 'no password':
-                    showPasswordError(true)
-                    let passwordCredential = document.querySelector('.password-credential')
-                    passwordCredential.classList.replace('success', 'error')
+            case 'no username':
+                showEmailError(true)
+                let emailCredential = document.querySelector('.email-credential')
+                emailCredential.classList.replace('success', 'error')
                 break;
+            case 'no password':
+                showPasswordError(true)
+                let passwordCredential = document.querySelector('.password-credential')
+                passwordCredential.classList.replace('success', 'error')
+            break;
         }
    }
 
