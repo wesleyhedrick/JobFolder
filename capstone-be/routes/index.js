@@ -1,5 +1,5 @@
 module.exports = {
-    loginRouter: require('./loginRouter'),
+    signInRouter: require('./signInRouter'),
     fileTransfer: require('./fileTransferRouter'),
     signUpRouter: require('./signUpRouter'),
     dashboardRouter: require('./dashboardRouter'), 

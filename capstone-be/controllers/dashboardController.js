@@ -1,9 +1,6 @@
-const { Users, Jobs, Contacts, Inspiration, Documents } = require('../models');
+const { Users, Jobs, Contacts, Inspiration, Documents, InterviewQuestions } = require('../models');
 const { getDocSummary } = require('../utils')
-const sequelize = require('sequelize')
-// const loginLanding = (req, res) => {
-//     res.render('login')
-// };
+
 
 const testRoute = async (req, res) => {
     const {identification} = req.params
@@ -69,10 +66,26 @@ const loadDocsPage = (req, res) => {
 
 //GET SUMMARIES
 const getResumeSummary = async (req, res) => {
-    const { user_id } = req.session
-    const { document } = req.params
-    const resumeList = getDocSummary(document, user_id)
-    res.json(resumeList)
+
+    const docList = await Documents.findAll({
+        attributes: ['title', 'doc_type'],
+        where: {
+            user_id:1
+        }
+    })
+    console.log(docList)
+    res.json(docList)
+}
+const getIQs = async (req, res) => {
+
+    const docList = await InterviewQuestions.findAll({
+        attributes: ['question', 'answer'],
+        where: {
+            user_id:1
+        }
+    })
+    console.log(docList)
+    res.json(docList)
 }
 
 const getCLSummary = async (req, res) => {
@@ -132,6 +145,8 @@ module.exports = {
     testRoute, 
     iJustApplied,
     iMadeAContact, 
-    addInterviewQuestion
+    addInterviewQuestion,
+    getResumeSummary,
+    getIQs
 };
 

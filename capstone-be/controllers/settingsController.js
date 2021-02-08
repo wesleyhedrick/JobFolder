@@ -1,5 +1,5 @@
 const { Settings } = require('../models')
-const updateSettings = (req, res) => {
+const updateSettings = async (req, res) => {
     let updateOptions = {};
     for (k in req.body){
         updateOptions[k] = req.body[k]
