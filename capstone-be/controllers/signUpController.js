@@ -18,7 +18,7 @@ const createNewUser = async (req, res) => {
             zip,
             state
         });
-        //res.redirect('/login') chris' notes have a res.redirect here after the information is created
+
     } catch (e) {
         if(e.name === "SequelizeUniqueConstraintError") {
             res.redirect('/signup/user-exists');
@@ -26,7 +26,7 @@ const createNewUser = async (req, res) => {
     };
     res.send('successfully signed up')
     return
-    res.redirect('/login');
+    res.redirect('/sign-in');
 };
 
 const userNameExists = (req, res) => {
