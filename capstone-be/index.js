@@ -37,7 +37,7 @@ app.use('/fileTransfer', fileTransferRouter)
 app.use('/sign-up', signUpRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/profile', profileRouter)
-app.use('/settings', settingsRouter)
+// app.use('/settings', settingsRouter)
 
 
 //Error Handling for Bad Routes

@@ -8,7 +8,7 @@ function getDocSummary(docType, user_id){
     return docList
 }
 
-const { Users } = require('../models')
+const { Users } = require('./models')
 const schedule = require('node-schedule');
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
@@ -57,7 +57,7 @@ async function scheduleEmail(timeString, scheduleFunc, recipient, subject, body)
   
     scheduleFunc.scheduleJob(timeString, () => {
       console.log('running every minute 1, 2, 4 and 5');
-      func(recipient, subject, body)cd
+    //   func(recipient, subject, body)
     });
 }
 
@@ -79,9 +79,9 @@ async function taskTrain(){
 function sendThankYou(func){
 
 
-    schedule.scheduleJob(intervalString, () => {
-      func()
-    });
+    // schedule.scheduleJob(intervalString, () => {
+    //   func()
+    // });
 }
 
 
