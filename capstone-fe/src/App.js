@@ -18,10 +18,10 @@ function App() {
             <Route exact path='/'>
                 <Hero />    
             </Route>
-            <Route path='/credentials'>
+            <Route exact path='/credentials'>
                 <Credentials />
             </Route>    
-            <Route path='/dashboard'>
+            <Route exact path='/dashboard'>
                 <Dashboard />
             </Route>    
     </Router>

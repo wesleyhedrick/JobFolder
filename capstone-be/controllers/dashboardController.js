@@ -1,9 +1,6 @@
 const { Users, Jobs, Contacts, Inspiration, Documents } = require('../models');
 const { getDocSummary } = require('../utils')
-const sequelize = require('sequelize')
-// const loginLanding = (req, res) => {
-//     res.render('login')
-// };
+
 
 const testRoute = async (req, res) => {
     const {identification} = req.params
