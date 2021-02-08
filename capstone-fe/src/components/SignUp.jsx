@@ -8,22 +8,24 @@ function SignUp({setWhichCredPage}) {
     
     async function sendSignUpData(e){
         e.preventDefault();
-        const { first, last, username, password, email,
-        address_line1, address_line2, zip, state, daily_app_goal} = e.target
+        const { first, last, password, email,
+        address_line1, address_line2, zipcode, state, daily_app_goal} = e.target
         
-        const formData = { first: first.value, last:last.value, username:username.value, 
+        const formData = { first: first.value, last:last.value, 
             password:password.value, email:email.value, address_line1:address_line1.value, 
             address_line2:address_line2.value,
-            zip:zip.value, state:state.value, daily_app_goal:daily_app_goal.value}
+            zipcode:zipcode.value, state:state.value, daily_app_goal:daily_app_goal.value}
 
         console.log(formData)
-        
+        let wasSignUpSuccessful;
         try {
-            await axios.post('/', formData)
+            wasSignUpSuccessful = await axios.post('/sign-up', formData)
         } catch(e) {
             console.log(e)
         }
-        setWhichCredPage('sign-in')
+        
+        console.log(wasSignUpSuccessful)
+        // setWhichCredPage('sign-in')
     }
 
     return (
@@ -34,9 +36,6 @@ function SignUp({setWhichCredPage}) {
 
                 <label htmlFor="last">Last Name</label>
                 <input type="text" name="last" id="last"/>
-
-                <label htmlFor="username">Username</label>
-                <input type="text" name="username" id="username"/>
 
                 <label htmlFor="password">Password</label>
                 <input type="text" name="password" id="password"/>
@@ -50,8 +49,8 @@ function SignUp({setWhichCredPage}) {
                 <label htmlFor="address_line2">Address Line 2</label>
                 <input type="text" name="address_line2" id="address_line2"/>
 
-                <label htmlFor="zip">Zipcode</label>
-                <input type="text" name="zip" id="zip"/>
+                <label htmlFor="zipcode">Zipcode</label>
+                <input type="text" name="zipcode" id="zipcode"/>
 
                 <label htmlFor="state">State</label>
                 <input type="text" name="state" id="state"/>
