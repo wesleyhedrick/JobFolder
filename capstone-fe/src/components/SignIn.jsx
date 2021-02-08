@@ -1,3 +1,4 @@
+import './styles/Signin.css'
 import {
     Link
 } from 'react-router-dom';
@@ -19,21 +20,33 @@ function SignIn({setWhichCredPage}) {
    }
 
     return (
-        <>
-            <form onSubmit={sendSignInCreds}>
-                <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email"/>
-                <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password"/>
-                <Link to='forgot-password'>Forgot Password?</Link>
-                <input type="submit" value="Sign In"/>
+    <>
+        <div className="main-container">
+            <form class="signin-container" onSubmit={sendSignInCreds}>
+                <div className="title"><h1>.jobfolder</h1></div> 
+                    <div className="paper-one">
+                        <div className="signin">
+                            <label htmlFor="email">Email</label>
+                            <input 
+                            type="text" 
+                            name="email" 
+                            id="email"/>
+                            <label htmlFor="password">Password</label>
+                            <input 
+                            type="text" 
+                            name="password" 
+                            id="password"/>
+                            <Link to='forgot-password'className="forgot-link">Forgot Password?</Link>
+                            <input className="signin-btn"type="submit" value="Sign In"/>
+                    </div>    
+                </div>
             </form>
-
+        
             <p>First time here?</p>
-            <button onClick={goToSignUpPage}>Create New Account</button>
+            <button className="signup-btn"onClick={goToSignUpPage}>Create New Account</button>
+        </div>
 
-
-        </>
+    </>
     )
 }
 
