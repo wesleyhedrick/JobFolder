@@ -18,9 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Documents.init({
-    resume: DataTypes.STRING,
-    cover_letter: DataTypes.STRING,
-    thank_you: DataTypes.STRING,
+    title:DataTypes.STRING,
+    doc_type:DataTypes.STRING,
     user_id:DataTypes.INTEGER
   }, {
     sequelize,

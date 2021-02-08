@@ -20,6 +20,7 @@ const createNewUser = async (req, res) => {
             state, 
             daily_app_goal
         });
+        res.send('success')
 
     } catch (e) {
         if(e.name === "SequelizeUniqueConstraintError") {
@@ -29,7 +30,6 @@ const createNewUser = async (req, res) => {
             console.log(e)
         }
     };
-    res.send('success')
 };
 
 const userNameExists = (req, res) => {

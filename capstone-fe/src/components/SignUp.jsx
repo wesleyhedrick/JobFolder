@@ -1,11 +1,7 @@
-import {
-    Link
-} from 'react-router-dom';
-
 import axios from 'axios'
-
+import {useState} from 'react'
 function SignUp({setWhichCredPage}) {
-    
+    const [userState, setUserState]=useState('success')
     async function sendSignUpData(e){
         e.preventDefault();
         const { first, last, password, email,
@@ -16,16 +12,21 @@ function SignUp({setWhichCredPage}) {
             address_line2:address_line2.value,
             zipcode:zipcode.value, state:state.value, daily_app_goal:daily_app_goal.value}
 
-        console.log(formData)
+        // console.log(formData)
         let wasSignUpSuccessful;
         try {
             wasSignUpSuccessful = await axios.post('/sign-up', formData)
         } catch(e) {
             console.log(e)
         }
-        
-        console.log(wasSignUpSuccessful)
-        // setWhichCredPage('sign-in')
+
+        console.log('user state', wasSignUpSuccessful.data)
+        if( wasSignUpSuccessful.data === 'user exists'){
+            setUserState('error')
+        }
+        if( wasSignUpSuccessful.data === 'success'){
+            setWhichCredPage('sign-in')
+        } 
     }
 
     return (
@@ -41,8 +42,9 @@ function SignUp({setWhichCredPage}) {
                 <input type="text" name="password" id="password"/>
 
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email"/>
-
+                <input className={userState} type="text" name="email" id="email"/>
+                {userState==='error'? <p className='error-message'>User with this email already exists.</p>:null}
+                
                 <label htmlFor="address_line1">Address Line 1</label>
                 <input type="text" name="address_line1" id="address_line1"/>
 

@@ -1,4 +1,6 @@
 function JobsAppliedTo({changeDisplayOutput}){
+    
+    
     return(
         <div>
             <div>
