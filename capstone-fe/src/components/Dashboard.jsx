@@ -8,18 +8,14 @@ import axios from 'axios'
 
 function Dashboard(){
     const [displayOutPut, changeDisplayOutput] = useState([]);
-    const [jobSummary, setJobSummary] = useState({});
-
-    async function getJobSummary(){
-        const jobSummaryResponse = await axios.get('/job-summary')
-        setJobSummary(jobSummaryResponse)
-    }
+    const [displayCategory, setDisplayCategory] = useState('job-tracker')
     async function getSummaryData(e){
-        const data = await axios.get(`/dashboard/${e.target.className}`)
+        const {data} = await axios.get(`/dashboard/${e.target.className}`)
         //Change state to data
-        console.log(data.data)
+        console.log(data)
         // changeDisplayOutput(data)
-        changeDisplayOutput(data.data)
+        setDisplayCategory(e.target.className)
+        changeDisplayOutput(data)
     }
 
     return (
@@ -27,7 +23,10 @@ function Dashboard(){
             <Sidebar getSummaryData={getSummaryData}/>
             <HeadsUpDisplay />
             <Settings />
-            <DisplayPanel changeDisplayOutput={changeDisplayOutput} displayOutPut={displayOutPut} />
+            <DisplayPanel   displayCategory={displayCategory} 
+                            setDisplayCategory={setDisplayCategory}
+                            changeDisplayOutput={changeDisplayOutput} 
+                            displayOutPut={displayOutPut} />
         </div>
 
     )

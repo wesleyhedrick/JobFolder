@@ -13,13 +13,30 @@ import LetterOptions from './LetterOptions'
 
 
 
-function DisplayPanel({displayOutPut, changeDisplayOutput}){
-
-    return(
-        <div>
-            {displayOutPut.map(item => <div>{item.title}</div>)}
-        </div>
-    )
-
+function DisplayPanel({displayOutPut, displayCategory}){
+    switch(displayCategory){
+        case 'job-tracker':
+            return(
+                <div>{displayOutPut.map(item => <div>{item.company_name} {item.role} {item.date_applied}</div>)}</div>
+            )
+        case 'interview-questions':
+            return(
+                <div>{
+                    displayOutPut.map(item => 
+                        <div>
+                            <div>{item.question}</div><div>{item.answer}</div>
+                        </div>
+                    )}
+                </div>
+            )
+        default:
+            return(
+                <div>
+                    {
+                        displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)
+                    }
+                </div>
+            )
+    }
 }
 export default DisplayPanel

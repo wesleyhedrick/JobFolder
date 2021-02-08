@@ -65,17 +65,31 @@ const loadDocsPage = (req, res) => {
 }
 
 //GET SUMMARIES
-const getResumeSummary = async (req, res) => {
-
+const getDocList = async (req, res) => {
+    const {doc_type} = req.params
+    console.log('here your doctype',doc_type)
     const docList = await Documents.findAll({
-        attributes: ['title', 'doc_type'],
+        attributes: ['title'],
         where: {
-            user_id:1
+            user_id: 1, 
+            doc_type
         }
     })
     console.log(docList)
     res.json(docList)
 }
+
+const getJobs = async (req, res)=>{
+    const jobList = await Jobs.findAll({
+        attributes: ['company_name','role','date_applied'], 
+        where: {
+            user_id:1
+        }
+    })
+    console.log(jobList)
+    res.json(jobList)
+}
+
 const getIQs = async (req, res) => {
 
     const docList = await InterviewQuestions.findAll({
@@ -146,7 +160,8 @@ module.exports = {
     iJustApplied,
     iMadeAContact, 
     addInterviewQuestion,
-    getResumeSummary,
-    getIQs
+    getDocList,
+    getIQs,
+    getJobs
 };
 
