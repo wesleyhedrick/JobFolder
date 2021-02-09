@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-function Credentials({consoleLogFormData}){
+function Credentials({consoleLogFormData, setId}){
     const [whichCredPage, setWhichCredPage] = useState('sign-in')
     const [credStatus, setCredStatus] = useState('success')
     return(
         <div>
-            { whichCredPage === 'sign-in' ? <SignIn credStatus={credStatus} setCredStatus={setCredStatus}setWhichCredPage={setWhichCredPage}/> 
+            { whichCredPage === 'sign-in' ? <SignIn setId={setId}credStatus={credStatus} setCredStatus={setCredStatus}setWhichCredPage={setWhichCredPage}/> 
             : 
             <SignUp consoleLogFormData={consoleLogFormData} setWhichCredPage={setWhichCredPage}/>}
         </div>

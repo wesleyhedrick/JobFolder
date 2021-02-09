@@ -68,7 +68,7 @@ function SignUp({setWhichCredPage}) {
 
                               {
                                   Object.entries(States).map(([abbr, name] ) => (
-                                  <option value={name}>{abbr}</option>
+                                    <option value={name}>{abbr}</option>
                                   ))
                               }
 

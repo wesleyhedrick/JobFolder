@@ -1,5 +1,5 @@
 const { Users, Jobs, Contacts, Inspiration, Documents, InterviewQuestions } = require('../models');
-const { getDocSummary } = require('../utils')
+const { getApplicationRatio } = require('../utils')
 
 
 const testRoute = async (req, res) => {
@@ -15,11 +15,11 @@ const testRoute = async (req, res) => {
 }
 
 const loadDashboard = async (req, res) => {
-    const {username, password} = req.body;
-    const {user_id} = req.session;
-    console.log(user_id)
+    const {id} = req.params;
+    let dateStarted;
     let inspiration;
-    let goal;
+    let dailyAppGoal;
+    let dailyAppReality;
     let jobCount; 
     let jobsAppliedTo; 
     let contacts;
@@ -28,27 +28,39 @@ const loadDashboard = async (req, res) => {
         
         inspiration = await Inspiration.getRandom();
 
-        goal = await Users.findAll({
-            attributes: ['daily_app_goal'], 
+        dateStarted = await Users.findAll({
+            attributes: ['createdAt'],
             where: {
-                id: user_id
+                id
             }
         })
 
+        dailyAppGoal = await Users.findOne({
+            attributes: ['daily_app_goal'], 
+            where: {
+                id
+            }
+        })
+
+        dailyAppGoal = dailyAppGoal.daily_app_goal
+        
+        console.log(dailyAppGoal)
         jobsAppliedTo = await Jobs.findAll({
             attributes: ['company_name','role','date_applied'], 
             where: {
-                user_id
+                user_id:id
             }   
         })
         
         jobCount = jobsAppliedTo.length
+        
+        dailyAppReality = getApplicationRatio(jobCount, dateStarted)
 
         try {
             contacts = await
              Contacts.findAll({
                 where: {
-                    user_id: '1'
+                    user_id: id
                 }
             })
         } catch(e){
@@ -56,7 +68,7 @@ const loadDashboard = async (req, res) => {
         }
     } 
 
-    res.json({jobCount, goal, jobsAppliedTo, contacts, inspiration})
+    res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality})
     
 }
 

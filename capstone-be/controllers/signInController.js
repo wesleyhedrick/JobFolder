@@ -23,8 +23,9 @@ const signInVerify = async (req, res) => {
         //If password matches with hash
         if(isValid){
             req.session.user_id = user.id;
+            let id = user.id
             //CHANGE LINE BELOW TO A REACT ROUTE
-            res.send('success')
+            res.json({status:'success', id})
         } else {
             res.send('no password')
         }

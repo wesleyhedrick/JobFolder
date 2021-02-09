@@ -16,7 +16,13 @@ import Modal from 'react-modal'
 import {useState} from 'react'
 import axios from 'axios';
 
-function DisplayPanel({displayOutPut, displayCategory}){
+function DisplayPanel({
+    displayOutPut, 
+    displayCategory,
+    jobAppliedTo,
+    countOfJobs,
+    appRatio,
+    inspiration}){
     const [formModalIsOpen, setFormModalIsOpen] = useState(false)
     const [feedbackModalIsOpen, setFeedbackModalIsOpen] = useState(false)
     const [interviewFormModalIsOpen, setInterviewFormModalIsOpen] = useState(false)
@@ -116,6 +122,7 @@ function DisplayPanel({displayOutPut, displayCategory}){
                     )}
                 </div>
             )
+            //
             default:
                 return(
                     <div className="display-panel">
@@ -123,6 +130,7 @@ function DisplayPanel({displayOutPut, displayCategory}){
                         displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)
                     }
                 <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>New Application Record</button>
+                    
                 </div>
             )
         }
