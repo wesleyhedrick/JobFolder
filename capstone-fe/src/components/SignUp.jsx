@@ -1,4 +1,5 @@
 import States from '../States.json'
+import './styles/Signup.css'
 import {
     Link
 } from 'react-router-dom';
@@ -8,6 +9,7 @@ import axios from 'axios'
 import {useState} from 'react'
 function SignUp({setWhichCredPage}) {
     const [userState, setUserState]=useState('success')
+    
     async function sendSignUpData(e){
         e.preventDefault();
         const { first, last, password, email,
@@ -20,82 +22,85 @@ function SignUp({setWhichCredPage}) {
 
         // console.log(formData)
         let wasSignUpSuccessful;
-        try {
-            wasSignUpSuccessful = await axios.post('/sign-up', formData)
-        } catch(e) {
-            console.log(e)
-        }
-
+        wasSignUpSuccessful = await axios.post('/sign-up', formData)
+        console.log(e)
         console.log('user state', wasSignUpSuccessful.data)
+      
         if( wasSignUpSuccessful.data === 'user exists'){
             setUserState('error')
         }
         if( wasSignUpSuccessful.data === 'success'){
             setWhichCredPage('sign-in')
         } 
+
     }
-
     return (
-        <> 
-            <form onSubmit={sendSignUpData} method="POST">
-                <label htmlFor="first">First Name</label>
-                <input type="text" name="first" id="first"/>
+      <> 
+          <form className="signup-container" onSubmit={sendSignUpData} method="POST">
+               <div className="title"><h1>.Jobfolder</h1></div>
+                  <div className="paper-one">
+                      <div className="signup">
+                              <label htmlFor="first">First Name</label>
+                              <input type="text" name="first" id="first"/>
 
-                <label htmlFor="last">Last Name</label>
-                <input type="text" name="last" id="last"/>
+                              <label htmlFor="last">Last Name</label>
+                              <input type="text" name="last" id="last"/>
 
-                <label htmlFor="password">Password</label>
-                <input type="text" name="password" id="password"/>
+                              <label htmlFor="username">Username</label>
+                              <input type="text" name="username" id="username"/>
 
-                <label htmlFor="email">Email</label>
-                <input className={userState} type="text" name="email" id="email"/>
-                {userState==='error'? <p className='error-message'>User with this email already exists.</p>:null}
-                
-                <label htmlFor="address_line1">Address Line 1</label>
-                <input type="text" name="address_line1" id="address_line1"/>
+                              <label htmlFor="password">Password</label>
+                              <input type="text" name="password" id="password"/>
 
-                <label htmlFor="address_line2">Address Line 2</label>
-                <input type="text" name="address_line2" id="address_line2"/>
+                              <label htmlFor="email">Email</label>
+                              <input className={userState} type="text" name="email" id="email"/>
+                              {userState==='error'? <p className='error-message'>User with this email already exists.</p>:null}
 
-                <label htmlFor="zipcode">Zipcode</label>
-                <input type="text" name="zipcode" id="zipcode"/>
+                              <label htmlFor="address_line1">Address Line 1</label>
+                              <input type="text" name="address_line1" id="address_line1"/>
 
-                <label htmlFor="state">State</label>
-                <select id="state" name="state">
-                <option value="--"></option>
+                              <label htmlFor="address_line2">Address Line 2</label>
+                              <input type="text" name="address_line2" id="address_line2"/>
 
-                {
-                    Object.entries(States).map(([abbr, name] ) => (
-                    <option value={name}>{abbr}</option>
-                    ))
-                }
+                              <label htmlFor="zip">Zipcode</label>
+                              <input type="text" name="zip" id="zip"/>
 
-               </select>
-                <label htmlFor="daily_app_goal">Daily Application Quota</label>
-                <select id="number" name="quota">
-                <option value="--"></option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                </select>
+                              <label htmlFor="state">State</label>
+                              <select id="state" name="state">
+                              <option value=""></option>
 
-                <input type="submit" value="Sign Up"/>
+                              {
+                                  Object.entries(States).map(([abbr, name] ) => (
+                                  <option value={name}>{abbr}</option>
+                                  ))
+                              }
 
-            </form>
+                              </select>
+                                  <label htmlFor="daily_app_goal">Daily Application Quota</label>
+                                  <select name="daily_app_goal" id="number" >
+                                  <option value=""></option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                  <option value="9">9</option>
+                                  <option value="10">10</option>
+                                  <option value="11">11</option>
+                                  <option value="12">12</option>
+                                  <option value="13">13</option>
+                                  <option value="14">14</option>
+                                  <option value="15">15</option>
+                              </select>
 
-        </>
+                              <input className="signup-btn" type="submit" value="Sign Up"/>
+                       </div>
+                  </div>
+          </form>
+      </>
     )
 }
 

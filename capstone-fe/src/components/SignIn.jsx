@@ -1,3 +1,4 @@
+import './styles/Signin.css'
 import {
     Link,
     Redirect,
@@ -57,12 +58,12 @@ function SignIn({credStatus, setCredStatus, setWhichCredPage}) {
                 <Link to='forgot-password'>Forgot Password?</Link>
                 <input type="submit" value="Sign In"/>
             </form>
-
+        
             <p>First time here?</p>
             <button onClick={()=>setWhichCredPage('sign-up')}>Create New Account</button>
 
 
-        </>
+    </>
     )
 }
 
