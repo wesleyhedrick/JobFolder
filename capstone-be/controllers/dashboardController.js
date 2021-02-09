@@ -64,6 +64,17 @@ const loadDocsPage = (req, res) => {
     res.json('docs page route')
 }
 
+const createNewAppRecord = async (req, res) => {
+    console.log(req.body)
+    await Jobs.create({...req.body})
+    res.send('success')
+}
+
+const createNewIQ = async (req, res) => {
+    console.log(req.body)
+    await InterviewQuestions.create({...req.body})
+    res.send('success')
+}
 //GET SUMMARIES
 const getDocList = async (req, res) => {
     const {doc_type} = req.params
@@ -162,6 +173,8 @@ module.exports = {
     addInterviewQuestion,
     getDocList,
     getIQs,
-    getJobs
+    getJobs, 
+    createNewAppRecord, 
+    createNewIQ
 };
 
