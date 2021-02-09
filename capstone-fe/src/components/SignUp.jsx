@@ -4,17 +4,17 @@ import {
     Link
 } from 'react-router-dom';
 
-
 import axios from 'axios'
 import {useState} from 'react'
+
 function SignUp({setWhichCredPage}) {
     const [userState, setUserState]=useState('success')
     
     async function sendSignUpData(e){
         e.preventDefault();
         const { first, last, password, email,
-        address_line1, address_line2, zipcode, state, daily_app_goal} = e.target
-        
+        address_line1, address_line2, zipcode, state, daily_app_goal} = e.target.elements
+        console.log(e.target.elements)
         const formData = { first: first.value, last:last.value, 
             password:password.value, email:email.value, address_line1:address_line1.value, 
             address_line2:address_line2.value,
@@ -59,8 +59,8 @@ function SignUp({setWhichCredPage}) {
                               <label htmlFor="address_line2">Address Line 2</label>
                               <input type="text" name="address_line2" id="address_line2"/>
 
-                              <label htmlFor="zip">Zipcode</label>
-                              <input type="text" name="zip" id="zip"/>
+                              <label htmlFor="zipcode">Zipcode</label>
+                              <input type="text" name="zipcode" id="zipcode"/>
 
                               <label htmlFor="state">State</label>
                               <select id="state" name="state">
