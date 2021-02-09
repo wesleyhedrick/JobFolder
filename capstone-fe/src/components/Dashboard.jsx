@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import './styles/Dashboard.css'
 import Sidebar from './Sidebar';
 import DisplayPanel from './DisplayPanel';
 import Settings from './Settings';
@@ -19,14 +20,16 @@ function Dashboard(){
     }
 
     return (
-        <div>
+        <div className="grid-container">
             <Sidebar getSummaryData={getSummaryData}/>
             <HeadsUpDisplay />
             <Settings />
-            <DisplayPanel   displayCategory={displayCategory} 
-                            setDisplayCategory={setDisplayCategory}
-                            changeDisplayOutput={changeDisplayOutput} 
-                            displayOutPut={displayOutPut} />
+            <DisplayPanel   
+            
+            displayCategory={displayCategory} 
+            setDisplayCategory={setDisplayCategory}
+            changeDisplayOutput={changeDisplayOutput} 
+            displayOutPut={displayOutPut} />
         </div>
 
     )

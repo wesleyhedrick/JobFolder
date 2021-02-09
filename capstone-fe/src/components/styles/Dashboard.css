@@ -1,0 +1,108 @@
+body,
+html {
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+.grid-container {
+    height: 100vh;
+    background-color: #fafafa;
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 15% 23% 23% 23%;
+    grid-template-rows: 10% 15% auto;
+    grid-template-areas:
+        "sidebar header header header"
+        "sidebar head1 head2 head3"
+        "sidebar main main main"
+        "sidebar main main main";
+}
+
+/* * Start Sidebar*/
+.sidebar {
+    font-size: 0.8rem;
+    line-height: 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    grid-area: sidebar;
+    background-color: #fadf7f;
+    -webkit-border-top-right-radius: 100px;
+    -moz-border-radius-topright: 100px;
+    border-top-right-radius: 100px;
+    padding-top: 70px;
+    padding-left: 15px;
+    color: #272727;
+}
+
+h1 {
+    text-transform: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    margin-left: 30px;
+    padding-bottom: 40px;
+}
+
+/* * End  Sidebars */
+
+/* * Start Heads Up Display */
+
+.head1 {
+    grid-area: head1;
+    background: #272727;
+    color: #fadf7f;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-right-radius: 70px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-topright: 70px;
+    border-radius: 10px;
+    border-top-right-radius: 70px;
+    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
+}
+
+.head2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: head1;
+    background: #272727;
+    color: #fadf7f;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-right-radius: 70px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-topright: 70px;
+    border-radius: 10px;
+    border-top-right-radius: 70px;
+    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
+}
+
+.head3 {
+    grid-area: head1;
+    background: #272727;
+    color: #fadf7f;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-right-radius: 70px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-topright: 70px;
+    border-radius: 10px;
+    border-top-right-radius: 70px;
+    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
+}
+
+.head2 {
+    grid-area: head2;
+}
+
+.head3 {
+    grid-area: head3;
+}
+
+/* * End Heads Up Display */
+
+/* * Start Settings */
+
+.settings {
+    grid-area: header;
+}
+
+/* * End settings */

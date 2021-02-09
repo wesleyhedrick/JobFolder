@@ -1,4 +1,5 @@
 import States from '../States.json'
+import './styles/Signup.css'
 import {
     Link
 } from 'react-router-dom';
@@ -34,11 +35,11 @@ function SignUp({setWhichCredPage}) {
             setWhichCredPage('sign-in')
         } 
     }
-        
 
 
     return (
         <> 
+         <div className="title"><h1>.jobfolder</h1></div>
             <form onSubmit={sendSignUpData} method="POST">
                 <label htmlFor="first">First Name</label>
                 <input type="text" name="first" id="first"/>
@@ -74,7 +75,7 @@ function SignUp({setWhichCredPage}) {
 
                </select>
                 <label htmlFor="daily_app_goal">Daily Application Quota</label>
-                <select id="number" name="quota">
+                <select id="number" name="daily_app_goal">
                 <option value="--"></option>
                 <option value="1">1</option>
                 <option value="2">2</option>

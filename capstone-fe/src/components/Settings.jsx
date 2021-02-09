@@ -1,6 +1,11 @@
+import './styles/Dashboard.css'
+// import { FaUserCircle } from 'react-icons/fa';
+
 function Settings(){
     return(
-        <div>Settings: Need Gear Icon</div>
+        <div className="settings">
+        <h4>John</h4>
+         </div>
     )
 }
 export default Settings

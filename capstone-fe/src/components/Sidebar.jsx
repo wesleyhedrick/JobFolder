@@ -1,3 +1,5 @@
+import './styles/Dashboard.css'
+
 import {
     Link
 } from 'react-router-dom';
@@ -14,12 +16,14 @@ const navBarItems = [
 
 function Sidebar({getSummaryData}) {
     return (
-        <nav>
-            <h1>.jobfolder</h1>
-            {navBarItems.map(item => 
-                <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
-            }
-        </nav>
+        <>
+            <div className="sidebar">
+                <h1>.jobfolder</h1>
+                {navBarItems.map(item => 
+                    <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
+                }
+            </div>
+        </>
     )
 }
 
