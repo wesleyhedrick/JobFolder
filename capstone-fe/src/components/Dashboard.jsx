@@ -7,9 +7,10 @@ import HeadsUpDisplay from './HeadsUpDisplay';
 import { useState } from 'react'
 import axios from 'axios'
 
-function Dashboard(){
-    const [displayOutPut, changeDisplayOutput] = useState([]);
+function Dashboard({countOfJobs, appRatio, inspiration,displayOutPut,changeDisplayOutput}){
+    
     const [displayCategory, setDisplayCategory] = useState('job-tracker')
+    
     async function getSummaryData(e){
         const {data} = await axios.get(`/dashboard/${e.target.className}`)
         //Change state to data
@@ -25,11 +26,13 @@ function Dashboard(){
             <HeadsUpDisplay />
             <Settings />
             <DisplayPanel   
-            
-            displayCategory={displayCategory} 
-            setDisplayCategory={setDisplayCategory}
-            changeDisplayOutput={changeDisplayOutput} 
-            displayOutPut={displayOutPut} />
+                displayCategory={displayCategory} 
+                setDisplayCategory={setDisplayCategory}
+                changeDisplayOutput={changeDisplayOutput} 
+                displayOutPut={displayOutPut}
+                countOfJobs={countOfJobs}
+                appRatio={appRatio}
+                inspiration={inspiration} />
         </div>
 
     )
