@@ -7,15 +7,17 @@ import {
 import axios from 'axios'
 import {useState} from 'react'
 
-function SignIn({credStatus, setCredStatus, setWhichCredPage}) {
+function SignIn({credStatus, setCredStatus, setWhichCredPage, setId}) {
     const [emailError, showEmailError] = useState(false)
     const [passwordError,showPasswordError] = useState(false)
+    const [jobCount, setJobCount] = useState(0)
+
     const history = useHistory()
 
    async function sendSignInCreds (e) {
         e.preventDefault()
         console.log('signin function is working')    
-        const { email, password } = e.target
+        const { email, password } = e.target.elements
         console.log('Email', email.value, 'Password', password.value)
         const signInCreds = {email: email.value, password:password.value}
         let creds;
@@ -25,11 +27,12 @@ function SignIn({credStatus, setCredStatus, setWhichCredPage}) {
         } catch(e) {
             console.log(e)
         }
-        
-        console.log('Here are your creds', creds.data)
-        switch(creds.data){
+        console.log(creds.data.status)
+
+        switch(creds.data.status){
             case 'success':
                 console.log(creds.data);
+                setId(creds.id)
                 history.push('/dashboard');
                 break;
             case 'no username':
