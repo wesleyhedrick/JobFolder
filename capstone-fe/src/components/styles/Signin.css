@@ -1,7 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body,
+html {
+    height: 100vh;
 }
 
 .signin-container {
@@ -25,8 +24,8 @@
     box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
 }
 
-.signin {
-    width: 80vw;
+.folder {
+    width: 100vw;
     background: #272727;
     color: #fafafa;
     height: 80vh;
@@ -38,6 +37,7 @@
 }
 
 .signin > input {
+    border: none;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -48,6 +48,7 @@
     margin-top: 30px;
     padding: 7px 15px;
     background: #fadf7f;
+    color: #272727;
     border: none;
     cursor: pointer;
 }
@@ -59,4 +60,8 @@
     color: #272727;
     border: none;
     cursor: pointer;
+}
+
+label {
+    color: #fafafa;
 }

@@ -13,3 +13,8 @@
     -moz-border-radius-topright: 319px;
     z-index: 1;
 }
+
+.title {
+    background: #fafafa;
+    height: 50vh;
+}

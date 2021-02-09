@@ -1,4 +1,5 @@
-{ "proxy": "http://localhost:3000",
+{
+  "proxy": "http://localhost:3030",
   "name": "capstone-fe",
   "version": "0.1.0",
   "private": true,
@@ -13,7 +14,6 @@
     "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
   },
-  "proxy": "http://localhost:3030",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

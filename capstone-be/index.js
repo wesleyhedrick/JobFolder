@@ -39,10 +39,6 @@ app.use('/sign-up', signUpRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/profile', profileRouter)
 // app.use('/settings', settingsRouter)
-<<<<<<< HEAD
-
-=======
->>>>>>> c316fe05028462c84e86939ef374329f56129639
 
 //Error Handling for Bad Routes
 app.get('*', (req, res) => {
