@@ -1,7 +1,6 @@
 body,
 html {
     height: 100vh;
-    font-family: "Poppins", sans-serif;
 }
 
 .grid-container {
@@ -21,25 +20,38 @@ html {
 
 /* * Start Sidebar*/
 .sidebar {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     line-height: 3rem;
     text-transform: uppercase;
     font-weight: 600;
     grid-area: sidebar;
     background-color: #fadf7f;
     -webkit-border-top-right-radius: 100px;
+    -webkit-border-bottom-right-radius: 100px;
     -moz-border-radius-topright: 100px;
+    -moz-border-radius-bottomright: 100px;
     border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
     padding-top: 70px;
     padding-left: 15px;
     color: #272727;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    cursor: pointer;
+}
+
+.sidebar :hover {
+    background: #272727;
+    color: #fafafa;
+    transition: 0.5s ease;
 }
 
 h1 {
     text-transform: none;
     font-family: "Raleway", sans-serif;
     font-size: 1.5rem;
-    margin-left: 30px;
+    margin-left: 7px;
     padding-bottom: 40px;
 }
 
@@ -47,7 +59,16 @@ h1 {
 
 /* * Start Heads Up Display */
 
+h6 {
+    font-size: 1rem;
+}
+
 .head1 {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     grid-area: head1;
     background: #272727;
     color: #fadf7f;
@@ -57,10 +78,31 @@ h1 {
     -moz-border-radius-topright: 70px;
     border-radius: 10px;
     border-top-right-radius: 70px;
-    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 .head2 {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    grid-area: head1;
+    background: #272727;
+    color: #fadf7f;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-right-radius: 70px;
+    -moz-border-radius: 10px;
+    -moz-border-radius-topright: 70px;
+    border-radius: 10px;
+    border-top-right-radius: 70px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.head3 {
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,20 +115,8 @@ h1 {
     -moz-border-radius-topright: 70px;
     border-radius: 10px;
     border-top-right-radius: 70px;
-    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
-}
-
-.head3 {
-    grid-area: head1;
-    background: #272727;
-    color: #fadf7f;
-    -webkit-border-radius: 10px;
-    -webkit-border-top-right-radius: 70px;
-    -moz-border-radius: 10px;
-    -moz-border-radius-topright: 70px;
-    border-radius: 10px;
-    border-top-right-radius: 70px;
-    box-shadow: 0 1px 1px rgba(1, 0, 0, 1), 0 10px 0 -5px #eee;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 .head2 {
@@ -102,7 +132,34 @@ h1 {
 /* * Start Settings */
 
 .settings {
+    margin-top: 10px;
     grid-area: header;
+    background-color: #fafafa;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 /* * End settings */
+
+/* * Start Display Panel */
+
+.display-panel {
+    grid-area: main;
+    background-color: #fafafa;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.new-app-btn {
+    font-family: "Poppins", sans-serif;
+    background: #272727;
+    color: #fafafa;
+    border: none;
+    padding: 5px 17px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* * End Display Panel */

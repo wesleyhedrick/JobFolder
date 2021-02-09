@@ -1,3 +1,5 @@
+
+import './styles/Dashboard.css'
 import {
     BrowserRouter as Router,
     Switch, 
@@ -58,7 +60,7 @@ function DisplayPanel({
                         <div>
                             <h2>Data Submitted!</h2>
                             <p>.jobfolder will be checking in on your progress</p>
-                            <button onClick={()=> setFeedbackModalIsOpen(false)}>Close</button>
+                            <button className="new-app-btn" onClick={()=> setFeedbackModalIsOpen(false)}>Close</button>
                         </div>
                     </Modal>
                     <Modal isOpen={formModalIsOpen} onRequestClose={()=> setFormModalIsOpen(false)}>
@@ -91,7 +93,7 @@ function DisplayPanel({
                     </Modal>
 
                     {displayOutPut.map(item => <div>{item.company_name} {item.role} {item.date_applied}</div>)}
-                    <button onClick={()=> setFormModalIsOpen(true)}>New Application Record</button>
+                    <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>New Form</button>
                 </div>
             )
             case 'interview-questions':
@@ -111,7 +113,7 @@ function DisplayPanel({
                                 <input type="submit" value="Submit"/>
                             </form>
                         </Modal>
-                        <button onClick={()=> setInterviewFormModalIsOpen(true)}>New Interview Question</button>
+                        <button className="new-app-btn" onClick={()=> setInterviewFormModalIsOpen(true)}>New Interview Question</button>
                         
                         {displayOutPut.map(item => 
                             <div>
@@ -123,11 +125,12 @@ function DisplayPanel({
             //
             default:
                 return(
-                    <div>
+                    <div className="display-panel">
                     {
                         displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)
                     }
-
+                <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>New Application Record</button>
+                    
                 </div>
             )
         }
