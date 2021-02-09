@@ -34,8 +34,6 @@ function SignUp({setWhichCredPage}) {
             setWhichCredPage('sign-in')
         } 
     }
-        
-
 
     return (
         <> 
