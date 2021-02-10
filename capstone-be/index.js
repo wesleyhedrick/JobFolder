@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const upload = require('express-fileupload')
 const es6Renderer = require('express-es6-template-engine');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -14,6 +15,7 @@ const hostname = '127.0.0.1';
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(upload())
 app.use(express.static('public'));
 // disabling for local development
 // app.use(helmet());
