@@ -45,6 +45,7 @@ html {
     line-height: 3rem;
     text-transform: uppercase;
     font-weight: 600;
+    overflow: hidden;
 }
 
 .sidebar :hover {

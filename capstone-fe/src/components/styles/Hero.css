@@ -2,6 +2,7 @@
     width: 100vw;
     min-height: 100vh;
     display: flex;
+    background-color: #fafafa;
 }
 
 .title {
@@ -9,6 +10,7 @@
     justify-content: center;
     align-items: center;
     width: 50vw;
+    height: 100vh;
     background-color: #fafafa;
 }
 
@@ -17,17 +19,20 @@
 }
 
 h4 {
+    font-weight: 400;
     font-family: "Poppins", sans-serif;
-    grid-column: 1 / 4;
+    text-align: center;
+    padding: 15px;
 }
 
-.folder {
+.hero-image {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50vw;
-    background-color: #272727;
+    background-color: #fafafa;
+    height: 100vh;
 }
 
 .hero-signup-btn {
@@ -35,16 +40,40 @@ h4 {
     font-weight: 600;
     justify-content: center;
     align-content: center;
-    background: #fadf7f;
-    padding: 7px 15px 7px 15px;
+    background: #272727;
+    padding: 10px 20px 10px 20px;
     text-decoration: none;
-    color: black;
+    color: #fafafa;
     grid-area: overlap;
     border-radius: 3px;
+    margin-top: 50px;
     transition: 0.4s all ease-in-out;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 20px;
 }
 
 .hero-signup-btn:hover {
-    color: grey;
+    color: rgb(0, 0, 0);
     background: #f9df83;
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 640px) {
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .title {
+        width: 50%;
+    }
+
+    .hero-image {
+        width: 50%;
+    }
+
+    .title > h1 {
+        padding-top: 30px;
+    }
 }
