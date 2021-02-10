@@ -17,11 +17,13 @@ const navBarItems = [
 function Sidebar({getSummaryData}) {
     return (
         <>
-            <div className="sidebar">
-                <h1>.jobfolder</h1>
-                {navBarItems.map(item => 
-                    <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
-                }
+            <div className="sidebar-container">
+                <div className="sidebar">
+                    <h1>.jobfolder</h1>
+                    {navBarItems.map(item => 
+                        <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
+                    }
+                </div>
             </div>
         </>
     )

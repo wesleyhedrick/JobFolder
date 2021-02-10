@@ -1,3 +1,7 @@
+import './styles/Dashboard.css'
+
+
+
 function InterviewQuestions({changeDisplayOutput}){
     return (
         <div>

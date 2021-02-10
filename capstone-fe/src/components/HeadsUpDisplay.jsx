@@ -5,14 +5,16 @@ function HeadsUpDisplay() {
         <>  
             
             <div className="head1">
-            <h6># of Jobs Applied</h6><br/>
-            <p>23</p>
+            <span># of Jobs Applied</span><br/>
+            <h3>23</h3>
             </div>
             <div className="head2">
-            <h6>Weekly Job Goal</h6><br/>
-            <p>8/10</p>
+            <span>Weekly Job Goal</span><br/>
+            <h3>8/10</h3>
             </div>
-            <div className="head3">Be inspired this day</div>
+            <div className="head3">
+            <h5>Be inspired this day</h5>  
+            </div>
         </>
     )
 }

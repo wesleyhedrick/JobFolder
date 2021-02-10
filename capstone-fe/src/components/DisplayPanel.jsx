@@ -57,14 +57,14 @@ function DisplayPanel({
             return(
                 <div>
                     <Modal isOpen={feedbackModalIsOpen} onRequestClose={()=>setFeedbackModalIsOpen(false)}>
-                        <div>
+                        <div className="data-confirm">
                             <h2>Data Submitted!</h2>
                             <p>.jobfolder will be checking in on your progress</p>
                             <button className="new-app-btn" onClick={()=> setFeedbackModalIsOpen(false)}>Close</button>
                         </div>
                     </Modal>
                     <Modal isOpen={formModalIsOpen} onRequestClose={()=> setFormModalIsOpen(false)}>
-                        <form onSubmit={(e)=>createNewAppRecord(e)} action="">
+                        <form className="job-modal" onSubmit={(e)=>createNewAppRecord(e)} action="">
                             <label htmlFor="company_name">Company Name</label>
                             <input name="company_name" id="company_name"type="text"/>
                             
@@ -88,10 +88,10 @@ function DisplayPanel({
                             
                             <label htmlFor="date_applied">Date Applied</label>
                             <input type="date" name="date_applied" id="date_applied"/>
-                            <input type="submit" value="Submit"/>
+                            <input className="job-modal-btn" type="submit" value="Submit"/>
                         </form>
                     </Modal>
-
+                <div className="display-panel"></div>
                     {displayOutPut.map(item => <div>{item.company_name} {item.role} {item.date_applied}</div>)}
                     <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>New Form</button>
                 </div>
@@ -100,10 +100,10 @@ function DisplayPanel({
                 return(
                     <div>
                         <Modal isOpen={IQFeedbackModal} onRequestClose={()=>setIQFeedbackModal(false)}>
-                            <h1>Interview Question Submitted</h1>
+                            <h1 className="interview-sub">Your interview question has been submitted!</h1>
                         </Modal>
                         <Modal isOpen={interviewFormModalIsOpen} onRequestClose={()=> setInterviewFormModalIsOpen(false)}>
-                            <form onSubmit={createNewIQ}action="">
+                            <form className="interview-questions" onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
                                 <input name="question" id="interview-question" type="text"/>
 
@@ -113,11 +113,12 @@ function DisplayPanel({
                                 <input type="submit" value="Submit"/>
                             </form>
                         </Modal>
-                        <button className="new-app-btn" onClick={()=> setInterviewFormModalIsOpen(true)}>New Interview Question</button>
+                        <button className="new-app-btn" onClick={()=> setInterviewFormModalIsOpen(true)}>Add New </button>
                         
                         {displayOutPut.map(item => 
-                            <div>
-                            <div>{item.question}</div><div>{item.answer}</div>
+                        <div>
+                            <div>{item.question}</div>
+                            <div>{item.answer}</div>
                         </div>
                     )}
                 </div>
@@ -129,7 +130,7 @@ function DisplayPanel({
                     {
                         displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)
                     }
-                <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>New Application Record</button>
+                <button className="new-app-btn" onClick={()=> setFormModalIsOpen(true)}>Add New</button>
                     
                 </div>
             )

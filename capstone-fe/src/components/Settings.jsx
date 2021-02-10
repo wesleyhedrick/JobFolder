@@ -3,9 +3,11 @@ import './styles/Dashboard.css'
 
 function Settings(){
     return(
-        <div className="settings">
-        <h4>John</h4>
-         </div>
+        <div className="settings-container">
+            <div className="settings">
+                <h4>Hello John!</h4>
+            </div>
+        </div>
     )
 }
 export default Settings
