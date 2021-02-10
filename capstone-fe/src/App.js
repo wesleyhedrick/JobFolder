@@ -16,6 +16,7 @@ function App() {
     // const [jobsAppliedTo, setJobsAppliedTo] = useState([])
     const [countOfJobs, setCountOfJobs] = useState(0)
     const [appRatio, setAppRatio] = useState(0)
+    const [appReality, setAppReality] = useState(0)
     const [inspiration, setInspiration] = useState('')
     const [displayOutPut, changeDisplayOutput] = useState([]);
 
@@ -23,26 +24,32 @@ function App() {
         const dashboardData = await axios.get(`/dashboard-data/${id}`)
         changeDisplayOutput(dashboardData.jobsAppliedTo)
         setCountOfJobs(dashboardData.jobCount)
-        setAppRatio(dashboardData.dailyAppReality)
+        setAppRatio(dashboardData.dailyAppGoal)
+        setAppReality(dashboardData.dailyAppReality)
         setInspiration(dashboardData.inspiration)
-
     }
+
     return (
     <Router>
             <Route exact path='/'>
                 <Hero />    
             </Route>        
             <Route exact path='/credentials'>
-                <Credentials populateDashboard={populateDashboard}setId={setId}/>
+                <Credentials id={id} populateDashboard={populateDashboard}setId={setId}/>
             </Route>    
             <Route exact path='/dashboard'>
                 <Dashboard 
-
+                    id={id}
                     countOfJobs={countOfJobs}
                     appRatio={appRatio}
                     inspiration={inspiration}
                     displayOutPut={displayOutPut}
                     changeDisplayOutput={changeDisplayOutput}
+                    countOfJobs={countOfJobs}
+                    appRatio={appRatio}
+                    inspiration={inspiration}
+                    appReality={appReality}
+
                 />
             </Route>    
     </Router>

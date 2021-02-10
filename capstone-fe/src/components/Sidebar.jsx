@@ -1,9 +1,9 @@
 import './styles/Dashboard.css'
-
 import {
     Link
 } from 'react-router-dom';
 
+import axios from 'axios'   
 const navBarItems = [
     {value: 'job-tracker', content: 'Job Tracker'},
     {value: 'resume', content: 'Resumes'},
@@ -14,20 +14,21 @@ const navBarItems = [
     {value: 'interview-questions', content: 'Interview Questions'},
 ]    
 
-function Sidebar({getSummaryData}) {
+function Sidebar({id, getSummaryData}) {
+    
+
     return (
         <>
-            <div className="sidebar-container">
-                <div className="sidebar">
-                    <h1>.jobfolder</h1>
-                    {navBarItems.map(item => 
-                        <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
-                    }
-                </div>
+            <div className="sidebar">
+                <h1>.jobfolder</h1>
+                {navBarItems.map(item => 
+                    <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
+                }
+                <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
             </div>
         </>
     )
 }
 
 export default Sidebar
-export {navBarItems}
+export { navBarItem } 

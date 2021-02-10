@@ -72,6 +72,9 @@ const loadDashboard = async (req, res) => {
     
 }
 
+const uploadDoc = (req, res) => {
+    console.log(req.files)
+}
 const loadDocsPage = (req, res) => {
     res.json('docs page route')
 }
@@ -79,6 +82,13 @@ const loadDocsPage = (req, res) => {
 const createNewAppRecord = async (req, res) => {
     console.log(req.body)
     await Jobs.create({...req.body})
+    await Contacts.create({
+        name:req.body.contact_name, 
+        phone:req.body.contact_phone,
+        email:req.body.contact_email,
+        date_contacted:req.body.date_applied,
+        user_id:req.body.user_id
+    })
     res.send('success')
 }
 
@@ -89,12 +99,12 @@ const createNewIQ = async (req, res) => {
 }
 //GET SUMMARIES
 const getDocList = async (req, res) => {
-    const {doc_type} = req.params
+    const {doc_type, id} = req.params
     console.log('here your doctype',doc_type)
     const docList = await Documents.findAll({
         attributes: ['title'],
         where: {
-            user_id: 1, 
+            user_id: id, 
             doc_type
         }
     })
@@ -152,6 +162,16 @@ const iJustApplied = async (req, res) => {
     })
 }
 
+const getContacts = async (req, res)=>{
+    const {id} = req.params;
+    const contacts = await Contacts.findAll({
+        where: {
+            id
+        }
+    })
+
+    res.json(contacts)
+}
 const iMadeAContact = async (req, res) => {
     const {name, phone, email, date_contacted, user_id} = req.body;
     await Contacts.create({
@@ -187,6 +207,8 @@ module.exports = {
     getIQs,
     getJobs, 
     createNewAppRecord, 
-    createNewIQ
+    createNewIQ,
+    getContacts,
+    uploadDoc
 };
 

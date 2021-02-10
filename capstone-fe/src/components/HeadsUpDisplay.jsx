@@ -1,20 +1,19 @@
 import './styles/Dashboard.css'
 
-function HeadsUpDisplay() {
+function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
     return(
         <>  
-            
             <div className="head1">
-            <span># of Jobs Applied</span><br/>
-            <h3>23</h3>
+            <h6># of Jobs Applied</h6><br/>
+              <p>{countOfJobs}</p>
             </div>
             <div className="head2">
-            <span>Weekly Job Goal</span><br/>
-            <h3>8/10</h3>
+            <h6>Daily Job Goal</h6><br/>
+              <p>{appRatio}/1</p>
+              <h6>Your Ratio</h6>
+              <p>{appReality}/1</p>
             </div>
-            <div className="head3">
-            <h5>Be inspired this day</h5>  
-            </div>
+            <div className="head3">{inspiration}</div>
         </>
     )
 }
