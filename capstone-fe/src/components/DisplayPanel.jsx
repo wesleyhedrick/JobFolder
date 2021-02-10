@@ -73,9 +73,11 @@ function DisplayPanel({
             console.log(e.target.file.files)
             let file = e.target.file.files[0]
             let formdata = new FormData();
-            formdata.append('pdf', file)
-            // await axios.post(`/dashboard/upload/${id}`)
-            await axios.post(`/dashboard/upload/27`, formdata)
+            formdata.append('file', file)
+            formdata.append('id',id)
+            await axios.post(`/dashboard/upload/${id}`, formdata)
+            setDocUploadModalIsOpen(false)
+            setDocUploadFeedbackModalIsOpen(true)
         }
   
         async function createNewIQ(e){
@@ -199,7 +201,7 @@ function DisplayPanel({
                                 <Modal isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
                                     <div>
                                         <h2>Document Uploaded</h2>
-                                        <button>Close</button>
+                                        <button onClick={()=>setDocUploadFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
                             <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>            

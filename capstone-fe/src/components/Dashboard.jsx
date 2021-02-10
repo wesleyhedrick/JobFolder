@@ -12,9 +12,6 @@ function Dashboard({id, countOfJobs, appRatio, inspiration,appReality,displayOut
     const [displayCategory, setDisplayCategory] = useState('job-tracker')
     async function getSummaryData(e){
         const {data} = await axios.get(`/dashboard/${e.target.className}/${id}`)
-        //Change state to data
-        console.log(data)
-        // changeDisplayOutput(data)
         setDisplayCategory(e.target.className)
         changeDisplayOutput(data)
     }

@@ -16,7 +16,6 @@ const navBarItems = [
 ]    
 
 function Sidebar({id, getSummaryData}) {
-    
 
     return (
         <>
@@ -35,4 +34,4 @@ function Sidebar({id, getSummaryData}) {
 }
 
 export default Sidebar
-export { navBarItems } 
+

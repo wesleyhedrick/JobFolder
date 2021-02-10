@@ -17,16 +17,21 @@ function App() {
     const [countOfJobs, setCountOfJobs] = useState(0)
     const [appRatio, setAppRatio] = useState(0)
     const [appReality, setAppReality] = useState(0)
-    const [inspiration, setInspiration] = useState('')
+    const [inspiration, setInspiration] = useState({})
     const [displayOutPut, changeDisplayOutput] = useState([]);
 
-    async function populateDashboard(){
-        const dashboardData = await axios.get(`/dashboard-data/${id}`)
-        changeDisplayOutput(dashboardData.jobsAppliedTo)
-        setCountOfJobs(dashboardData.jobCount)
-        setAppRatio(dashboardData.dailyAppGoal)
-        setAppReality(dashboardData.dailyAppReality)
-        setInspiration(dashboardData.inspiration)
+    async function populateDashboard(uid){
+        console.log('populate dashboard is running')
+        const {data} = await axios.get(`/dashboard/dashboard-data/${uid}`)
+        console.log(data)
+        const { author, quote } = data.inspiration[0]
+        console.log('author', author)
+        changeDisplayOutput(data.jobsAppliedTo)
+        setCountOfJobs(data.jobCount)
+        setAppRatio(data.dailyAppGoal)
+        setAppReality(data.dailyAppReality)
+        setInspiration({author, quote})
+
     }
 
     return (
@@ -37,7 +42,7 @@ function App() {
             <Route exact path='/credentials'>
                 <Credentials id={id} populateDashboard={populateDashboard}setId={setId}/>
             </Route>    
-            <Route exact path='/dashboard'>
+            <Route>
                 <Dashboard 
                     id={id}
                     countOfJobs={countOfJobs}
