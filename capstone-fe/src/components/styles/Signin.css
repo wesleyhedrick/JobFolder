@@ -101,3 +101,23 @@ p {
 .signup-btn:hover {
     color: #fff;
 }
+
+/* Media Query */
+
+@media only screen and (max-width: 640px) {
+    .signin-container {
+        flex-direction: column;
+    }
+
+    .title {
+        width: 50vw;
+    }
+
+    .signin {
+        width: 50vw;
+    }
+
+    .title > h1 {
+        padding-top: 30px;
+    }
+}

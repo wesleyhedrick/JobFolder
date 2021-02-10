@@ -1,3 +1,4 @@
+import { HiMenu } from "react-icons/hi";
 import './styles/Dashboard.css'
 import {
     Link
@@ -18,15 +19,19 @@ function Sidebar({id, getSummaryData}) {
 
     return (
         <>
-            <div className="sidebar">
-                <h1>.jobfolder</h1>
-                {navBarItems.map(item => 
-                    <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
-                }
-                <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
+            <div className="sidebar-container">
+            <label for="" class="menu-btn"><i class="HiMenu"></i></label>
+                <div className="sidebar">
+                    <h1>.jobfolder</h1>
+                    {navBarItems.map(item => 
+                        <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
+                    }
+                    <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
+                </div>
             </div>
         </>
     )
 }
 
 export default Sidebar
+
