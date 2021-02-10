@@ -75,12 +75,9 @@ function DisplayPanel({
             let formdata = new FormData();
             formdata.append('pdf', file)
             // await axios.post(`/dashboard/upload/${id}`)
-
-
             await axios.post(`/dashboard/upload/27`, formdata)
-
         }
-        
+  
         async function createNewIQ(e){
                     e.preventDefault()
                     const{question, answer} = e.target
@@ -172,18 +169,18 @@ function DisplayPanel({
                             <form onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
                                 <input name="question" id="interview-question" type="text"/>
-
                                 <label htmlFor="interview-answer">Answer (If its summarizable)</label>
                                 <input name="answer" id="interview-answer" type="text"/>
-
                                 <input type="submit" value="Submit"/>
                             </form>
                         </Modal>
-                        <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}>New Interview Question</button>
                         
+                        <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}>New Interview Question</button>
+
                         {displayOutPut.map(item => 
-                            <div>
-                            <div>{item.question}</div><div>{item.answer}</div>
+                        <div>
+                            <div>{item.question}</div>
+                            <div>{item.answer}</div>
                         </div>
                     )}
                 </div>

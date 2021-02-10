@@ -53,32 +53,30 @@ function SignIn({credStatus, setCredStatus, setWhichCredPage, setId, populateDas
     <>
         
         <form className="signin-container" onSubmit={sendSignInCreds}>
-            <div className="title"><h1>.Jobfolder</h1></div>
-                <div className="paper-one">
-                    <div className="folder">
-                        <div className="signin">
-                            <label htmlFor="email">Email</label>
-                            <input 
-                            className='email-credential success' 
-                            type="text" 
-                            name="email" 
-                            id="email"/>
-                            {emailError ? <p className='email-credential-emessage'>This email doesn't match our records.</p> : null}
-                            <label htmlFor="password">Password</label>
-                            <input 
-                            className='password-credential success' 
-                            type="text" 
-                            name="password" 
-                            id="password"/>
-                            {passwordError ? 
-                            <p className='password-credential-emessage'>This password doesn't match anything we have.</p>: null}
-                            <Link to='forgot-password' className="forgot-link">Forgot Password?</Link>
-                            <input className="signin-btn" type="submit" value="Sign In"/>
-                            <p>First time here?</p>
-                            <button className="signup-btn" onClick={()=>setWhichCredPage('sign-up')}>Create New Account</button>
-                    </div>
-                </div>   
-            </div>
+            <div className="title"><h1>.jobfolder</h1></div>         
+                <div className="signin">
+                    <label htmlFor="email">Email</label>
+                    <input 
+                    className='email-credential success' 
+                    type="text" 
+                    name="email" 
+                    id="email"/>
+                    {emailError ? <p className='email-credential-emessage'>This email doesn't match our records.</p> : null}
+                    <label htmlFor="password">Password</label>
+                    <input 
+                    className='password-credential success' 
+                    type="text" 
+                    name="password" 
+                    id="password"/>
+                    {passwordError ? 
+                    <p className='password-credential-emessage'>This password doesn't match anything we have.</p>: null}
+                    <Link to='forgot-password' className="forgot-link">Forgot Password?</Link>
+                    <input className="signin-btn" type="submit" value="Sign In"/>
+                    <div className="first-time">
+                    <p>First time here?</p>
+                    <button className="signup-btn" onClick={()=>setWhichCredPage('sign-up')}>Sign Up</button>
+                </div>
+            </div>  
         </form>
         
          

@@ -1,20 +1,66 @@
-.signup-container {
-    background: #fafafa;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.signup {
-    width: 80vw;
-    background: #272727;
-    color: #fafafa;
-    height: 80vh;
-    padding: 100px;
-    border-top-right-radius: 319px;
-    -webkit-border-top-right-radius: 5000px;
-    -moz-border-radius-topright: 319px;
-    z-index: 1;
+.signup-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
 }
 
 .title {
-    background: #fafafa;
-    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    background-color: #fafafa;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    background-color: #272727;
+}
+
+.signup-btn {
+    margin-top: 20px;
+    background: #fadf7f;
+    border: none;
+    padding: 2px 15px 2px 15px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    cursor: pointer;
+    color: #272727;
+    transition: 0.4s all ease-in-out;
+}
+
+.signup-btn:hover {
+    color: grey;
+    background: #f9df83;
+}
+
+select {
+    display: flex;
+}
+
+label {
+    line-height: 30px;
+    text-align: left;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+input {
+    line-height: 30px;
+    height: 30px;
+    width: 60%;
 }

@@ -1,8 +1,8 @@
 import './styles/Dashboard.css'
-
 import {
     Link
 } from 'react-router-dom';
+
 import axios from 'axios'   
 const navBarItems = [
     {value: 'job-tracker', content: 'Job Tracker'},
@@ -31,4 +31,4 @@ function Sidebar({id, getSummaryData}) {
 }
 
 export default Sidebar
-export {navBarItems}
+export { navBarItem } 
