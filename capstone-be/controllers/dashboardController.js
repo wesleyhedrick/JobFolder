@@ -15,6 +15,7 @@ const testRoute = async (req, res) => {
 }
 
 const loadDashboard = async (req, res) => {
+    console.log('load dashboard function')
     const {id} = req.params;
     let dateStarted;
     let inspiration;
@@ -23,11 +24,12 @@ const loadDashboard = async (req, res) => {
     let jobCount; 
     let jobsAppliedTo; 
     let contacts;
+    console.log(req.session)
 
-    if(req.session.username){
+    if(req.session.user_id){
         
         inspiration = await Inspiration.getRandom();
-
+        console.log('here is your inspiration', inspiration)
         dateStarted = await Users.findAll({
             attributes: ['createdAt'],
             where: {
@@ -73,7 +75,11 @@ const loadDashboard = async (req, res) => {
 }
 
 const uploadDoc = (req, res) => {
+    console.log(req.body)
     console.log(req.files)
+    const {file} = req.files;
+    file.mv(`./uploads/${req.body.id}-${(new Date()).getTime()}-${file.name}`)
+    res.send('success')
 }
 const loadDocsPage = (req, res) => {
     res.json('docs page route')
