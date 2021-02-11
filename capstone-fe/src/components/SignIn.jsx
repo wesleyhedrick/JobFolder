@@ -7,21 +7,7 @@ import {
 import axios from 'axios'
 import {useState} from 'react'
 
-function SignIn({credStatus, setCredStatus, setWhichCredPage, setId, populateDashboard}) {
-    async function popDash(uid){
-        console.log('populate dashboard is running')
-        const {data} = await axios.get(`dashboard/dashboard-data/${uid}`)
-        console.log(data)
-        // const {author, quote } = dashboardData.inspiration
-        // console.log('author', author)
-        // changeDisplayOutput(dashboardData.jobsAppliedTo)
-        // // setCountOfJobs(dashboardData.jobCount)
-        // setCountOfJobs(3)
-        // setAppRatio(dashboardData.dailyAppGoal)
-        // setAppReality(dashboardData.dailyAppReality)
-        // setInspiration({author, quote})
-
-    }
+function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, populateDashboard}) {
     const [emailError, showEmailError] = useState(false)
     const [passwordError,showPasswordError] = useState(false)
     const [jobCount, setJobCount] = useState(0)
@@ -47,6 +33,7 @@ function SignIn({credStatus, setCredStatus, setWhichCredPage, setId, populateDas
             case 'success':
                 console.log(creds.data);
                 console.log(creds.data.id)
+                setName(creds.data.first)
                 populateDashboard(creds.data.id);
                 history.push('/dashboard');
                 break;

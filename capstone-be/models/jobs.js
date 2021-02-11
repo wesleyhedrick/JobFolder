@@ -15,6 +15,15 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id'
         });
     }
+
+    static async getOneDate(date){
+        const [results, metadata] = await sequelize.query(
+            // `select "date_applied" from "Jobs" where "user_id"=14 and "date_applied" like '${date}%' limit 1`
+            `select "date_applied" from "Jobs" where "date_applied" between '2021-02-11' and '2021-03-03'`
+        )
+
+        return results
+    }
   };
   Jobs.init({
     company_name: DataTypes.STRING,
@@ -24,7 +33,9 @@ module.exports = (sequelize, DataTypes) => {
     contact_name: DataTypes.STRING,
     contact_phone: DataTypes.STRING,
     date_applied: DataTypes.DATE,
-    user_id:DataTypes.INTEGER
+    user_id:DataTypes.INTEGER,
+    interviewed:DataTypes.BOOLEAN,
+    date_interviewed:DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Jobs',

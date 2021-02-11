@@ -13,6 +13,7 @@ import axios from 'axios';
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [id, setId] = useState(0)
+    const [name, setName] = useState('')
     // const [jobsAppliedTo, setJobsAppliedTo] = useState([])
     const [countOfJobs, setCountOfJobs] = useState(0)
     const [appRatio, setAppRatio] = useState(0)
@@ -40,11 +41,12 @@ function App() {
                 <Hero />    
             </Route>        
             <Route exact path='/credentials'>
-                <Credentials id={id} populateDashboard={populateDashboard}setId={setId}/>
+                <Credentials setName={setName} id={id} populateDashboard={populateDashboard}setId={setId}/>
             </Route>    
             <Route>
                 <Dashboard 
                     id={id}
+                    name={name}
                     countOfJobs={countOfJobs}
                     appRatio={appRatio}
                     inspiration={inspiration}
