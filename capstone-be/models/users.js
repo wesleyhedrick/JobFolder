@@ -24,6 +24,41 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'user_id'
         })
     }
+      
+    static async getJobs() {
+     
+        const [results, metadata] = await sequelize.query(`select U.id as Userid, 
+            U.first, U.last, U.email, J.role, J.company_name from
+            "Users" as U join "Jobs" as J on U.id = J.user_id
+            `);
+
+        return results
+    }
+
+    
+    static async getReminderEmailData(date, whichDate){
+        const [results, metadata] = await sequelize.query(
+            `select j.company_name, j.role, u.first, u.email 
+            from "Jobs" as j join "Users" as u
+            on j.user_id = u.id
+            // where j.${whichDate} between '${date}' and '${date}'`
+            )
+        return results
+    }
+
+    static async qetInterviewQuestions(day, time){
+        let upper = time+5;
+        let lower = time-5;
+
+        const [results, metadata] = await sequelize.query(
+            `select u.first, iq.question, iq.answer, u.email
+            from "Users" as u join "InterviewQuestions" as iq
+            on u.id = iq.user_id
+            where u.iq_day = ${day} and u.iq_time between ${lower} and ${upper}`
+        )
+
+        return results
+    }
   };
   Users.init({
     first: DataTypes.STRING,
@@ -34,10 +69,17 @@ module.exports = (sequelize, DataTypes) => {
     address_line2: DataTypes.STRING,
     zip: DataTypes.STRING,
     state: DataTypes.STRING,
-    daily_app_goal:DataTypes.INTEGER
+    daily_app_goal:DataTypes.INTEGER,
+    iq_day:DataTypes.INTEGER,
+    iq_time:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Users',
   });
   return Users;
 };
+
+
+
+
+

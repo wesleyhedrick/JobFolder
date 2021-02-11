@@ -3,15 +3,14 @@ const { getApplicationRatio } = require('../utils')
 
 
 const testRoute = async (req, res) => {
-    const {identification} = req.params
-    console.log(identification)
-    const x = await Jobs.findAll({
-        include: [{
-            model: Users, 
-            where: {last: 'Hedrick'}
-        }]
+    const data = await Users.findOne({
+        where: {
+            id:1
+        }
     })
-    res.json(x)
+    console.log(data)
+    res.json(data)
+    console.log('hello')
 }
 
 const loadDashboard = async (req, res) => {

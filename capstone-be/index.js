@@ -32,11 +32,11 @@ app.use(session({
 app.engine('html', es6Renderer);
 app.set('views', 'templates');
 app.set('view engine', 'html');
-const { signInRouter,signUpRouter, dashboardRouter, fileTransferRouter, profileRouter, settingsRouter } = require('./routes')
+const { signInRouter,signUpRouter, dashboardRouter, fileTransferRouter, 
+    profileRouter, settingsRouter } = require('./routes')
 
 const server = http.createServer(app);
 app.use('/sign-in', signInRouter)
-// app.use('/file-transfer', fileTransferRouter)
 app.use('/sign-up', signUpRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/profile', profileRouter)
