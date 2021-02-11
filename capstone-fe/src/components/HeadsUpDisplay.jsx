@@ -14,6 +14,7 @@ function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
               <span>Your Ratio</span>
               <p className="count-in-head">{appReality}/1</p>
             </div>
+            
             <div className="head3">{inspiration.author}</div>
         </>
     )

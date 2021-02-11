@@ -21,6 +21,7 @@ body {
 /* * Start Settings */
 
 .settings-container {
+    display: flex;
     grid-area: header;
     margin-top: 30px;
     background-color: #fafafa;
@@ -32,9 +33,13 @@ body {
 
 .settings > h4 {
     display: flex;
-    padding-bottom: 30px;
     margin-left: 30px;
-    margin-top: 20px;
+    font-weight: 600;
+}
+
+.gear-settings {
+    display: flex;
+    justify-content: center;
 }
 
 /* * End settings */
@@ -71,6 +76,28 @@ body {
     color: #272727;
 }
 
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.ReactModal__Content {
+    width: 50%;
+    border: none;
+}
+
+/* .ReactModal__Content--after-open {
+    border: none;
+} */
+
 /* **End Job Modal** */
 
 /* * Start Interview questions */
@@ -85,14 +112,11 @@ body {
     padding: 50px;
     justify-content: center;
     align-items: center;
+    font-family: "Poppins", sans-serif;
 }
 /* * End Data confirm */
 
 /** Contacts  */
-
-contacts {
-    background-color: blue;
-}
 
 /* **End of Contacts** */
 

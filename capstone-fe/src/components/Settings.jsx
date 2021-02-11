@@ -1,5 +1,7 @@
 import './styles/Dashboard.css'
-// import { FaUserCircle } from 'react-icons/fa';
+import { RiSettings4Fill } from "react-icons/ri";
+
+
 
 function Settings(){
     return(
@@ -7,6 +9,10 @@ function Settings(){
             <div className="settings">
                 <h4>Hello John!</h4>
             </div>
+            <div className="gear-settings">
+            < RiSettings4Fill />
+            </div>
+
         </div>
     )
 }
