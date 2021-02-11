@@ -1,5 +1,6 @@
 import { HiMenu } from "react-icons/hi";
-import './styles/Dashboard.css'
+import { HiX } from "react-icons/hi";
+import './styles/Sidebar.css'
 import {
     Link
 } from 'react-router-dom';
@@ -18,18 +19,22 @@ const navBarItems = [
 function Sidebar({id, getSummaryData}) {
 
     return (
-        <>
+    <>
+        <input type="checkbox" name="" id="check" />
             <div className="sidebar-container">
-            <label for="" class="menu-btn"><i class="HiMenu"></i></label>
+                <label for="check">
+                    <i class={HiX} id="times"></i>
+                    <i class={HiMenu} id="bars"></i>
+                </label>
                 <div className="sidebar">
                     <h1>.jobfolder</h1>
                     {navBarItems.map(item => 
                         <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
                     }
                     <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
-                </div>
             </div>
-        </>
+        </div>
+    </>
     )
 }
 
