@@ -1,0 +1,28 @@
+/* * Start Display Panel */
+
+.display-panel {
+    grid-area: main;
+    background-color: #fafafa;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.new-app-btn {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    background: #272727;
+    color: #fafafa;
+    border: none;
+    padding: 3px 17px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+    margin-top: 30px;
+}
+
+.new-app-btn:hover {
+    background: #fadf7f;
+    color: #272727;
+}
+
+/* * End Display Panel */

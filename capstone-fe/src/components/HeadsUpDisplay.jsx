@@ -1,18 +1,20 @@
-import './styles/Dashboard.css'
+import './styles/HeadsUpDisplay.css'
 
 function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
     return(
         <>  
             <div className="head1">
-            <h6># of Jobs Applied</h6><br/>
-              <p>{countOfJobs}</p>
+            <span># of Jobs Applied</span>
+              <p className="count-in-head">{countOfJobs}</p>
             </div>
+
             <div className="head2">
-            <h6>Daily Job Goal</h6><br/>
-              <p>{appRatio}/1</p>
-              <h6>Your Ratio</h6>
-              <p>{appReality}/1</p>
+            <span>Daily Job Goal</span>
+              <p className="count-in-head">{appRatio}/1</p>
+              <span>Your Ratio</span>
+              <p className="count-in-head">{appReality}/1</p>
             </div>
+            
             <div className="head3">{inspiration}</div>
         </>
     )

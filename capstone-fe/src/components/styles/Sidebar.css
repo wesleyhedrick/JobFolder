@@ -1,0 +1,79 @@
+/* * Start Sidebar*/
+
+.sidebar-container {
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-bottom-right-radius: 100px;
+    -moz-border-radius-topright: 100px;
+    -moz-border-radius-bottomright: 100px;
+    font-size: 1rem;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    transition: 0.5s ease;
+    transform: translateX(-250px);
+    width: 220px;
+    grid-area: sidebar;
+    background-color: #fadf7f;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    padding-top: 70px;
+    color: #272727;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    cursor: pointer;
+}
+
+.sidebar {
+    width: 100%;
+    padding-left: 15px;
+    line-height: 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    overflow: hidden;
+}
+
+.sidebar :hover {
+    color: #ffffff;
+    transition: 0.6s ease;
+}
+
+h1 {
+    text-transform: none;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5rem;
+    margin-left: 7px;
+    padding-bottom: 40px;
+}
+
+#check {
+    -webkit-appearance: none;
+    visibility: hidden;
+    display: none;
+}
+
+#times {
+    position: absolute;
+    right: -150px;
+    top: 30px;
+    font-size: 25px;
+    border-radius: 3px;
+    color: #fff;
+    padding: 3px 8px;
+    cursor: pointer;
+    background-color: #000;
+}
+
+#bars {
+    background-color: rgb(219, 20, 20);
+}
+
+#check:checked ~ .sidebar-container {
+    transform: translateX(0);
+}
+
+#check:checked ~ .sidebar-container #bars {
+    display: none;
+}
+
+/* * End  Sidebars */

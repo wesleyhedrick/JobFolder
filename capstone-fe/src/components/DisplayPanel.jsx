@@ -94,13 +94,13 @@ function DisplayPanel({
                         return(
                             <div>
                     <Modal isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
-                        <div>
+                        <div className="data-confirm">
                             <h2>We added your new contact!</h2>
                             <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
                         </div>
                     </Modal>
                     <Modal isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
-                        <form onSubmit={createNewContact}>
+                        <form className="modal-form" onSubmit={createNewContact}>
                             <label htmlFor="name"></label>
                             <input type="text" name="name" id="name"/>
                             <label htmlFor="phone"></label>
@@ -127,7 +127,9 @@ function DisplayPanel({
                             </div>
                         </Modal>
                         <Modal isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
-                            <form onSubmit={(e)=>createNewAppRecord(e)} action="">
+
+                            {/* **added class** */}
+                            <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
                                 <label htmlFor="company_name">Company Name</label>
                                 <input name="company_name" id="company_name"type="text"/>
                                 
@@ -151,13 +153,20 @@ function DisplayPanel({
                                 
                                 <label htmlFor="date_applied">Date Applied</label>
                                 <input type="date" name="date_applied" id="date_applied"/>
-                                <input type="submit" value="Submit"/>
+                                <input className="new-app-btn" type="submit" value="Submit"/>
                             </form>
                         </Modal>
+                        
+
+
+
+                        <div className="mel">
 
                         {displayOutPut.map(item => <div>{item.company_name} {item.role} {item.date_applied}</div>)}
-                        <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>New Form</button>
+                        <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>New Job</button>
+                        </div>
                     </div>
+                    
                 )
                 case 'interview-questions':
                     return(
@@ -166,7 +175,7 @@ function DisplayPanel({
                             <h1>Interview Question Submitted</h1>
                         </Modal>
                         <Modal isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
-                            <form onSubmit={createNewIQ}action="">
+                            <form className="modal-form" onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
                                 <input name="question" id="interview-question" type="text"/>
                                 <label htmlFor="interview-answer">Answer (If its summarizable)</label>
@@ -190,23 +199,31 @@ function DisplayPanel({
                     return(
                         <div className="display-panel">
                                 <Modal isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
-                                    <form onSubmit={uploadDocument} method="POST" encType="multipart/form-data">
+
+                                    <form className="modal-form" onSubmit={uploadDocument} method="POST" encType="multipart/form-data">
                                         <label htmlFor="file">Select a File</label>
                                         <input type="file" name="file" id="file"/>
-                                        <input type="submit" value="Upload"/>
+                                        {/* add-class */}
+                                        <input className="modal-btn" type="submit" value="Upload"/>
                                     </form>
                                 </Modal>
+
+                                
                                 <Modal isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
-                                    <div>
+                                    <div className="modal-form">
                                         <h2>Document Uploaded</h2>
                                         <button>Close</button>
                                     </div>
                                 </Modal>
-                            <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>            
+                                {/* add-class */}
+                            <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>    
+
                             {
                                 displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)
                             }
+                          
                             Hello world
+                            
                         </div>
                     )
     }

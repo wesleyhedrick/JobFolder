@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './styles/Dashboard.css'
+import './styles/DisplayPanel.css'
 import Sidebar from './Sidebar';
 import DisplayPanel from './DisplayPanel';
 import Settings from './Settings';
