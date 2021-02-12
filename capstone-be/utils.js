@@ -3,8 +3,15 @@ function getApplicationRatio(jobcount,start){
     let dateStartedSearching = new Date(start)
     const daysSearching = (today-dateStartedSearching)/1000/60/60/24
     jobcount = jobcount ? jobcount : 0
-    const jobRatio = Math.ceil(jobcount/daysSearching)
+    const jobRatio = Math.ceil(jobcount/Math.ceil(daysSearching))
     //divide jobcount by (today-start) and round up
+    console.log('today', today)
+    console.log('today', start)
+
+    console.log('dateStartedSearching', dateStartedSearching)
+    console.log('days searching', daysSearching)
+    console.log('line 6 jobcount: ', jobcount)
+    console.log(jobRatio)
     return jobRatio
 }
 

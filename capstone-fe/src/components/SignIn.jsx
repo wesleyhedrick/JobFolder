@@ -4,15 +4,30 @@ import {
     Redirect,
     useHistory
 } from 'react-router-dom';
+
 import axios from 'axios'
-import {useState} from 'react'
+import {useState, useEffect } from 'react'
 
 function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, populateDashboard}) {
     const [emailError, showEmailError] = useState(false)
     const [passwordError,showPasswordError] = useState(false)
     const [jobCount, setJobCount] = useState(0)
-
     const history = useHistory()
+
+    const checkSession = async () => {
+        const response = await axios.get('/sign-in/check-session')
+        console.log('line 19', response)
+        if(response.data === 'null'){
+            return
+        } else {
+            populateDashboard(response.data)
+            console.log('popDash ran')
+            history.push('/dashboard')
+        }
+    }
+    useEffect(()=> {
+        checkSession()
+    }, [])
 
    async function sendSignInCreds (e) {
         e.preventDefault()
@@ -31,19 +46,25 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
 
         switch(creds.data.status){
             case 'success':
+                console.log('line 49', creds.data)
                 console.log(creds.data);
                 console.log(creds.data.id)
+                setId(creds.data.id)
                 setName(creds.data.first)
                 populateDashboard(creds.data.id);
                 history.push('/dashboard');
                 break;
             case 'no username':
+                console.log('line 58', creds.data)
+                showPasswordError(false)
                 showEmailError(true)
                 let emailCredential = document.querySelector('.email-credential')
                 emailCredential.classList.replace('success', 'error')
                 break;
             case 'no password':
+                console.log('line 64', creds.data)
                 showPasswordError(true)
+                showEmailError(false)
                 let passwordCredential = document.querySelector('.password-credential')
                 passwordCredential.classList.replace('success', 'error')
             break;

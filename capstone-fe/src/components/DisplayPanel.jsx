@@ -228,7 +228,7 @@ function DisplayPanel({
                             <div className="testing">
                             {displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)}
                           
-                            Hello world
+
                             
                         </div>
                         </div>

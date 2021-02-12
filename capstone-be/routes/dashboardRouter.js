@@ -10,8 +10,8 @@ router  .get('/', dashboardController.loadDashboard)
         .get('/dashboard-data/:id', dashboardController.loadDashboard)
         .post('/new-IQ', dashboardController.createNewIQ)
         .post('/new-job-application', dashboardController.createNewAppRecord)
-        .get('/interview-questions', dashboardController.getIQs)
-        .get('/job-tracker', dashboardController.getJobs)
+        .get('/interview-questions/:id', dashboardController.getIQs)
+        .get('/job-tracker/:id', dashboardController.getJobs)
         .get('/:doc_type/:id', dashboardController.getDocList)
 
 

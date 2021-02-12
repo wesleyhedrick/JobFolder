@@ -13,6 +13,7 @@ function Dashboard({id, name, countOfJobs, appRatio,
             changeDisplayOutput}){
     
     const [displayCategory, setDisplayCategory] = useState('job-tracker')
+
     async function getSummaryData(e){
         const {data} = await axios.get(`/dashboard/${e.target.className}/${id}`)
         setDisplayCategory(e.target.className)
@@ -25,7 +26,8 @@ function Dashboard({id, name, countOfJobs, appRatio,
             <HeadsUpDisplay 
                     countOfJobs={countOfJobs}
                     appRatio={appRatio}
-                    inspiration={inspiration} />
+                    inspiration={inspiration}
+                    appReality={appReality} />
             <Settings name={name}/>
             <DisplayPanel   
                 id={id}

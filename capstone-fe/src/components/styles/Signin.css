@@ -10,6 +10,14 @@
     display: flex;
 }
 
+.success {
+    border: none;
+}
+.error {
+    border: 2px solid red;
+}
+
+
 .title {
     display: flex;
     flex-direction: column;
