@@ -18,10 +18,12 @@ body {
         "sidebar main main main";
 }
 
-/* * Start Settings */
+/* * Start Settings * */
 
 .settings-container {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     grid-area: header;
     margin-top: 30px;
     background-color: #fafafa;
@@ -31,20 +33,42 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.settings > h4 {
+.settings {
     display: flex;
     margin-left: 30px;
     font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.5rem;
 }
 
 .gear-settings {
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-left: 900px;
+    cursor: pointer;
+    background: #fadf7f;
+    color: #272727;
+    padding: 5px;
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    transition: 0.4s all ease-in-out;
 }
 
-/* * End settings */
+.gear-settings:hover {
+    color: #fadf7f;
+    background: #272727;
+}
 
-/* **Start Job modal** */
+.gear-text {
+    margin-right: 30px;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* * End settings * */
+
+/* * Modal * */
 
 .modal-form > label {
     color: black;
@@ -91,20 +115,27 @@ body {
 
 .ReactModal__Content {
     width: 50%;
+    height: 60%;
+}
+
+.ReactModal__Content--after-open {
     border: none;
 }
 
-/* .ReactModal__Content--after-open {
-    border: none;
-} */
+.ReactModalPortal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-/* **End Job Modal** */
+/* * End Job Modal * */
 
-/* * Start Interview questions */
+/* * Start Interview questions * */
 
-/* * End Interview questions */
+/* * End Interview questions * */
 
-/* * Start Data confirm */
+/* * Start Data confirm * */
 
 .data-confirm {
     display: flex;
@@ -114,12 +145,13 @@ body {
     align-items: center;
     font-family: "Poppins", sans-serif;
 }
-/* * End Data confirm */
 
-/** Contacts  */
+/* * End Data confirm * */
 
-/* **End of Contacts** */
+/* * Contacts * */
 
-/* ** Media Queries */
+/* * End of Contacts * */
 
-/** Aloha 🤙🏼 **/
+/* * Media Queries * */
+
+/* * Aloha 🤙🏼 * */

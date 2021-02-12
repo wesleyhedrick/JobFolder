@@ -43,7 +43,7 @@ function App() {
             <Route exact path='/credentials'>
                 <Credentials setName={setName} id={id} populateDashboard={populateDashboard}setId={setId}/>
             </Route>    
-            <Route>
+            <Route exact path='/dashboard'>
                 <Dashboard 
                     id={id}
                     name={name}

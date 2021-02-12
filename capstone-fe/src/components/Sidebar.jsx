@@ -1,5 +1,3 @@
-import { HiMenu } from "react-icons/hi";
-import { HiX } from "react-icons/hi";
 import './styles/Sidebar.css'
 import {
     Link
@@ -20,12 +18,8 @@ function Sidebar({id, getSummaryData}) {
 
     return (
     <>
-        <input type="checkbox" name="" id="check" />
+        {/* <input type="checkbox" name="" id="check" /> */}
             <div className="sidebar-container">
-                <label for="check">
-                    <i class={HiX} id="times"></i>
-                    <i class={HiMenu} id="bars"></i>
-                </label>
                 <div className="sidebar">
                     <h1>.jobfolder</h1>
                     {navBarItems.map(item => 

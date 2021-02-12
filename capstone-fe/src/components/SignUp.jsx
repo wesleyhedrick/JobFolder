@@ -37,32 +37,37 @@ function SignUp({setWhichCredPage}) {
     return (
       <> 
         <form className="signup-container" onSubmit={sendSignUpData} method="POST">
-            <div className="title"><h1>.Jobfolder</h1></div>
-                <div className="signup">
+            <div><h1 className="signup-title">.jobfolder</h1></div>
+                <div className="signup-form">
                         <label htmlFor="first">First Name</label>
-                        <input type="text" name="first" id="first" placeholder=""/>
+                        <input className="signup-input" type="text" name="first" id="first" placeholder=""/>
 
                         <label htmlFor="last">Last Name</label>
-                        <input type="text" name="last" id="last"/>
+                        <input className="signup-input" type="text" name="last" id="last"/>
 
                         <label htmlFor="password">Password</label>
-                        <input type="text" name="password" id="password"/>
+                        <input className="signup-input" type="text" name="password" id="password"/>
+
+
+
+                        {/* How do I put a class name for email? */}
 
                         <label htmlFor="email">Email</label>
                         <input className={userState} type="text" name="email" id="email"/>
                         {userState==='error'? <p className='error-message'>User with this email already exists.</p>:null}
 
                         <label htmlFor="address_line1">Address Line 1</label>
-                        <input type="text" name="address_line1" id="address_line1"/>
+                        <input className="signup-input" type="text" name="address_line1" id="address_line1"/>
 
                         <label htmlFor="address_line2">Address Line 2</label>
-                        <input type="text" name="address_line2" id="address_line2"/>
+                        <input className="signup-input" type="text" name="address_line2" id="address_line2"/>
 
                         <label htmlFor="zipcode">Zipcode</label>
-                        <input type="text" name="zipcode" id="zipcode"/>
+                        <input className="signup-input" type="text" name="zipcode" id="zipcode"/>
 
+                        <div className="state-daily">
                         <label htmlFor="state">State</label>
-                        <select id="state" name="state">
+                        <select className="signup-input" id="state" name="state">
                         <option value=""></option>
 
                         {
@@ -73,7 +78,7 @@ function SignUp({setWhichCredPage}) {
 
                         </select>
                             <label htmlFor="daily_app_goal">Daily Application Quota</label>
-                            <select name="daily_app_goal" id="number" >
+                            <select  className="signup-input" name="daily_app_goal" id="number" >
                             <option value=""></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -91,7 +96,9 @@ function SignUp({setWhichCredPage}) {
                             <option value="14">14</option>
                             <option value="15">15</option>
                         </select>
+                        </div>
                     <input className="signup-btn" type="submit" value="Sign Up"/>
+                
             </div>
          </form>
       </>
