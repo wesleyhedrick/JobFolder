@@ -79,7 +79,7 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                 <div className="signin">
                     <label htmlFor="email">Email</label>
                     <input 
-                    className='email-credential-success' 
+                    className='email-credential success' 
                     type="text" 
                     name="email" 
                     id="email"/>
