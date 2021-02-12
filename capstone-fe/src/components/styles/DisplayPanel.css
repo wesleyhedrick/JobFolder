@@ -8,6 +8,9 @@
 }
 
 .new-app-btn {
+    display: flex;
+    margin-left: 1000px;
+    align-items: flex-end;
     text-align: center;
     font-family: "Poppins", sans-serif;
     background: #272727;

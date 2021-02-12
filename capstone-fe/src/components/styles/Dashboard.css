@@ -8,8 +8,9 @@ body {
     background-color: #fafafa;
     margin: 0;
     display: grid;
-    gap: 1.5rem;
-    grid-template-columns: 15% 23% 23% 23%;
+    gap: 1.8rem;
+    justify-content: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     grid-template-rows: 10% 15% auto;
     grid-template-areas:
         "sidebar header header header"
@@ -42,7 +43,9 @@ body {
 }
 
 .gear-settings {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     margin-left: 900px;
     cursor: pointer;

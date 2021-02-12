@@ -26,6 +26,10 @@ span {
     margin-bottom: 3px;
 }
 
+.day {
+    font-weight: 800;
+}
+
 .quote {
     color: #fff;
 }

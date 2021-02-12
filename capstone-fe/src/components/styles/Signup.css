@@ -17,7 +17,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 50%;
     height: 50%;
     background-color: #f9f9f9;
@@ -31,13 +30,19 @@
 .signup-form > label {
     line-height: 50px;
     color: rgb(0, 0, 0);
-    font-size: 1.2rem;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 .signup-input {
     border: none;
     background: #e0e0e090;
 }
+
+/* #email {
+    border: none;
+    background: #e0e0e090;
+} */
 
 .signup-btn {
     text-transform: uppercase;
@@ -48,6 +53,7 @@
     padding: 2px 15px 2px 15px;
     border-radius: 2px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: 600;
@@ -85,4 +91,24 @@ signup-form > input {
     align-items: center;
     height: 30px;
     padding: 30px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* ** Media Query **  */
+
+@media only screen and (max-width: 768px) {
+    .signform-label {
+        font-size: 0.7rem;
+    }
+
+    .signup-form {
+        width: 40%;
+        height: 40%;
+    }
+
+    .signup-form > input {
+        width: 30%;
+        height: 30%;
+    }
 }

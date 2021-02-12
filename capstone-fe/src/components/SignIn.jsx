@@ -39,36 +39,37 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
         
         try {
             creds = await axios.post('/sign-in', signInCreds)
+            console.log(creds.data.status)
+            switch(creds.data.status){
+                case 'success':
+                    console.log('line 49', creds.data)
+                    console.log(creds.data);
+                    console.log(creds.data.id)
+                    setId(creds.data.id)
+                    setName(creds.data.first)
+                    populateDashboard(creds.data.id);
+                    history.push('/dashboard');
+                    break;
+                case 'no username':
+                    console.log('line 58', creds.data)
+                    showPasswordError(false)
+                    showEmailError(true)
+                    let emailCredential = document.querySelector('.email-credential')
+                    emailCredential.classList.replace('success', 'error')
+                    break;
+                case 'no password':
+                    console.log('line 64', creds.data)
+                    showPasswordError(true)
+                    showEmailError(false)
+                    let passwordCredential = document.querySelector('.password-credential')
+                    passwordCredential.classList.replace('success', 'error')
+                break;
+            }
         } catch(e) {
             console.log(e)
         }
-        console.log(creds.data.status)
 
-        switch(creds.data.status){
-            case 'success':
-                console.log('line 49', creds.data)
-                console.log(creds.data);
-                console.log(creds.data.id)
-                setId(creds.data.id)
-                setName(creds.data.first)
-                populateDashboard(creds.data.id);
-                history.push('/dashboard');
-                break;
-            case 'no username':
-                console.log('line 58', creds.data)
-                showPasswordError(false)
-                showEmailError(true)
-                let emailCredential = document.querySelector('.email-credential')
-                emailCredential.classList.replace('success', 'error')
-                break;
-            case 'no password':
-                console.log('line 64', creds.data)
-                showPasswordError(true)
-                showEmailError(false)
-                let passwordCredential = document.querySelector('.password-credential')
-                passwordCredential.classList.replace('success', 'error')
-            break;
-        }
+        
    }
 
     return (
@@ -80,10 +81,10 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                     <label htmlFor="email">Email</label>
                     <input 
                     className='email-credential-success' 
-                    type="text" 
+                     type="text" 
                     name="email" 
                     id="email"/>
-                    {emailError ? <p className='email-credential-emessage'>This email doesn't match our records.</p> : null}
+                    {emailError ? <p className='email-credential emessage'>This email doesn't match our records.</p> : null}
                     <label htmlFor="password">Password</label>
                     <input 
                     className='password-credential success' 
@@ -91,7 +92,7 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                     name="password" 
                     id="password"/>
                     {passwordError ? 
-                    <p className='password-credential-emessage'>This password doesn't match anything we have.</p>: null}
+                    <p className='password-credential emessage'>This password doesn't match anything we have.</p>: null}
                     <Link to='forgot-password' className="forgot-link">Forgot Password?</Link>
                     <input className="signin-btn" type="submit" value="Sign In"/>
                     <div>
