@@ -48,10 +48,6 @@ function SignUp({setWhichCredPage}) {
                         <label htmlFor="password">Password</label>
                         <input className="signup-input" type="text" name="password" id="password"/>
 
-
-
-                        {/* How do I put a class name for email? */}
-
                         <label htmlFor="email">Email</label>
                         <input className={userState} type="text" name="email" id="email"/>
                         {userState==='error'? <p className='error-message'>User with this email already exists.</p>:null}

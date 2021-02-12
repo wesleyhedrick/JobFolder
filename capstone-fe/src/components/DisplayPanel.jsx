@@ -1,17 +1,4 @@
-
 import './styles/Dashboard.css'
-import {
-    BrowserRouter as Router,
-    Switch, 
-    Route, 
-} from 'react-router-dom';
-
-import JobsAppliedTo from './JobsAppliedTo';
-import ResumeSummary from './ResumeSummary';
-import InterviewQuestions from './InterviewQuestions';
-import TYLettersSummary from './TYLettersSummary';
-import CLSummary from './CLSummary';
-import LetterOptions from './LetterOptions'
 import Modal from 'react-modal'
 import {useState} from 'react'
 import axios from 'axios';
@@ -20,22 +7,11 @@ function DisplayPanel({
     id,
     displayOutPut, 
     displayCategory,
-    jobAppliedTo,
-    countOfJobs,
-    appRatio,
-    inspiration}){
-    
-    
+}){
         const [jobAppFormModalIsOpen, setJobAppFormModalIsOpen] = useState(false)
         const [jobFormFeedbackModalIsOpen, setJobFormFeedbackModalIsOpen] = useState(false)
         const [IQFormModalIsOpen, setIQFormModalIsOpen] = useState(false)
         const [IQFeedbackModalIsOpen, setIQFeedbackModal] = useState(false)
-        const [resumeModalIsOpen, setResumeModalIsOpen] = useState(false)
-        const [tyLetterModalIsOpen, setTyLetterModalIsOpen] = useState(false)
-        const [clModalIsOpen, setClModelIsOpen] = useState(false)
-        const [resumeFeedbackModalIsOpen, setResumeFeedbackModalIsOpen] = useState(false)
-        const [tyLetterFeedBackIsOpen, settyLetterFeedBackIsOpen] = useState(false)
-        const [clFeedbackModalIsOpen, setClFeedbackModalIsOpen] = useState(false)
         const [contactsModalIsOpen, setContactsModalIsOpen] = useState(false)
         const [contactsFeedbackModalIsOpen, setContactsFeedbackModalIsOpen] = useState(false)
         const [docUploadModalIsOpen, setDocUploadModalIsOpen] = useState(false)
@@ -50,7 +26,6 @@ function DisplayPanel({
                     website:website.value, contact_name:contact_name.value, contact_phone:contact_phone.value,
                     contact_email:contact_email.value, date_applied:new Date(date_applied.value)}
                     console.log(newAppData)
-                    
                     const response = await axios.post('/dashboard/new-job-application', newAppData)
                     setJobAppFormModalIsOpen(false)
                     setJobFormFeedbackModalIsOpen(true)
@@ -95,32 +70,28 @@ function DisplayPanel({
                     case 'contacts':
                         return(
                             <div className="display-panel">
-                    <Modal closeTimeoutMS={200} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
-                        <div className="data-confirm">
-                            <h2>We added your new contact!</h2>
-                            <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
-                        </div>
-                    </Modal>
-
-                    
-                    <Modal closeTimeoutMS={200} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
-                        <form className="modal-form" onSubmit={createNewContact}>
-                            <label htmlFor="name">Name</label>
-                            <input type="text" name="name" id="name"/>
-                            <label htmlFor="phone">Phone</label>
-                            <input type="text" name="phone" id="phone"/>
-                            <label htmlFor="email">Email</label>
-                            <input type="text" name="email" id="email"/>
-                            <label htmlFor="date_contacted">Date</label>
-                            <input type="date" name="date_contacted" id="date_contacted"/>
-                            <input className="modal-btn" type="submit" value="Submit"/>
-                        </form>
-                    </Modal>
-
-
-                    <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add Contact</button>
-                    {displayOutPut.map(item => <div className='contacts'>{item.name}{item.phone}{item.email}{item.date_contacted}</div>)}
-                </div>
+                                <Modal closeTimeoutMS={200} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
+                                    <div className="data-confirm">
+                                        <h2>We added your new contact!</h2>
+                                        <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
+                                    </div>
+                                </Modal>
+                                <Modal closeTimeoutMS={200} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
+                                    <form className="modal-form" onSubmit={createNewContact}>
+                                        <label htmlFor="name">Name</label>
+                                        <input type="text" name="name" id="name"/>
+                                        <label htmlFor="phone">Phone</label>
+                                        <input type="text" name="phone" id="phone"/>
+                                        <label htmlFor="email">Email</label>
+                                        <input type="text" name="email" id="email"/>
+                                        <label htmlFor="date_contacted">Date</label>
+                                        <input type="date" name="date_contacted" id="date_contacted"/>
+                                        <input className="modal-btn" type="submit" value="Submit"/>
+                                    </form>
+                                </Modal>
+                                <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add Contact</button>
+                                {displayOutPut.map(item => <div className='contacts'>{item.name} {item.phone} {item.email}  {new Date(item.date_contacted).toLocaleDateString()}</div>)}
+                            </div>
             )
                 case 'job-tracker':
                     return(
@@ -168,7 +139,7 @@ function DisplayPanel({
 
                         <div className="mel">
 
-                        {displayOutPut.map(item => <div>{item.company_name} {item.role} {item.date_applied}</div>)}
+                        {displayOutPut.map(item => <div>{item.company_name} {item.role} {new Date(item.date_applied).toLocaleDateString()}</div>)}
                         <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>New Job</button>
                         </div>
                     </div>

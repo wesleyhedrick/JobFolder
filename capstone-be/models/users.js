@@ -70,8 +70,21 @@ module.exports = (sequelize, DataTypes) => {
     zip: DataTypes.STRING,
     state: DataTypes.STRING,
     daily_app_goal:DataTypes.INTEGER,
-    iq_day:DataTypes.INTEGER,
-    iq_time:DataTypes.INTEGER
+    iq_mon:DataTypes.BOOLEAN,
+    mon_iq_time:DataTypes.INTEGER,
+    iq_tue:DataTypes.BOOLEAN,
+    tue_iq_time:DataTypes.INTEGER,
+    iq_wed:DataTypes.BOOLEAN,
+    wed_iq_time:DataTypes.INTEGER,
+    iq_thu:DataTypes.BOOLEAN,
+    thu_iq_time:DataTypes.INTEGER,
+    iq_fri:DataTypes.BOOLEAN,
+    fri_iq_time:DataTypes.INTEGER,
+    iq_sat:DataTypes.BOOLEAN,
+    sat_iq_time:DataTypes.INTEGER,
+    iq_sun:DataTypes.BOOLEAN,
+    sun_iq_time:DataTypes.INTEGER,
+
   }, {
     sequelize,
     modelName: 'Users',
