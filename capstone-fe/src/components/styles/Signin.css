@@ -15,8 +15,21 @@
     display: flex;
 }
 
+
 .signin-title {
     font-size: 3rem;
+
+.success {
+    border: none;
+}
+.error {
+    border: 2px solid red;
+}
+
+
+.title {
+    display: flex;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;

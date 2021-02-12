@@ -23,29 +23,35 @@ const loadDashboard = async (req, res) => {
     let jobCount; 
     let jobsAppliedTo; 
     let contacts;
+    let first;
+
     console.log(req.session)
 
     if(req.session.user_id){
         
         inspiration = await Inspiration.getRandom();
         console.log('here is your inspiration', inspiration)
-        dateStarted = await Users.findAll({
+        const { createdAt } = await Users.findOne({
             attributes: ['createdAt'],
             where: {
                 id
             }
         })
 
-        dailyAppGoal = await Users.findOne({
-            attributes: ['daily_app_goal'], 
+        console.log('dateStarted  ', createdAt )
+        const { dataValues } = await Users.findOne({
+            attributes: ['daily_app_goal', 'first'], 
             where: {
                 id
             }
         })
 
-        dailyAppGoal = dailyAppGoal.daily_app_goal
-        
-        console.log(dailyAppGoal)
+
+
+        dailyAppGoal = dataValues.daily_app_goal
+        first = dataValues.first
+
+
         jobsAppliedTo = await Jobs.findAll({
             attributes: ['company_name','role','date_applied'], 
             where: {
@@ -55,7 +61,7 @@ const loadDashboard = async (req, res) => {
         
         jobCount = jobsAppliedTo.length
         
-        dailyAppReality = getApplicationRatio(jobCount, dateStarted)
+        dailyAppReality = getApplicationRatio(jobCount, createdAt)
 
         try {
             contacts = await
@@ -69,7 +75,7 @@ const loadDashboard = async (req, res) => {
         }
     } 
 
-    res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality})
+    res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality, first})
     
 }
 
@@ -105,7 +111,7 @@ const createNewIQ = async (req, res) => {
 //GET SUMMARIES
 const getDocList = async (req, res) => {
     const {doc_type, id} = req.params
-    console.log('here your doctype',doc_type)
+    console.log('here is your doctype',doc_type)
     const docList = await Documents.findAll({
         attributes: ['title'],
         where: {
@@ -118,10 +124,11 @@ const getDocList = async (req, res) => {
 }
 
 const getJobs = async (req, res)=>{
+    const {id} = req.params
     const jobList = await Jobs.findAll({
         attributes: ['company_name','role','date_applied'], 
         where: {
-            user_id:1
+            user_id: id
         }
     })
     console.log(jobList)
@@ -129,11 +136,11 @@ const getJobs = async (req, res)=>{
 }
 
 const getIQs = async (req, res) => {
-
+    const { id } = req.params
     const docList = await InterviewQuestions.findAll({
         attributes: ['question', 'answer'],
         where: {
-            user_id:1
+            user_id:id
         }
     })
     console.log(docList)
@@ -171,7 +178,7 @@ const getContacts = async (req, res)=>{
     const {id} = req.params;
     const contacts = await Contacts.findAll({
         where: {
-            id
+            user_id:id
         }
     })
 
