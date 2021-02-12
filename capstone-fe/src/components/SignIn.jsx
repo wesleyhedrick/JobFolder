@@ -75,11 +75,11 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
     <>
         
         <form className="signin-container" onSubmit={sendSignInCreds}>
-            <div className="title"><h1>.jobfolder</h1></div>         
+            <div><h1 className="signin-title">.jobfolder</h1></div>         
                 <div className="signin">
                     <label htmlFor="email">Email</label>
                     <input 
-                    className='email-credential success' 
+                    className='email-credential-success' 
                     type="text" 
                     name="email" 
                     id="email"/>
@@ -94,9 +94,9 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                     <p className='password-credential-emessage'>This password doesn't match anything we have.</p>: null}
                     <Link to='forgot-password' className="forgot-link">Forgot Password?</Link>
                     <input className="signin-btn" type="submit" value="Sign In"/>
-                    <div className="first-time">
-                    <p>First time here?</p>
-                    <button className="signup-btn" onClick={()=>setWhichCredPage('sign-up')}>Sign Up</button>
+                    <div>
+                    <p className="first-time">First time here?</p>
+                    <button className="signup-page-btn" onClick={()=>setWhichCredPage('sign-up')}>Sign Up</button>
                 </div>
             </div>  
         </form>

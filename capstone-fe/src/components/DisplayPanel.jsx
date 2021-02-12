@@ -105,13 +105,13 @@ function DisplayPanel({
                     
                     <Modal closeTimeoutMS={200} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
                         <form className="modal-form" onSubmit={createNewContact}>
-                            <label htmlFor="name"></label>
+                            <label htmlFor="name">Name</label>
                             <input type="text" name="name" id="name"/>
-                            <label htmlFor="phone"></label>
+                            <label htmlFor="phone">Phone</label>
                             <input type="text" name="phone" id="phone"/>
-                            <label htmlFor="email"></label>
+                            <label htmlFor="email">Email</label>
                             <input type="text" name="email" id="email"/>
-                            <label htmlFor="date_contacted"></label>
+                            <label htmlFor="date_contacted">Date</label>
                             <input type="date" name="date_contacted" id="date_contacted"/>
                             <input className="modal-btn" type="submit" value="Submit"/>
                         </form>

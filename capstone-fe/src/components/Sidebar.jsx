@@ -26,7 +26,7 @@ function Sidebar({id, getSummaryData}) {
 
     return (
     <>
-        <input type="checkbox" name="" id="check" />
+        {/* <input type="checkbox" name="" id="check" /> */}
             <div className="sidebar-container">
                 <label for="check">
                     <i className={HiX} id="times"></i>

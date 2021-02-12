@@ -1,42 +1,61 @@
+/* Hero Page */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .hero-container {
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    background-color: #fafafa;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
+    background: #fff;
     height: 100vh;
-    background-color: #fafafa;
 }
 
-.title > h1 {
-    font-size: 2.5rem;
-}
-
-h4 {
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    padding: 15px;
-}
-
-.hero-image {
+.hero-title {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50vw;
+    background: #fff;
+    height: 50vh;
+    padding: 15px;
+}
+
+.hero-title > h1 {
+    font-size: 3rem;
+}
+
+.hero-title > h4 {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
+.paper-one {
+    width: 95vw;
     background-color: #fafafa;
-    height: 100vh;
+    border: 1px solid #f2f2f3;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15),
+        0 -5px 0 10px rgba(238, 238, 238, 0.557),
+        0 -5px 1px 10px rgba(0, 0, 0, 0.057),
+        0 -10px 0 20px rgba(204, 204, 204, 0.18);
+    /* box-shadow: rgba(0, 0, 0, 0.139) 0px 54px 55px,
+        rgba(0, 0, 0, 0.064) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.064) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+}
+
+.folder {
+    background: #272727;
+    height: 50vh;
+    padding: 100px;
+    border-top-right-radius: 319px;
+    -webkit-border-top-right-radius: 5000px;
+    -moz-border-radius-topright: 319px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+        rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 .hero-signup-btn {
-    display: flex;
     font-weight: 600;
     justify-content: center;
     align-content: center;
@@ -44,7 +63,6 @@ h4 {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
     color: #fafafa;
-    grid-area: overlap;
     border-radius: 3px;
     margin-top: 50px;
     transition: 0.4s all ease-in-out;
@@ -61,19 +79,7 @@ h4 {
 /* Media Query */
 
 @media only screen and (max-width: 640px) {
-    .hero-container {
-        flex-direction: column;
-    }
-
-    .title {
-        width: 50%;
-    }
-
-    .hero-image {
-        width: 50%;
-    }
-
-    .title > h1 {
-        padding-top: 30px;
+    .hero-title {
+        font-size: 0.5rem;
     }
 }

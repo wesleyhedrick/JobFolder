@@ -3,9 +3,8 @@
 .head1 {
     font-size: 1.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
     grid-area: head1;
     background: #272727;
     color: #fadf7f;
@@ -20,23 +19,35 @@
 }
 
 span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin: 0;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.quote {
+    color: #fff;
 }
 
 .count-in-head {
+    text-align: center;
     font-size: 1.5rem;
+    font-weight: 600;
     margin: 0;
     line-height: 45px;
+    background: #fadf7f;
+    color: #272727;
+    padding: 5px;
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
 }
 
 .head2 {
-    font-size: 1.3rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
     grid-area: head1;
     background: #272727;
     color: #fadf7f;
@@ -51,13 +62,15 @@ span {
 }
 
 .head3 {
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     grid-area: head1;
     background: #272727;
     color: #fadf7f;
+    padding: 20px;
     -webkit-border-radius: 10px;
     -webkit-border-top-right-radius: 70px;
     -moz-border-radius: 10px;
