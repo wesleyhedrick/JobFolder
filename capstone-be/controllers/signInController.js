@@ -1,7 +1,14 @@
 const { Users } = require('../models');
 const bcrypt = require('bcryptjs');
 
-
+const checkSession = async (req, res) => {
+    if(req.session.user_id){
+        console.log('valid session')
+        res.json(req.session.user_id)
+    } else {
+        res.json('null')
+    }
+}
 const signInVerify = async (req, res) => {
     const {email, password} = req.body;
     // console.log('Username: ', username)
@@ -28,21 +35,22 @@ const signInVerify = async (req, res) => {
             //CHANGE LINE BELOW TO A REACT ROUTE
             res.json({status:'success', id, first})
         } else {
-            res.send('no password')
+            res.send({status:'no password'})
         }
     } else {
-        res.send('no username')
+        res.send({status:'no username'})
     }
 
-
-
-
-
-
+}
+const signOut = async (req, res) => {
+    req.session.destroy()
+    console.log('session destroyed')
+    res.send('goodbye')
 }
 
 module.exports = {
-
-    signInVerify
+    checkSession,
+    signInVerify, 
+    signOut
 };
 
