@@ -80,8 +80,8 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                 <div className="signin">
                     <label htmlFor="email">Email</label>
                     <input 
-                    className='email-credential-success' 
-                     type="text" 
+                    className='email-credential success' 
+                    type="text" 
                     name="email" 
                     id="email"/>
                     {emailError ? <p className='email-credential emessage'>This email doesn't match our records.</p> : null}

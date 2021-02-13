@@ -37,6 +37,7 @@ const { signInRouter,signUpRouter, dashboardRouter, fileTransferRouter,
 
 const server = http.createServer(app);
 app.use('/sign-in', signInRouter)
+app.use('/update-settings', settingsRouter)
 app.use('/sign-up', signUpRouter)
 app.use('/dashboard', dashboardRouter)
 app.use('/profile', profileRouter)

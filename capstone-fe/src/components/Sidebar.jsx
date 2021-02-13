@@ -28,9 +28,9 @@ function Sidebar({id, getSummaryData}) {
     <>
         {/* <input type="checkbox" name="" id="check" /> */}
             <div className="sidebar-container">
-                <label for="check">
-                    <i className={HiX} id="times"></i>
-                    <i className={HiMenu} id="bars"></i>
+                <label htmlFor="check">
+                    {/* <i className={HiX} id="times"></i>
+                    <i className={HiMenu} id="bars"></i> */}
                 </label>
                 <div className="sidebar">
                     <h1>.jobfolder</h1>

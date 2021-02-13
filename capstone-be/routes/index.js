@@ -3,5 +3,6 @@ module.exports = {
     fileTransfer: require('./fileTransferRouter'),
     signUpRouter: require('./signUpRouter'),
     dashboardRouter: require('./dashboardRouter'), 
-    profileRouter: require('./profileRouter')
+    profileRouter: require('./profileRouter'),
+    settingsRouter: require('./settingsRouter')
 }

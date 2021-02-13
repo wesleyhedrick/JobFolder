@@ -58,11 +58,8 @@ const loadDashboard = async (req, res) => {
                 user_id:id
             }   
         })
-        
         jobCount = jobsAppliedTo.length
-        
         dailyAppReality = getApplicationRatio(jobCount, createdAt)
-
         try {
             contacts = await
              Contacts.findAll({
@@ -73,7 +70,9 @@ const loadDashboard = async (req, res) => {
         } catch(e){
             console.log(e)
         }
-    } 
+    } else {
+        res.json('no id')
+    }
 
     res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality, first})
     
@@ -89,6 +88,15 @@ const uploadDoc = (req, res) => {
 const loadDocsPage = (req, res) => {
     res.json('docs page route')
 }
+// app.get('/download', (req, res)=>{
+//     res.download('./uploads/103_Fawnbrook_Dr_Inspection_Report.pdf')
+//     res.status(200)
+// })
+const downloadDoc = (req, res) => {
+    
+    res.download()
+}
+
 
 const createNewAppRecord = async (req, res) => {
     console.log(req.body)
@@ -221,6 +229,7 @@ module.exports = {
     createNewAppRecord, 
     createNewIQ,
     getContacts,
-    uploadDoc
+    uploadDoc,
+    downloadDoc
 };
 
