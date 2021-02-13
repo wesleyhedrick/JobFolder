@@ -90,7 +90,16 @@ const uploadDoc = async (req, res) => {
         doc_type,
         token
     })
-    res.send('success')
+
+    const docList = await Documents.findAll({
+        attributes: ['title','doc_type','token'],
+        where: {
+            user_id: id, 
+            doc_type
+        }
+    })
+
+    res.json(docList)
 
 }
 const loadDocsPage = (req, res) => {
@@ -124,13 +133,25 @@ const createNewAppRecord = async (req, res) => {
         date_contacted:req.body.date_applied,
         user_id:req.body.user_id
     })
-    res.send('success')
+
+    const response = await Jobs.findAll({
+        where: {
+            user_id:req.body.user_id
+        }
+    })
+    res.send(response)
 }
 
 const createNewIQ = async (req, res) => {
     console.log(req.body)
+    const {user_id} = req.body
     await InterviewQuestions.create({...req.body})
-    res.send('success')
+    const IQs = await InterviewQuestions.findAll({
+        where: {
+            user_id 
+        }
+    })
+    res.send(IQs)
 }
 //GET SUMMARIES
 const getDocList = async (req, res) => {
@@ -208,8 +229,9 @@ const getContacts = async (req, res)=>{
 
     res.json(contacts)
 }
-const iMadeAContact = async (req, res) => {
+const createNewContact = async (req, res) => {
     const {name, phone, email, date_contacted, user_id} = req.body;
+
     await Contacts.create({
         name, 
         phone,
@@ -217,7 +239,14 @@ const iMadeAContact = async (req, res) => {
         date_contacted,
         user_id
     })
+    
+    const contacts = await Contacts.findAll({
+        where:{
+            user_id
+        }
+    })
 
+    res.send(contacts)
 }
 
 const addInterviewQuestion = async (req, res) => {
@@ -237,7 +266,7 @@ module.exports = {
     loadDashboard,
     testRoute, 
     iJustApplied,
-    iMadeAContact, 
+    createNewContact, 
     addInterviewQuestion,
     getDocList,
     getIQs,
