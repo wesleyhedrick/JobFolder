@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   Documents.init({
     title:DataTypes.STRING,
     doc_type:DataTypes.STRING,
-    user_id:DataTypes.INTEGER
+    user_id:DataTypes.INTEGER,
+    token:DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Documents',

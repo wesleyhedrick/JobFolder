@@ -78,12 +78,20 @@ const loadDashboard = async (req, res) => {
     
 }
 
-const uploadDoc = (req, res) => {
-    console.log(req.body)
+const uploadDoc = async (req, res) => {
+    const {id, doc_type, token } = req.body
+    console.log(id, doc_type, token)
     console.log(req.files)
     const {file} = req.files;
-    file.mv(`./uploads/${req.body.id}-${(new Date()).getTime()}-${file.name}`)
+    file.mv(`./uploads/${id}-${token}-${file.name}`)
+    await Documents.create({
+        user_id:id,
+        title: file.name,
+        doc_type,
+        token
+    })
     res.send('success')
+
 }
 const loadDocsPage = (req, res) => {
     res.json('docs page route')
@@ -93,8 +101,16 @@ const loadDocsPage = (req, res) => {
 //     res.status(200)
 // })
 const downloadDoc = (req, res) => {
-    
-    res.download()
+    const { id, date, title } = req.params
+    console.log(`req.params: ${id}
+    ${date}
+    ${title}`)
+
+    const decodedTitle = decodeURI(title)
+    let docTitle = `./uploads/${id}-${date}-${decodedTitle}`
+    console.log(docTitle)
+    res.download(docTitle)
+    // res.send('hello')
 }
 
 
@@ -121,7 +137,7 @@ const getDocList = async (req, res) => {
     const {doc_type, id} = req.params
     console.log('here is your doctype',doc_type)
     const docList = await Documents.findAll({
-        attributes: ['title'],
+        attributes: ['title','doc_type','token'],
         where: {
             user_id: id, 
             doc_type

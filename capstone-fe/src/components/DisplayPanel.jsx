@@ -17,6 +17,12 @@ function DisplayPanel({
         const [docUploadModalIsOpen, setDocUploadModalIsOpen] = useState(false)
         const [docUploadFeedbackModalIsOpen, setDocUploadFeedbackModalIsOpen] = useState(false)
         
+        async function download(idx){
+            const el = document.querySelector(`.document-${idx}`)
+            console.log(el.dataset.token)
+            console.log(el.innerText)
+            await axios.get(`/dashboard/download/${id}/${el.dataset.token}/${el.innerText}` )
+        }
         async function createNewAppRecord(e){
             e.preventDefault()
             const {company_name, role, phone, website, contact_name, contact_phone,
@@ -45,14 +51,18 @@ function DisplayPanel({
 
         async function uploadDocument(e){
             e.preventDefault()
+            console.log('display category', displayCategory)
             console.log(e.target.file.files)
             let file = e.target.file.files[0]
             let formdata = new FormData();
+            let token = (new Date()).getTime()
             formdata.append('file', file)
             formdata.append('id',id)
+            formdata.append('doc_type', displayCategory)
+            formdata.append('token',token)
             await axios.post(`/dashboard/upload/${id}`, formdata)
-            setDocUploadModalIsOpen(false)
-            setDocUploadFeedbackModalIsOpen(true)
+            // setDocUploadModalIsOpen(false)
+            // setDocUploadFeedbackModalIsOpen(true)
         }
   
         async function createNewIQ(e){
@@ -197,12 +207,18 @@ function DisplayPanel({
                             <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>    
 
                             <div className="testing">
-                            {displayOutPut.map(item => <div>{item.title} {item.doc_type}</div>)}
-                          
+                                {displayOutPut.map((item, idx) =>
+                                    <div>
+                                        <div className={`document-${idx}`} data-token={item.token}>{item.title}</div>})}
+                                        <button onClick={()=>download(idx)}>Download</button>
+                                    </div>
+                                    )
+                                }
+                            </div>                          
 
                             
                         </div>
-                        </div>
+
                     )
     }
 }
