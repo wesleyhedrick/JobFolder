@@ -107,7 +107,7 @@ function Settings({name}){
                     
                 </form>
             </Modal>
-            <div>
+            <div className="settings-bar">
                 <h4 className="settings">Hi, {name}!</h4>
             </div>
             <div className="gear-settings">

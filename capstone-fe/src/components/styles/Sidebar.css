@@ -2,31 +2,29 @@
 
 .sidebar-container {
     grid-area: sidebar;
+    font-size: 0.8rem;
+    height: 100vh;
+    transition: 0.5s ease;
+    background-color: #fadf7f;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    padding-top: 70px;
+    color: #272727;
+    /* top: 0;
+    left: 0; */
+    height: 100vh;
+    cursor: pointer;
     -webkit-border-top-right-radius: 100px;
     -webkit-border-bottom-right-radius: 100px;
     -moz-border-radius-topright: 100px;
     -moz-border-radius-bottomright: 100px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
         rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-    font-size: 0.8rem;
-    height: 100vh;
-    position: absolute;
-    transition: 0.5s ease;
-    width: 220px;
-    background-color: #fadf7f;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-    padding-top: 70px;
-    color: #272727;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    cursor: pointer;
 }
 
 .sidebar {
-    display: grid;
-    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+    /* display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); */
     padding-left: 15px;
     line-height: 3rem;
     text-transform: uppercase;
@@ -52,3 +50,11 @@ h1 {
 }
 
 /* * End  Sidebars */
+
+/* Media Query */
+
+@media (max-width: 960px) {
+    .sidebar-container {
+        height: auto;
+    }
+}
