@@ -3,9 +3,11 @@ import Modal from 'react-modal'
 import {useState} from 'react'
 import axios from 'axios';
 
+
 function DisplayPanel({
     id,
     displayOutPut, 
+    changeDisplayOutput,
     displayCategory,
 }){
         const [jobAppFormModalIsOpen, setJobAppFormModalIsOpen] = useState(false)
@@ -32,7 +34,9 @@ function DisplayPanel({
                     website:website.value, contact_name:contact_name.value, contact_phone:contact_phone.value,
                     contact_email:contact_email.value, date_applied:new Date(date_applied.value)}
                     console.log(newAppData)
-                    const response = await axios.post('/dashboard/new-job-application', newAppData)
+                    const {data} = await axios.post('/dashboard/new-job-application', newAppData)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setJobAppFormModalIsOpen(false)
                     setJobFormFeedbackModalIsOpen(true)
                 }
@@ -42,9 +46,13 @@ function DisplayPanel({
                     const contactObj = {
                         name:name.value, phone:phone.value,
                         email:email.value, 
-                        date_contacted:date_contacted.value
+                        date_contacted:date_contacted.value,
+                        user_id:id
                     }
-                    const response = await axios.post(`/dashboard/new-contact/${id}`, contactObj)
+
+                    const {data} = await axios.post(`/dashboard/new-contact/${id}`, contactObj)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setContactsModalIsOpen(false)
                     setContactsFeedbackModalIsOpen(true)
                 }
@@ -60,18 +68,22 @@ function DisplayPanel({
             formdata.append('id',id)
             formdata.append('doc_type', displayCategory)
             formdata.append('token',token)
-            await axios.post(`/dashboard/upload/${id}`, formdata)
-            // setDocUploadModalIsOpen(false)
-            // setDocUploadFeedbackModalIsOpen(true)
+            const {data} = await axios.post(`/dashboard/upload/${id}`, formdata)
+            console.log(data)
+            changeDisplayOutput(data)
+            setDocUploadModalIsOpen(false)
+            setDocUploadFeedbackModalIsOpen(true)
+
         }
   
         async function createNewIQ(e){
                     e.preventDefault()
                     const{question, answer} = e.target
                     console.log(question)
-                    const IQObject = {question:question.value, answer:answer.value}
-                    const response = await axios.post('/dashboard/new-IQ', IQObject)
-                    console.log(response)
+                    const IQObject = {question:question.value, answer:answer.value, user_id:id}
+                    const {data} = await axios.post('/dashboard/new-IQ', IQObject)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setIQFormModalIsOpen(false)
                     setIQFeedbackModal(true)
                 }
@@ -170,6 +182,7 @@ function DisplayPanel({
                         <div className="display-panel">
                         <Modal closeTimeoutMS={200} isOpen={IQFeedbackModalIsOpen} onRequestClose={()=>setIQFeedbackModal(false)}>
                             <h1 className="data-confirm">Interview Question Submitted</h1>
+                            <button onClick={()=>setIQFeedbackModal(false)}>Close</button>
                         </Modal>
 
                         <Modal closeTimeoutMS={200} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
@@ -221,7 +234,9 @@ function DisplayPanel({
                                 {displayOutPut.map((item, idx) =>
                                     <div>
                                         <div className={`document-${idx}`} data-token={item.token}>{item.title}</div>})}
-                                        <button onClick={()=>download(idx)}>Download</button>
+                                        <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
+                                            <button>Download</button>
+                                        </a>
                                     </div>
                                     )
                                 }
