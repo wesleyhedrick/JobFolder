@@ -44,7 +44,7 @@ function Settings({name}){
                 <h2>Settings Updated</h2>
                 <button onClick={()=>setStgsFdbackModalOpen(false)}>Close</button>
             </Modal>
-            <Modal closeTimeoutMS={100} isOpen={stgsModalOpen} onRequestClose={()=>setStgsModalOpen(false)}>
+            <Modal style={{content: {position:'static'}}} closeTimeoutMS={100} isOpen={stgsModalOpen} onRequestClose={()=>setStgsModalOpen(false)}>
 
                 <form onSubmit={(e)=> updateSettings(e)} className="settings-modal">
                     <div className="follow-up-modal">
