@@ -15,7 +15,6 @@
     display: flex;
 }
 
-
 .signin-title {
     font-size: 3rem;
 }
@@ -26,7 +25,6 @@
     border: 2px solid red;
 }
 
-
 .title {
     display: flex;
 
@@ -36,21 +34,16 @@
     background-color: #fafafa;
 }
 
-.email-credential-success {
-    border: none;
-    background: #e0e0e090;
-}
-
 .signin {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 35%;
     height: 50%;
     background-color: #f9f9f9;
     border-radius: 10px;
-    padding: 60px 30px;
+    padding: 50px 20px;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
         rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
         rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -59,27 +52,34 @@
 .signin label {
     line-height: 50px;
     color: rgb(0, 0, 0);
-    font-size: 1.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
 }
 
 input {
     line-height: 30px;
     height: 30px;
-    width: 60%;
+    width: 50%;
+}
+
+#password {
+    border: none;
+    background: #e0e0e090;
 }
 
 .signin-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
-    width: 30%;
-    margin-top: 20px;
+    width: 20%;
+    margin-top: 30px;
     color: #fafafa;
     background: #272727;
     border: none;
     padding: 2px 20px 2px 20px;
     border-radius: 2px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: 600;
     cursor: pointer;
     font-size: 0.7rem;
@@ -99,11 +99,12 @@ input {
     flex-direction: column;
     font-size: 0.8rem;
     padding-top: 10px;
+    font-style: italic;
     transition: 0.4s all ease-in-out;
 }
 
 .forgot-link:hover {
-    color: #f9df83;
+    color: #e1ba2d;
 }
 
 .first-time {
@@ -118,7 +119,7 @@ input {
 
 .signup-page-btn {
     text-transform: uppercase;
-    padding: 10px 15px 10px 15px;
+    padding: 5px 15px 5px 15px;
     text-decoration: none;
     color: #272727;
     background: #fadf7f;
@@ -126,6 +127,8 @@ input {
     cursor: pointer;
     font-size: 0.8rem;
     transition: 0.4s all ease-in-out;
+    margin: 8px 0 0 20px;
+    border-radius: 2px;
 }
 
 .signup-page-btn:hover {
@@ -134,5 +137,13 @@ input {
 
 /* Media Query */
 
-@media only screen and (max-width: 640px) {
+@media (max-width: 600px) {
+    .signin {
+        height: 80%;
+        width: 80%;
+    }
+
+    .signin-btn {
+        width: 20px;
+    }
 }

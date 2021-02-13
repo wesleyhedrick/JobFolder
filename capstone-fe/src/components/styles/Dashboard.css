@@ -8,7 +8,7 @@ body {
     background-color: #fafafa;
     margin: 0;
     display: grid;
-    gap: 1.5rem;
+    gap: 1.8rem;
     grid-template-columns: 15% 23% 23% 23%;
     grid-template-rows: 10% 15% auto;
     grid-template-areas:
@@ -25,6 +25,7 @@ body {
     justify-content: space-between;
     align-items: center;
     grid-area: header;
+    min-height: 30px;
     margin-top: 30px;
     background-color: #fafafa;
     -webkit-border-radius: 10px;
@@ -42,7 +43,9 @@ body {
 }
 
 .gear-settings {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     margin-left: 900px;
     cursor: pointer;
@@ -66,6 +69,49 @@ body {
     font-weight: 400;
 }
 
+.settings-modal {
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+}
+
+.follow-up-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ty-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iq-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.sun-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mon-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tues-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* * End settings * */
 
 /* * Modal * */
@@ -84,6 +130,10 @@ body {
 }
 
 .modal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: center;
     margin-top: 30px;
     font-family: "Poppins", sans-serif;
     background: #272727;
@@ -131,10 +181,6 @@ body {
 
 /* * End Job Modal * */
 
-/* * Start Interview questions * */
-
-/* * End Interview questions * */
-
 /* * Start Data confirm * */
 
 .data-confirm {
@@ -153,5 +199,8 @@ body {
 /* * End of Contacts * */
 
 /* * Media Queries * */
+
+@media (min-width: 550px) {
+}
 
 /* * Aloha 🤙🏼 * */

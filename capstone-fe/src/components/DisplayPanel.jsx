@@ -147,11 +147,10 @@ function DisplayPanel({
 
 
 
-                        <div className="mel">
+
 
                         {displayOutPut.map(item => <div>{item.company_name} {item.role} {new Date(item.date_applied).toLocaleDateString()}</div>)}
                         <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>New Job</button>
-                        </div>
                     </div>
                     
                 )

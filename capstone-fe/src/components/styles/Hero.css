@@ -78,8 +78,13 @@
 
 /* Media Query */
 
-@media only screen and (max-width: 640px) {
-    .hero-title {
-        font-size: 0.5rem;
+@media (max-width: 600px) {
+    .hero-title > h1 {
+        font-size: 2rem;
+    }
+
+    .hero-title > h4 {
+        font-size: 0.9rem;
+        padding: 10px;
     }
 }
