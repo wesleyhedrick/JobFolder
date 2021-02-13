@@ -99,8 +99,14 @@ function DisplayPanel({
                                         <input className="modal-btn" type="submit" value="Submit"/>
                                     </form>
                                 </Modal>
-                                <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add Contact</button>
-                                {displayOutPut.map(item => <div className='contacts'>{item.name} {item.phone} {item.email}  {new Date(item.date_contacted).toLocaleDateString()}</div>)}
+                                <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add New Contact</button>
+
+                                <div className="job-output">
+
+                                {displayOutPut.map(item => <div className='contacts-output'>{item.name}<br/> {item.phone}<br/> {item.email}<br/>  {new Date(item.date_contacted).toLocaleDateString()}</div>)}
+                                </div>
+
+                                
                             </div>
             )
                 case 'job-tracker':
@@ -145,12 +151,17 @@ function DisplayPanel({
                         </Modal>
                         
 
+                        <div className="display-add-new-btn">
+                        <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>Add New Job</button>
+                    </div>
 
-
-
-
+                    {/* JOB-OUTPUT */}
+                    <div className="job-output">
                         {displayOutPut.map(item => <div>{item.company_name} {item.role} {new Date(item.date_applied).toLocaleDateString()}</div>)}
-                        <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>New Job</button>
+                    </div>
+
+                    
+                    
                     </div>
                     
                 )
@@ -171,7 +182,8 @@ function DisplayPanel({
                             </form>
                         </Modal>
                         
-                        <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}>New Interview Question</button>
+                        <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
+
 
                         {displayOutPut.map(item => 
                         <div>

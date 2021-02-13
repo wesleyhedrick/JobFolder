@@ -53,9 +53,10 @@ body {
     color: #272727;
     padding: 5px;
     border-radius: 5px;
-    width: 48px;
+    max-width: 48px;
     height: 48px;
     transition: 0.4s all ease-in-out;
+    width: 100%;
 }
 
 .gear-settings:hover {
@@ -64,9 +65,11 @@ body {
 }
 
 .gear-text {
+    width: 100%;
     margin-right: 30px;
     font-size: 1rem;
     font-weight: 400;
+    padding: 10px;
 }
 
 .settings-modal {
@@ -153,26 +156,45 @@ body {
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity 800ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ReactModal__Overlay--after-open {
     opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ReactModal__Overlay--before-close {
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ReactModal__Content {
     width: 50%;
     height: 60%;
-}
-
-.ReactModal__Content--after-open {
-    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .ReactModalPortal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
