@@ -112,13 +112,10 @@ function DisplayPanel({
                                     </form>
                                 </Modal>
                                 <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add New Contact</button>
-
+                                {/* OUTPUT CLASS */}
                                 <div className="job-output">
-
                                 {displayOutPut.map(item => <div className='contacts-output'>{item.name}<br/> {item.phone}<br/> {item.email}<br/>  {new Date(item.date_contacted).toLocaleDateString()}</div>)}
                                 </div>
-
-                                
                             </div>
             )
                 case 'job-tracker':
@@ -165,7 +162,7 @@ function DisplayPanel({
 
                         <div className="display-add-new-btn">
                         <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>Add New Job</button>
-                    </div>
+                        </div>
 
                     {/* JOB-OUTPUT */}
                     <div className="job-output">
@@ -196,12 +193,16 @@ function DisplayPanel({
                         </Modal>
                         
                         <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
+
+                        <div className="job-output">
                         {displayOutPut.map(item => 
-                        <div>
-                            <div>{item.question}</div>
-                            <div>{item.answer}</div>
-                        </div>
+                            <div>
+                                <div>{item.question}</div>
+                                <div>{item.answer}</div>
+                            </div>
+                       
                     )}
+                </div>
                 </div>
             )
 
@@ -228,12 +229,12 @@ function DisplayPanel({
 
                             <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>    
 
-                            <div className="testing">
+                            <div className="job-output">
                                 {displayOutPut.map((item, idx) =>
                                     <div>
                                         <div className={`document-${idx}`} data-token={item.token}>{item.title}</div>})}
                                         <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
-                                            <button>Download</button>
+                                            <button className="download-btn">Download</button>
                                         </a>
                                     </div>
                                     )

@@ -21,6 +21,7 @@ body {
 /* * Start Settings * */
 
 .settings-container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +35,12 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.settings-bar {
+    width: 100%;
+}
+
 .settings {
+    width: 100%;
     display: flex;
     margin-left: 30px;
     font-weight: 600;
@@ -43,6 +49,7 @@ body {
 }
 
 .gear-settings {
+    grid-area: header;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,6 +122,27 @@ body {
     align-items: center;
 }
 
+.tues-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tues-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tues-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tues-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* * End settings * */
 
 /* * Modal * */
@@ -137,12 +165,12 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: center;
-    margin-top: 30px;
+    margin-top: 10px;
     font-family: "Poppins", sans-serif;
     background: #272727;
     color: #fafafa;
     border: none;
-    padding: 2px;
+    padding: 5px 17px;
     border-radius: 3px;
     cursor: pointer;
     transition: 0.4s all ease-in-out;
@@ -203,7 +231,7 @@ body {
 
 /* * End Job Modal * */
 
-/* * Start Data confirm * */
+/* * Start Data confirm % Download Btn* */
 
 .data-confirm {
     display: flex;
@@ -214,6 +242,26 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.download-btn {
+    font-family: "Poppins", sans-serif;
+    background: #fadf7f;
+    color: #272727;
+    border: none;
+    padding: 10px 17px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.4s all ease-in-out;
+    margin: 30px 0 0 50px;
+    font-weight: 400;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.download-btn:hover {
+    background: #272727;
+    color: #fadf7f;
+}
+
 /* * End Data confirm * */
 
 /* * Contacts * */
@@ -222,7 +270,26 @@ body {
 
 /* * Media Queries * */
 
-@media (min-width: 550px) {
+@media (max-width: 1640px) {
+    .settings {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 960px) {
+    .grid-container {
+        display: grid;
+        gap: 1.8rem;
+        grid-template-columns: auto;
+        grid-template-rows: 10% 15% auto;
+        grid-template-areas:
+            "sidebar"
+            "header"
+            "head1"
+            "head2"
+            "head3"
+            "main";
+    }
 }
 
 /* * Aloha 🤙🏼 * */

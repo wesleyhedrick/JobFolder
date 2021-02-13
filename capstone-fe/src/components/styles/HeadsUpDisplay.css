@@ -94,3 +94,8 @@ span {
 }
 
 /* * End Heads Up Display */
+
+/* Media Query */
+
+@media (min-width: 550px) {
+}
