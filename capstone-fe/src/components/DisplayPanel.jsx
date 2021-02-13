@@ -3,9 +3,11 @@ import Modal from 'react-modal'
 import {useState} from 'react'
 import axios from 'axios';
 
+
 function DisplayPanel({
     id,
     displayOutPut, 
+    changeDisplayOutput,
     displayCategory,
 }){
         const [jobAppFormModalIsOpen, setJobAppFormModalIsOpen] = useState(false)
@@ -32,7 +34,9 @@ function DisplayPanel({
                     website:website.value, contact_name:contact_name.value, contact_phone:contact_phone.value,
                     contact_email:contact_email.value, date_applied:new Date(date_applied.value)}
                     console.log(newAppData)
-                    const response = await axios.post('/dashboard/new-job-application', newAppData)
+                    const {data} = await axios.post('/dashboard/new-job-application', newAppData)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setJobAppFormModalIsOpen(false)
                     setJobFormFeedbackModalIsOpen(true)
                 }
@@ -42,9 +46,13 @@ function DisplayPanel({
                     const contactObj = {
                         name:name.value, phone:phone.value,
                         email:email.value, 
-                        date_contacted:date_contacted.value
+                        date_contacted:date_contacted.value,
+                        user_id:id
                     }
-                    const response = await axios.post(`/dashboard/new-contact/${id}`, contactObj)
+
+                    const {data} = await axios.post(`/dashboard/new-contact/${id}`, contactObj)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setContactsModalIsOpen(false)
                     setContactsFeedbackModalIsOpen(true)
                 }
@@ -60,18 +68,22 @@ function DisplayPanel({
             formdata.append('id',id)
             formdata.append('doc_type', displayCategory)
             formdata.append('token',token)
-            await axios.post(`/dashboard/upload/${id}`, formdata)
-            // setDocUploadModalIsOpen(false)
-            // setDocUploadFeedbackModalIsOpen(true)
+            const {data} = await axios.post(`/dashboard/upload/${id}`, formdata)
+            console.log(data)
+            changeDisplayOutput(data)
+            setDocUploadModalIsOpen(false)
+            setDocUploadFeedbackModalIsOpen(true)
+
         }
   
         async function createNewIQ(e){
                     e.preventDefault()
                     const{question, answer} = e.target
                     console.log(question)
-                    const IQObject = {question:question.value, answer:answer.value}
-                    const response = await axios.post('/dashboard/new-IQ', IQObject)
-                    console.log(response)
+                    const IQObject = {question:question.value, answer:answer.value, user_id:id}
+                    const {data} = await axios.post('/dashboard/new-IQ', IQObject)
+                    console.log(data)
+                    changeDisplayOutput(data)
                     setIQFormModalIsOpen(false)
                     setIQFeedbackModal(true)
                 }
@@ -80,13 +92,13 @@ function DisplayPanel({
                     case 'contacts':
                         return(
                             <div className="display-panel">
-                                <Modal closeTimeoutMS={200} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
                                     <div className="data-confirm">
                                         <h2>We added your new contact!</h2>
                                         <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
-                                <Modal closeTimeoutMS={200} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
                                     <form className="modal-form" onSubmit={createNewContact}>
                                         <label htmlFor="name">Name</label>
                                         <input type="text" name="name" id="name"/>
@@ -112,14 +124,14 @@ function DisplayPanel({
                 case 'job-tracker':
                     return(
                         <div className="display-panel">
-                        <Modal closeTimeoutMS={200} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
                             <div className="data-confirm">
                                 <h2>Data Submitted!</h2>
                                 <p>.jobfolder will be checking in on your progress</p>
                                 <button className="new-app-btn" onClick={()=> setJobFormFeedbackModalIsOpen(false)}>Close</button>
                             </div>
                         </Modal>
-                        <Modal closeTimeoutMS={200} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
 
                             {/* **added class** */}
                             <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
@@ -168,11 +180,12 @@ function DisplayPanel({
                 case 'interview-questions':
                     return(
                         <div className="display-panel">
-                        <Modal closeTimeoutMS={200} isOpen={IQFeedbackModalIsOpen} onRequestClose={()=>setIQFeedbackModal(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={IQFeedbackModalIsOpen} onRequestClose={()=>setIQFeedbackModal(false)}>
                             <h1 className="data-confirm">Interview Question Submitted</h1>
+                            <button onClick={()=>setIQFeedbackModal(false)}>Close</button>
                         </Modal>
 
-                        <Modal closeTimeoutMS={200} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
                             <form className="modal-form" onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
                                 <input name="question" id="interview-question" type="text"/>
@@ -183,8 +196,6 @@ function DisplayPanel({
                         </Modal>
                         
                         <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
-
-
                         {displayOutPut.map(item => 
                         <div>
                             <div>{item.question}</div>
@@ -197,31 +208,33 @@ function DisplayPanel({
                 default:
                     return(
                         <div className="display-panel">
-                                <Modal closeTimeoutMS={200} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
 
                                     <form className="modal-form" onSubmit={uploadDocument} method="POST" encType="multipart/form-data">
                                         <label htmlFor="file">Select a File</label>
                                         <input type="file" name="file" id="file"/>
-                                        {/* add-class */}
+
                                         <input className="modal-btn" type="submit" value="Upload"/>
                                     </form>
                                 </Modal>
 
                                 
-                                <Modal closeTimeoutMS={200} isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
                                     <div className="modal-form">
                                         <h2 className="data-confirm">Document Uploaded</h2>
                                         <button onClick={()=>setDocUploadFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
-                                {/* add-class */}
+
                             <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>    
 
                             <div className="testing">
                                 {displayOutPut.map((item, idx) =>
                                     <div>
                                         <div className={`document-${idx}`} data-token={item.token}>{item.title}</div>})}
-                                        <button onClick={()=>download(idx)}>Download</button>
+                                        <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
+                                            <button>Download</button>
+                                        </a>
                                     </div>
                                     )
                                 }
