@@ -7,6 +7,7 @@ import {
 
 import axios from 'axios'
 import {useState, useEffect } from 'react'
+import { HiReceiptRefund } from 'react-icons/hi';
 
 function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, populateDashboard}) {
     const [emailError, showEmailError] = useState(false)
@@ -15,12 +16,12 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
     const history = useHistory()
 
     const checkSession = async () => {
-        const response = await axios.get('/sign-in/check-session')
-        console.log('line 19', response)
-        if(response.data === 'null'){
+        const {data} = await axios.get('/sign-in/check-session')
+        console.log('line 19', data)
+        if(data === 'null'){
             return
         } else {
-            populateDashboard(response.data)
+            populateDashboard(data)
             console.log('popDash ran')
             history.push('/dashboard')
         }

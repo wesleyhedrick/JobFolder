@@ -92,13 +92,13 @@ function DisplayPanel({
                     case 'contacts':
                         return(
                             <div className="display-panel">
-                                <Modal closeTimeoutMS={200} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={contactsFeedbackModalIsOpen} onRequestClose={()=>setContactsFeedbackModalIsOpen(false)}>
                                     <div className="data-confirm">
                                         <h2>We added your new contact!</h2>
                                         <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
-                                <Modal closeTimeoutMS={200} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
                                     <form className="modal-form" onSubmit={createNewContact}>
                                         <label htmlFor="name">Name</label>
                                         <input type="text" name="name" id="name"/>
@@ -121,14 +121,14 @@ function DisplayPanel({
                 case 'job-tracker':
                     return(
                         <div className="display-panel">
-                        <Modal closeTimeoutMS={200} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
                             <div className="data-confirm">
                                 <h2>Data Submitted!</h2>
                                 <p>.jobfolder will be checking in on your progress</p>
                                 <button className="new-app-btn" onClick={()=> setJobFormFeedbackModalIsOpen(false)}>Close</button>
                             </div>
                         </Modal>
-                        <Modal closeTimeoutMS={200} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
 
                             {/* **added class** */}
                             <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
@@ -177,12 +177,12 @@ function DisplayPanel({
                 case 'interview-questions':
                     return(
                         <div className="display-panel">
-                        <Modal closeTimeoutMS={200} isOpen={IQFeedbackModalIsOpen} onRequestClose={()=>setIQFeedbackModal(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={IQFeedbackModalIsOpen} onRequestClose={()=>setIQFeedbackModal(false)}>
                             <h1 className="data-confirm">Interview Question Submitted</h1>
                             <button onClick={()=>setIQFeedbackModal(false)}>Close</button>
                         </Modal>
 
-                        <Modal closeTimeoutMS={200} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
+                        <Modal closeTimeoutMS={100} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
                             <form className="modal-form" onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
                                 <input name="question" id="interview-question" type="text"/>
@@ -209,24 +209,24 @@ function DisplayPanel({
                 default:
                     return(
                         <div className="display-panel">
-                                <Modal closeTimeoutMS={200} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
 
                                     <form className="modal-form" onSubmit={uploadDocument} method="POST" encType="multipart/form-data">
                                         <label htmlFor="file">Select a File</label>
                                         <input type="file" name="file" id="file"/>
-                                        {/* add-class */}
+
                                         <input className="modal-btn" type="submit" value="Upload"/>
                                     </form>
                                 </Modal>
 
                                 
-                                <Modal closeTimeoutMS={200} isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
+                                <Modal closeTimeoutMS={100} isOpen={docUploadFeedbackModalIsOpen} onRequestClose={()=>setDocUploadFeedbackModalIsOpen(false)}>
                                     <div className="modal-form">
                                         <h2 className="data-confirm">Document Uploaded</h2>
                                         <button onClick={()=>setDocUploadFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
-                                {/* add-class */}
+
                             <button className="new-app-btn" onClick={()=> {setDocUploadModalIsOpen(true)}}>Upload</button>    
 
                             <div className="job-output">
