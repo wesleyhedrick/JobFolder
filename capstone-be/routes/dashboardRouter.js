@@ -4,7 +4,7 @@ const {dashboardController} = require('../controllers')
 
 router  .get('/', dashboardController.loadDashboard)
         .post('/', dashboardController.iJustApplied)
-        .post('/', dashboardController.iMadeAContact)
+        .post('/new-contact/:id', dashboardController.createNewContact)
         .get('/download/:id/:date/:title', dashboardController.downloadDoc)
         .post('/upload/:id', dashboardController.uploadDoc)
         .get('/contacts/:id', dashboardController.getContacts)

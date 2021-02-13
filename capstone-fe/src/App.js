@@ -50,6 +50,7 @@ function App() {
             <Route exact path='/dashboard'>
                 <Dashboard 
                     id={id}
+                    setId={setId}
                     name={name}
                     countOfJobs={countOfJobs}
                     appRatio={appRatio}
@@ -60,7 +61,7 @@ function App() {
                     appRatio={appRatio}
                     inspiration={inspiration}
                     appReality={appReality}
-
+                    populateDashboard={populateDashboard}
                 />
             </Route>    
     </Router>
