@@ -40,11 +40,11 @@ function Settings({name}){
 
     return(
         <div className="settings-container">
-            <Modal closeTimeoutMS={200} isOpen={stgsFdbackModalOpen} onRequestClose={()=>setStgsFdbackModalOpen(false)}>
+            <Modal closeTimeoutMS={100} isOpen={stgsFdbackModalOpen} onRequestClose={()=>setStgsFdbackModalOpen(false)}>
                 <h2>Settings Updated</h2>
                 <button onClick={()=>setStgsFdbackModalOpen(false)}>Close</button>
             </Modal>
-            <Modal closeTimeoutMS={200} isOpen={stgsModalOpen} onRequestClose={()=>setStgsModalOpen(false)}>
+            <Modal closeTimeoutMS={100} isOpen={stgsModalOpen} onRequestClose={()=>setStgsModalOpen(false)}>
 
                 <form onSubmit={(e)=> updateSettings(e)} className="settings-modal">
                     <div className="follow-up-modal">
