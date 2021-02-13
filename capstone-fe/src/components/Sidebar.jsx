@@ -26,19 +26,14 @@ function Sidebar({id, getSummaryData}) {
 
     return (
     <>
-        {/* <input type="checkbox" name="" id="check" /> */}
-            <div className="sidebar-container">
-                <label htmlFor="check">
-                    <i className={HiX} id="times"></i>
-                    <i className={HiMenu} id="bars"></i>
-                </label>
-                <div className="sidebar">
-                    <h1>.jobfolder</h1>
-                        {navBarItems.map(item => 
-                            <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
-                        }
-                    <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
-                    <div onClick={(e)=>logOut(e)}>Log out</div>
+        <div className="sidebar-container">
+            <div className="sidebar">
+                <h1 className="sidebar-title">.jobfolder</h1>
+                {navBarItems.map(item => 
+                    <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
+                }
+                <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
+                <div onClick={(e)=>logOut(e)}>Log out</div>
             </div>
         </div>
     </>

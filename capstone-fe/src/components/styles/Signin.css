@@ -139,7 +139,7 @@ input {
 
 @media (max-width: 600px) {
     .signin {
-        height: 80%;
+        height: 40%;
         width: 80%;
     }
 
