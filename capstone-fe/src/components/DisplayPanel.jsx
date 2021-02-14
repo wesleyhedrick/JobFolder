@@ -98,19 +98,20 @@ function DisplayPanel({
                                         <button className="new-app-btn" onClick={()=> setContactsFeedbackModalIsOpen(false)}>Close</button>
                                     </div>
                                 </Modal>
-                                <Modal closeTimeoutMS={100} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
+                                <Modal style={{content: {position:'static'}}}closeTimeoutMS={100} isOpen={contactsModalIsOpen} onRequestClose={()=>setContactsModalIsOpen(false)}>
                                     <form className="modal-form" onSubmit={createNewContact}>
                                         <label htmlFor="name">Name</label>
-                                        <input type="text" name="name" id="name"/>
+                                        <input className="signup-input" type="text" name="name" id="name"/>
                                         <label htmlFor="phone">Phone</label>
-                                        <input type="text" name="phone" id="phone"/>
+                                        <input className="signup-input" type="text" name="phone" id="phone"/>
                                         <label htmlFor="email">Email</label>
                                         <input type="text" name="email" id="email"/>
                                         <label htmlFor="date_contacted">Date</label>
-                                        <input type="date" name="date_contacted" id="date_contacted"/>
+                                        <input className="signup-input" type="date" name="date_contacted" id="date_contacted"/>
                                         <input className="modal-btn" type="submit" value="Submit"/>
                                     </form>
                                 </Modal>
+                                <h3 className="page-title">Contacts</h3>
                                 <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add New Contact</button>
                                 {/* OUTPUT CLASS */}
                                 <div className="job-output">
@@ -128,41 +129,41 @@ function DisplayPanel({
                                 <button className="new-app-btn" onClick={()=> setJobFormFeedbackModalIsOpen(false)}>Close</button>
                             </div>
                         </Modal>
-                        <Modal closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
+                        <Modal style={{content: {position:'static'}}}closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
 
                             {/* **added class** */}
                             <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
                                 <label htmlFor="company_name">Company Name</label>
-                                <input name="company_name" id="company_name"type="text"/>
+                                <input className="signup-input" name="company_name" id="company_name"type="text"/>
                                 
                                 <label htmlFor="role">Role</label>
-                                <input name="role" id="role"type="text"/>
+                                <input className="signup-input" name="role" id="role"type="text"/>
                                 
                                 <label htmlFor="phone">Phone</label>
-                                <input name="phone" id="phone"type="text"/>
+                                <input className="signup-input" name="phone" id="phone"type="text"/>
                                 
                                 <label htmlFor="website">Website</label>
-                                <input name="website" id="website"type="text"/>
+                                <input className="signup-input" name="website" id="website"type="text"/>
                                 
                                 <label htmlFor="contact_name">Contact Name</label>
-                                <input name="contact_name" id="contact_name"type="text"/>
+                                <input className="signup-input" name="contact_name" id="contact_name"type="text"/>
                                 
                                 <label htmlFor="contact_phone">Contact Phone</label>
-                                <input name="contact_phone" id="contact_phone"type="text"/>
+                                <input className="signup-input" name="contact_phone" id="contact_phone"type="text"/>
                                 
                                 <label htmlFor="contact_email">Contact Email</label>
-                                <input name="contact_email" id="contact_email"type="text"/>
+                                <input className="signup-input" name="contact_email" id="contact_email"type="text"/>
                                 
                                 <label htmlFor="date_applied">Date Applied</label>
-                                <input type="date" name="date_applied" id="date_applied"/>
-                                <input className="new-app-btn" type="submit" value="Submit"/>
+                                <input className="signup-input" type="date" name="date_applied" id="date_applied"/>
+                                <input className="modal-btn" type="submit" value="Submit"/>
                             </form>
                         </Modal>
                         
 
-                        <div className="display-add-new-btn">
+                        <h3 className="page-title">Job Tracker</h3>
                         <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>Add New Job</button>
-                        </div>
+                        
 
                     {/* JOB-OUTPUT */}
                     <div className="job-output">
@@ -182,16 +183,17 @@ function DisplayPanel({
                             <button onClick={()=>setIQFeedbackModal(false)}>Close</button>
                         </Modal>
 
-                        <Modal closeTimeoutMS={100} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
+                        <Modal style={{content: {position:'static'}}} closeTimeoutMS={100} isOpen={IQFormModalIsOpen} onRequestClose={()=> setIQFormModalIsOpen(false)}>
                             <form className="modal-form" onSubmit={createNewIQ}action="">
                                 <label htmlFor="interview-question">Question</label>
-                                <input name="question" id="interview-question" type="text"/>
+                                <input className="signup-input" name="question" id="interview-question" type="text"/>
                                 <label htmlFor="interview-answer">Answer (If its summarizable)</label>
-                                <input name="answer" id="interview-answer" type="text"/>
+                                <input  className="signup-input" name="answer" id="interview-answer" type="text"/>
                                 <input className="modal-btn" type="submit" value="Submit"/>
                             </form>
                         </Modal>
                         
+                        <h3 className="page-title">Interview</h3>
                         <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
 
                         <div className="job-output">
@@ -209,7 +211,7 @@ function DisplayPanel({
                 default:
                     return(
                         <div className="display-panel">
-                                <Modal closeTimeoutMS={100} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
+                                <Modal style={{content: {position:'static'}}} closeTimeoutMS={100} isOpen={docUploadModalIsOpen} onRequestClose={()=>setDocUploadModalIsOpen(false)}>
 
                                     <form className="modal-form" onSubmit={uploadDocument} method="POST" encType="multipart/form-data">
                                         <label htmlFor="file">Select a File</label>

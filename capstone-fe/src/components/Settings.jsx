@@ -61,51 +61,51 @@ function Settings({name}){
                     <h2>Day of the week</h2>
                     </div>
                 
-                    <div className="sun-modal">
+                    <div className="week-modal">
                     <label htmlFor="sun">Sunday</label>
                     <input type="checkbox" name="iq_sun" id="sun"/>
                     <TimeSelect dayOfWeek={"sun_iq_time"}/>
                     </div>
 
-                    <div className="mon-modal">
+                    <div className="week-modal">
                     <label htmlFor="mon">Monday</label>
                     <input type="checkbox" name="iq_mon" id="mon"/>
                     <TimeSelect dayOfWeek={"mon_iq_time"}/>
                     </div>
                     
-                    <div className="tues-modal">
+                    <div className="week-modal">
                     <label htmlFor="tue">Tuesday</label>
                     <input type="checkbox" name="iq_tue" id="tue"/>
                     <TimeSelect dayOfWeek={"tue_iq_time"}/>
                     </div>
 
-                     <div className="wed-modal">  
+                     <div className="week-modal">  
                     <label htmlFor="wed">Wednesday</label>
                     <input type="checkbox" name="iq_wed" id="wed"/>
                     <TimeSelect dayOfWeek={"wed_iq_time"}/>
                     </div>
 
-                    <div className="thurs-modal">
+                    <div className="week-modal">
                     <label htmlFor="thu">Thursday</label>
                     <input type="checkbox" name="iq_thu" id="thu"/>
                     <TimeSelect dayOfWeek={"thu_iq_time"}/>
                     </div>
 
-                    <div className="fri-modal">
+                    <div className="week-modal">
                     <label htmlFor="fri">Friday</label>
                     <input type="checkbox" name="iq_fri" id="fri"/>
                     <TimeSelect dayOfWeek={"fri_iq_time"}/>
                     </div>
 
-                    <div className="sat-modal">
+                    <div className="week-modal">
                     <label htmlFor="sat">Saturday</label>
                     <input type="checkbox" name="iq_sat" id="sat"/>
                     <TimeSelect dayOfWeek={"sat_iq_time"}/>
                     </div>
 
-                    <input type="submit" value="Submit"/>
-                    
+                    <input className="modal-btn"type="submit" value="Submit"/>
                 </form>
+                
             </Modal>
             <div className="settings-bar">
                 <h4 className="settings">Hi, {name}!</h4>

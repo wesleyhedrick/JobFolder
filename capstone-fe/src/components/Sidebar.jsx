@@ -27,14 +27,19 @@ function Sidebar({id, getSummaryData}) {
     return (
     <>
         <div className="sidebar-container">
-            <div className="sidebar">
+            <input type="checkbox" class="toggle-menu"/> 
+                <div className="burger"></div>
+                <div className="sidebar">
                 <h1 className="sidebar-title">.jobfolder</h1>
+
+                
                 {navBarItems.map(item => 
                     <div onClick={(e)=>getSummaryData(e)} className={item.value}>{item.content}</div>)
                 }
+                
                 <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
                 <div onClick={(e)=>logOut(e)}>Log out</div>
-            </div>
+                </div>
         </div>
     </>
     )
