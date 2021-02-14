@@ -1,6 +1,6 @@
 const { Users, Jobs, Contacts, Inspiration, Documents, InterviewQuestions } = require('../models');
 const { getApplicationRatio } = require('../utils')
-
+const fs = require('fs')
 
 const testRoute = async (req, res) => {
     const data = await Users.findOne({
@@ -92,7 +92,7 @@ const uploadDoc = async (req, res) => {
     })
 
     const docList = await Documents.findAll({
-        attributes: ['title','doc_type','token'],
+        attributes: ['title','doc_type','token','id'],
         where: {
             user_id: id, 
             doc_type
@@ -109,6 +109,52 @@ const loadDocsPage = (req, res) => {
 //     res.download('./uploads/103_Fawnbrook_Dr_Inspection_Report.pdf')
 //     res.status(200)
 // })
+
+
+const deleteIQ = async (req, res) => {
+    const {iq_id} = req.body
+    console.log(iq_id)
+    await InterviewQuestions.destroy({
+        where: {
+            id: iq_id
+        }
+    })
+
+    const response = await InterviewQuestions.findAll({
+        where: {
+            user_id:req.session.user_id
+        }
+    })
+    res.json(response)
+}
+
+
+const deleteDoc = async (req, res) => {
+    const {doc_id} = req.body
+    console.log(doc_id)
+    const {dataValues} = await Documents.findOne({
+        where: {
+            id:doc_id
+        }
+    })
+    console.log('dataValues',dataValues)
+
+    const { user_id, token, title} = dataValues
+    console.log(user_id, token, title)
+    fs.unlink(`./uploads/${dataValues.user_id}-${dataValues.token}-${dataValues.title}`, (err)=>{
+            if(err) throw err;
+            console.log('document deleted')
+    })
+
+    await Documents.destroy({
+        where: {
+            id:doc_id
+        }
+    })
+
+    res.send('success')
+
+}
 const downloadDoc = (req, res) => {
     const { id, date, title } = req.params
     console.log(`req.params: ${id}
@@ -158,7 +204,7 @@ const getDocList = async (req, res) => {
     const {doc_type, id} = req.params
     console.log('here is your doctype',doc_type)
     const docList = await Documents.findAll({
-        attributes: ['title','doc_type','token'],
+        attributes: ['title','doc_type','token', 'id'],
         where: {
             user_id: id, 
             doc_type
@@ -171,7 +217,7 @@ const getDocList = async (req, res) => {
 const getJobs = async (req, res)=>{
     const {id} = req.params
     const jobList = await Jobs.findAll({
-        attributes: ['company_name','role','date_applied'], 
+        attributes: ['company_name','role','date_applied','interviewed','date_interviewed', 'id'], 
         where: {
             user_id: id
         }
@@ -180,10 +226,22 @@ const getJobs = async (req, res)=>{
     res.json(jobList)
 }
 
+const updateInterview = async (req, res) => {
+    const {id, date_interviewed} = req.body
+    console.log(id, date_interviewed)
+    await Jobs.update({interviewed:true, date_interviewed},{where:{id:id}})
+    const response = await Jobs.findAll({
+        where: {
+            user_id:req.session.user_id
+        }
+    })
+    res.send(response)
+}
+
 const getIQs = async (req, res) => {
     const { id } = req.params
     const docList = await InterviewQuestions.findAll({
-        attributes: ['question', 'answer'],
+        attributes: ['question', 'answer','id'],
         where: {
             user_id:id
         }
@@ -275,6 +333,9 @@ module.exports = {
     createNewIQ,
     getContacts,
     uploadDoc,
-    downloadDoc
+    downloadDoc,
+    deleteDoc,
+    deleteIQ,
+    updateInterview
 };
 

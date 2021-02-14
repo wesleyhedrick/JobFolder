@@ -35,6 +35,42 @@
     border-radius: 3px;
     font-weight: 600;
 }
+li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom:1px dotted black;
+}
+
+.IQ-li{
+    list-style: none;
+    align-items: center;
+    border-bottom:1px dotted black;
+    text-align: left;
+    display: block;
+}
+
+.jobs-ul {
+    display: grid;
+    grid-template-columns: repeat(4, 10em)
+}
+
+.doc-ul {
+    display: flex;
+    align-items: center;
+    margin: 0.5em;
+}
+.doc-ul>li{
+    margin-right: 1em;
+}
+
+.contacts-ul {
+    display: grid;
+    grid-template-columns: repeat(4, 13em)
+
+}
 
 .page-title {
     text-transform: uppercase;
