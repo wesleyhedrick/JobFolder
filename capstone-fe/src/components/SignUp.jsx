@@ -93,7 +93,7 @@ function SignUp({setWhichCredPage}) {
                             <option value="15">15</option>
                         </select>
                         </div>
-                    <input className="new-use-signup-btn" type="submit" value="Sign Up"/>
+                    <input className="new-user-signup-btn" type="submit" value="Sign Up"/>
                 
             </div>
          </form>

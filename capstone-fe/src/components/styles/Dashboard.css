@@ -54,7 +54,6 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    margin-left: 900px;
     cursor: pointer;
     background: #fadf7f;
     color: #272727;
@@ -82,64 +81,26 @@ body {
 .settings-modal {
     display: flex;
     flex-direction: column;
-    /* width: 50%; */
 }
 
-.follow-up-modal {
+.follow-up-modal .ty-modal {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ty-modal {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .iq-day {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     margin: 0 30px;
 }
 
-.sun-modal {
+.week-modal {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mon-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tues-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tues-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tues-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tues-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.tues-modal {
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -153,24 +114,24 @@ body {
 
 .modal-form {
     margin-top: 30px;
+    line-height: 35px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .modal-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: center;
-    margin-top: 10px;
+    flex-direction: column;
+    margin-top: 25px;
     font-family: "Poppins", sans-serif;
     background: #272727;
     color: #fafafa;
     border: none;
-    padding: 5px 17px;
     border-radius: 3px;
     cursor: pointer;
     transition: 0.4s all ease-in-out;
@@ -184,10 +145,6 @@ body {
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity 800ms ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .ReactModal__Overlay--after-open {
@@ -209,20 +166,6 @@ body {
 .ReactModal__Content {
     width: 50%;
     height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.ReactModalPortal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.Modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -264,10 +207,6 @@ body {
 
 /* * End Data confirm * */
 
-/* * Contacts * */
-
-/* * End of Contacts * */
-
 /* * Media Queries * */
 
 @media (max-width: 1640px) {
@@ -276,12 +215,12 @@ body {
     }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 800px) {
     .grid-container {
         display: grid;
         gap: 1.8rem;
         grid-template-columns: auto;
-        grid-template-rows: 10% 15% auto;
+        grid-template-rows: 10% 8% auto;
         grid-template-areas:
             "sidebar"
             "header"
@@ -290,6 +229,9 @@ body {
             "head3"
             "main";
     }
+}
+
+@media (max-width: 768px) {
 }
 
 /* * Aloha 🤙🏼 * */

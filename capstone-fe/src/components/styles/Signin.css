@@ -18,16 +18,19 @@
 .signin-title {
     font-size: 3rem;
 }
+
 .success {
     border: none;
 }
-.error {
-    border: 2px solid red;
+
+.emessage {
+    color: rgb(160, 17, 17);
+    font-style: italic;
+    padding: 10px;
 }
 
 .title {
     display: flex;
-
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -78,7 +81,6 @@ input {
     color: #fafafa;
     background: #272727;
     border: none;
-    padding: 2px 20px 2px 20px;
     border-radius: 2px;
     font-weight: 600;
     cursor: pointer;
@@ -133,17 +135,14 @@ input {
 
 .signup-page-btn:hover {
     color: #fff;
+    background: #272727;
 }
 
 /* Media Query */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     .signin {
         height: 40%;
         width: 80%;
-    }
-
-    .signin-btn {
-        width: 20px;
     }
 }

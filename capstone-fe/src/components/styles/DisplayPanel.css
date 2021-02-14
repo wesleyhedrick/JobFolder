@@ -35,3 +35,15 @@
     border-radius: 3px;
     font-weight: 600;
 }
+
+.page-title {
+    text-transform: uppercase;
+    padding: 30px;
+    text-align: center;
+    letter-spacing: 0.3rem;
+}
+
+/* Media Query */
+
+@media (max-width: 768px) {
+}

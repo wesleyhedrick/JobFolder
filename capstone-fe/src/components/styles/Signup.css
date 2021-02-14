@@ -45,13 +45,12 @@
     background: #e0e0e090;
 }
 
-.new-use-signup-btn {
+.new-user-signup-btn {
     text-transform: uppercase;
     color: #fafafa;
     background: #272727;
     margin-top: 20px;
     border: none;
-    padding: 2px 15px 2px 15px;
     border-radius: 2px;
     display: flex;
     flex-direction: column;
