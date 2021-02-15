@@ -9,7 +9,7 @@ body {
     margin: 0;
     display: grid;
     gap: 1.8rem;
-    grid-template-columns: 15% 23% 23% 23%;
+    grid-template-columns: 20% 23% 23% 23%;
     grid-template-rows: 10% 15% auto;
     grid-template-areas:
         "sidebar header header header"
@@ -119,7 +119,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* width: 100%; */
+    width: 100%;
 }
 
 .modal-btn {
@@ -172,6 +172,13 @@ body {
     align-items: center;
 }
 
+.link-items {
+    color: rgb(237, 38, 71);
+}
+
+.icons {
+    font-size: 1.2rem;
+}
 /* * End Job Modal * */
 
 /* * Start Data confirm % Download Btn* */
@@ -214,23 +221,41 @@ body {
     }
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
     .grid-container {
         display: grid;
         gap: 1.8rem;
-        grid-template-columns: auto;
-        grid-template-rows: 10% 8% auto;
+        grid-template-columns: 15% auto;
+        grid-template-rows: 10% auto;
         grid-template-areas:
-            "sidebar"
             "header"
+            "sidebar"
             "head1"
             "head2"
             "head3"
             "main";
     }
+} */
+
+@media (max-width: 1024px) {
+    .grid-container {
+        display: grid;
+        gap: 1.8rem;
+        grid-template-columns: auto;
+        grid-template-rows: 10% 30% 50% 10% 10%;
+        grid-template-areas:
+            "sidebar" "header"
+            "sidebar" "head1"
+            "sidebar" "head2"
+            "sidebar" "head3"
+            "sidebar" "main";
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 414px) {
+    .gear-settings {
+        background: none;
+    }
 }
 
 /* * Aloha 🤙🏼 * */

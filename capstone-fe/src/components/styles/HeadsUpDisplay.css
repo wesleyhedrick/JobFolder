@@ -97,8 +97,10 @@ span {
 
 /* Media Query */
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
     .head1 {
+        display: grid;
+        grid-column: 15%;
         padding: 0 20px;
         justify-content: space-between;
         -webkit-border-radius: 1px;
@@ -140,4 +142,15 @@ span {
     }
 }
 
-@media (max-width: 768px);
+@media (max-width: 414px) {
+    .count-in-head {
+        font-size: 0.8rem;
+        font-weight: 400;
+        background: #fadf7f;
+        color: #272727;
+        padding: 5px;
+        border-radius: 5px;
+        width: 32px;
+        height: 32px;
+    }
+}
