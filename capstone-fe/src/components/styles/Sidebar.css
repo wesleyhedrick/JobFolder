@@ -1,7 +1,7 @@
 /* * Start Sidebar*/
 
 .sidebar-container {
-    max-width: 220px;
+    /* max-width: 220px; */
     grid-area: sidebar;
     font-size: 0.8rem;
     height: 100vh;
@@ -40,6 +40,10 @@ h1 {
     padding-bottom: 40px;
 }
 
+.icons {
+    display: flex;
+}
+
 /* * End  Sidebars */
 
 /* Media Query */
@@ -47,26 +51,20 @@ h1 {
 @media (max-width: 960px) {
 }
 /* .sidebar {
-        display: none;
-    } */
-
-/* .sidebar-title {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    display: none;
 } */
+
+.sidebar-title {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /* @media (max-width: 800px) {
     .sidebar-container {
-        height: 200px;
-        -webkit-border-top-right-radius: 1px;
+        /* height: 200px; */
+/* -webkit-border-top-right-radius: 1px;
         -webkit-border-bottom-right-radius: 1px;
         -moz-border-radius-topright: 1px;
         -moz-border-radius-bottomright: 1px;
-    }
-
-    .sidebar {
-        display: none;
-    }
-} */
+     */

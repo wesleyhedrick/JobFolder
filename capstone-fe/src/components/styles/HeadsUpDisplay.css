@@ -97,7 +97,7 @@ span {
 
 /* Media Query */
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .head1 {
         display: grid;
         grid-column: 15%;
@@ -153,4 +153,4 @@ span {
         width: 32px;
         height: 32px;
     }
-}
+} */
