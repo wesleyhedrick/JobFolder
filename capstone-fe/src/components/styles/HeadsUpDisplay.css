@@ -42,10 +42,14 @@ span {
     line-height: 45px;
     background: #fadf7f;
     color: #272727;
-    padding: 5px;
     border-radius: 5px;
     width: 48px;
     height: 48px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .head2 {

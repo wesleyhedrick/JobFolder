@@ -114,6 +114,13 @@ body {
     color: black;
 }
 
+.application-rate-actual, .application-rate-goal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1em;
+
+}
 .modal-form {
     margin-top: 30px;
     line-height: 35px;
@@ -167,7 +174,7 @@ body {
 
 .ReactModal__Content {
     width: 50%;
-    height: 60%;
+    height: 40em;
     display: flex;
     flex-direction: column;
     justify-content: center;
