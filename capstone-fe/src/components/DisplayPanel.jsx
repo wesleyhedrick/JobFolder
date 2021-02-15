@@ -202,7 +202,7 @@ function DisplayPanel({
 
                     {/* JOB-OUTPUT */}
                         <div className="job-output">
-                            <Modal isOpen={interviewModalIsOpen} onRequestClose={()=>setInterviewModalIsOpen(false)}>
+                            <Modal style={{content: {position:'static'}}}closeTimeoutMS={100} isOpen={interviewModalIsOpen} onRequestClose={()=>setInterviewModalIsOpen(false)}>
                                 <div>When did you interview with {companyName}</div>
                                 <form onSubmit={updateInterview} action="">
                                     <label htmlFor="interview-date"></label>
@@ -210,6 +210,8 @@ function DisplayPanel({
                                     <input type="submit" value="Submit"/>
                                 </form>
                             </Modal>
+
+
                             <Modal isOpen={interviewFeedBackIsOpen} onRequestClose={()=>setInterviewFeedBackIsOpen(false)}>
                                 <h2>Congratulations!!</h2>
                                 <p>We updated your records</p>
@@ -260,7 +262,7 @@ function DisplayPanel({
                             </form>
                         </Modal>
                         
-                        <h3 className="page-title">Interview</h3>
+                        <h3 className="page-title">Interview Questions</h3>
                         <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
 
                         <div className="job-output">

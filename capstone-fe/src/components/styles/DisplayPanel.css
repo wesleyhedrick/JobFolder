@@ -41,20 +41,20 @@ li {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-bottom:1px dotted black;
+    border-bottom: 1px dotted black;
 }
 
-.IQ-li{
+.IQ-li {
     list-style: none;
     align-items: center;
-    border-bottom:1px dotted black;
+    border-bottom: 1px dotted black;
     text-align: left;
     display: block;
 }
 
 .jobs-ul {
     display: grid;
-    grid-template-columns: repeat(4, 10em)
+    grid-template-columns: repeat(4, 10em);
 }
 
 .doc-ul {
@@ -62,14 +62,14 @@ li {
     align-items: center;
     margin: 0.5em;
 }
-.doc-ul>li{
+
+.doc-ul > li {
     margin-right: 1em;
 }
 
 .contacts-ul {
     display: grid;
-    grid-template-columns: repeat(4, 13em)
-
+    grid-template-columns: repeat(4, 13em);
 }
 
 .page-title {

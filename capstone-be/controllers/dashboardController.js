@@ -53,7 +53,7 @@ const loadDashboard = async (req, res) => {
 
 
         jobsAppliedTo = await Jobs.findAll({
-            attributes: ['company_name','role','date_applied'], 
+            attributes: ['company_name','role','date_applied','interviewed','date_interviewed'], 
             where: {
                 user_id:id
             }   
