@@ -15,6 +15,10 @@
         rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
+.job-tracker, .resume, .thank-you, .cover, .interview-questions {
+    display: flex; 
+    align-items: center;
+}
 .sidebar {
     width: 100%;
     padding-left: 15px;
@@ -42,6 +46,7 @@ h1 {
 
 .icons {
     display: flex;
+    margin-right: 0.2em;
 }
 
 /* * End  Sidebars */

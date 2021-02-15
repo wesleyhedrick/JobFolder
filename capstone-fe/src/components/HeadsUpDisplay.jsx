@@ -9,11 +9,15 @@ function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
               <p className="count-in-head">{countOfJobs}</p>
             </div>
             <div className="head2">
-            <div className="day">Per Day</div>
-              <span>Job Goal</span>
-              <p className="count-in-head">{appRatio}</p>
-              <span>Your Ratio</span>
-              <p className="count-in-head">{appReality} </p>
+                <div className="day">Per Day</div>
+                <div className="application-rate-goal">
+                    <span>Applications</span>
+                    <p className="count-in-head">{appRatio}</p>  
+                </div>
+                <div className="application-rate-actual">
+                    <span>Your Ratio</span>
+                    <p className="count-in-head">{appReality}</p>
+                </div>
             </div>
             <div className="head3">
                 <div className="quote">

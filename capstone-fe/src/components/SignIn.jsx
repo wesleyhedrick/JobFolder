@@ -75,7 +75,6 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
 
     return (
     <>
-        
         <form className="signin-container" onSubmit={sendSignInCreds}>
             <div><h1 className="signin-title">.jobfolder</h1></div>         
                 <div className="signin">
@@ -102,10 +101,6 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                 </div>
             </div>  
         </form>
-        
-         
-
-
     </>
     )
 }

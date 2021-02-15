@@ -16,7 +16,8 @@
     border-radius: 3px;
     cursor: pointer;
     transition: 0.4s all ease-in-out;
-    margin: 30px 0 0 50px;
+    font-family: "Poppins",sans-serif;
+    margin: 1em 0 0 4.7em;
 }
 
 .new-app-btn:hover {
@@ -74,7 +75,7 @@ li {
 
 .page-title {
     text-transform: uppercase;
-    padding: 30px;
+    padding: 1em 1em 0.5em 1em;
     text-align: center;
     letter-spacing: 0.3rem;
 }
