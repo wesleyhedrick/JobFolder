@@ -17,8 +17,10 @@ function Dashboard({id, setId,name, countOfJobs, appRatio,
     const history = useHistory();
 
     async function getSummaryData(e){
-        const {data} = await axios.get(`/dashboard/${e.target.className}/${id}`)
-        setDisplayCategory(e.target.className)
+        const category = e.currentTarget.className
+        console.log(category)
+        const {data} = await axios.get(`/dashboard/${category}/${id}`)
+        setDisplayCategory(category)
         changeDisplayOutput(data)
     }
 
