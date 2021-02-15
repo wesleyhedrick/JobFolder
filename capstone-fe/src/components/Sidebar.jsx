@@ -39,9 +39,11 @@ function Sidebar({id, getSummaryData}) {
         <div className="sidebar-container">
         <h1 className="sidebar-title">.jobfolder</h1>
                 <div className="sidebar">
-                {navBarItems.map(item => 
-                    <div onClick={(e)=>getSummaryData(e)} className={item.value}> <p className="icons">{item.icon}</p><p className="link-items">{item.content}</p></div>)
-                }
+                    {navBarItems.map(item => 
+                        <div onClick={(e)=>getSummaryData(e)} className={item.value}> 
+                            <p className="icons">{item.icon}</p><p className="link-items">{item.content}</p>
+                        </div>)
+                    }
                 <div className='contacts'onClick={(e)=>getSummaryData(e)}>Contacts</div>
 
                 <div onClick={(e)=>logOut(e)}>Log out</div>
