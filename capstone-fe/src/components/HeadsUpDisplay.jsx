@@ -3,6 +3,7 @@ import './styles/HeadsUpDisplay.css'
 function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
     return(
         <>  
+        
             <div className="head1">
               <span># of Jobs Applied</span>
               <p className="count-in-head">{countOfJobs}</p>
@@ -22,6 +23,7 @@ function HeadsUpDisplay({countOfJobs,appReality,appRatio,inspiration}) {
                 <p>{inspiration.author}</p>
             </div>
             </div>
+            
         </>
     )
 }
