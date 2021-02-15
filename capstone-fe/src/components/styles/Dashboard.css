@@ -82,12 +82,15 @@ body {
 .settings-modal {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background: #fadf7f;
+    padding: 1em 
 }
 
-.follow-up-modal .ty-modal {
-    display: flex;
-    align-items: center;
-    color: blue;
+
+.follow-up-modal, .ty-modal {
+    display: grid;
+    grid-template-columns: repeat(3, 8em);
 }
 
 .iq-day {
@@ -99,9 +102,8 @@ body {
 }
 
 .week-modal {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 8em)
 }
 
 /* * End settings * */
