@@ -89,7 +89,7 @@ function SignIn({setName, credStatus, setCredStatus, setWhichCredPage, setId, po
                     <label htmlFor="password">Password</label>
                     <input 
                     className='password-credential success' 
-                    type="text" 
+                    type="password" 
                     name="password" 
                     id="password"/>
                     {passwordError ? 

@@ -306,7 +306,7 @@ function DisplayPanel({
                                     <ul className="doc-ul">
                                         {<li className={`document-${idx}`} data-token={item.token}>{item.title}</li>}
                                         <li>
-                                            <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
+                                            <a href={`/dashboard/download/${id}/${item.token}/${item.title}`}>
                                                 <button className="download-btn">Download</button>
                                             </a>
                                         </li>
