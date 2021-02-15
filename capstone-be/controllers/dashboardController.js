@@ -28,7 +28,6 @@ const loadDashboard = async (req, res) => {
     console.log(req.session)
 
     if(req.session.user_id){
-        
         inspiration = await Inspiration.getRandom();
         console.log('here is your inspiration', inspiration)
         const { createdAt } = await Users.findOne({
@@ -45,8 +44,6 @@ const loadDashboard = async (req, res) => {
                 id
             }
         })
-
-
 
         dailyAppGoal = dataValues.daily_app_goal
         first = dataValues.first
@@ -67,6 +64,7 @@ const loadDashboard = async (req, res) => {
                     user_id: id
                 }
             })
+            res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality, first})
         } catch(e){
             console.log(e)
         }
@@ -74,7 +72,6 @@ const loadDashboard = async (req, res) => {
         res.json('no id')
     }
 
-    res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality, first})
     
 }
 
