@@ -8,7 +8,6 @@
     transition: 0.5s ease;
     background-color: #fadf7f;
     padding-top: 70px;
-    color: #272727;
     height: 100vh;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
@@ -17,10 +16,14 @@
 
 .sidebar {
     width: 100%;
-    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     line-height: 3rem;
     text-transform: uppercase;
     font-weight: 600;
+    color: #272727;
 }
 
 .sidebar :hover {
@@ -29,7 +32,12 @@
 }
 
 .sidebar-title {
+    display: flex;
+    flex-direction: center;
+    justify-content: center;
+    align-items: center;
     font-size: 2rem;
+    padding-bottom: 100px;
 }
 
 h1 {
@@ -40,31 +48,91 @@ h1 {
     padding-bottom: 40px;
 }
 
-.icons {
+.sidebar-icons {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    padding: 3px 0;
+}
+
+.sidebar-links {
+    color: black;
+    padding-left: 15px;
+    padding: 0 0 30px 0;
+}
+
+.contacts-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 3px 0;
+}
+
+.contacts {
+    color: black;
+    padding-left: 15px;
+    padding: 0 0 30px 0;
+    font-weight: 600;
+}
+
+.logout-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 3px 0;
+}
+
+.logout {
+    color: black;
+    padding-left: 15px;
+    padding: 0 0 30px 0;
+    font-weight: 600;
 }
 
 /* * End  Sidebars */
 
 /* Media Query */
 
-@media (max-width: 960px) {
-}
-/* .sidebar {
-    display: none;
-} */
-
-.sidebar-title {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@media (max-width: 1024px) {
+    .sidebar-title {
+        display: none;
+    }
 }
 
-/* @media (max-width: 800px) {
-    .sidebar-container {
-        /* height: 200px; */
-/* -webkit-border-top-right-radius: 1px;
-        -webkit-border-bottom-right-radius: 1px;
-        -moz-border-radius-topright: 1px;
-        -moz-border-radius-bottomright: 1px;
-     */
+@media (max-width: 600px) {
+    .toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 850px) {
+    .sidebar-links {
+        display: none;
+    }
+
+    .contacts {
+        display: none;
+    }
+
+    .contacts-icon {
+        margin: 50px 0;
+    }
+
+    .logout {
+        display: none;
+    }
+
+    .logout-icon {
+        margin: 50px 0;
+    }
+
+    .sidebar-icons {
+        margin: 50px 0;
+    }
+}
