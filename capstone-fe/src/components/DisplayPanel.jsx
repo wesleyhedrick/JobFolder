@@ -18,12 +18,35 @@ function DisplayPanel({
         const [contactsFeedbackModalIsOpen, setContactsFeedbackModalIsOpen] = useState(false)
         const [docUploadModalIsOpen, setDocUploadModalIsOpen] = useState(false)
         const [docUploadFeedbackModalIsOpen, setDocUploadFeedbackModalIsOpen] = useState(false)
+        const [interviewModalIsOpen, setInterviewModalIsOpen] = useState(false)
+        const [interviewFeedBackIsOpen, setInterviewFeedBackIsOpen] = useState(false)
+        const [companyName, setCompanyName] = useState('')
+        const [companyId, setCompanyId] = useState(0)
         
-        async function download(idx){
-            const el = document.querySelector(`.document-${idx}`)
-            console.log(el.dataset.token)
-            console.log(el.innerText)
-            await axios.get(`/dashboard/download/${id}/${el.dataset.token}/${el.innerText}` )
+        async function updateInterview(e){
+            e.preventDefault();
+            const {date_interviewed} = e.target
+            console.log(date_interviewed.value)
+            const {data} = await axios.post('/dashboard/update-interview', {date_interviewed:date_interviewed.value, id:companyId})
+            changeDisplayOutput(data)
+            setInterviewModalIsOpen(false)
+            setInterviewFeedBackIsOpen(true)
+
+        }
+        async function deleteDoc(e){
+            console.log(e.target.dataset)
+            const {doc_id} = e.target.dataset
+            const response = await axios.post('/dashboard/delete-doc/', {doc_id});
+            const el = e.target.closest('ul')
+            console.log(el)
+            el.remove()
+        }
+        
+        async function deleteIQ(e){
+            const {iq_id} = e.target.dataset
+            const {data} = await axios.post('/dashboard/delete-iq', {iq_id})
+            console.log(data)
+            changeDisplayOutput(data)
         }
         async function createNewAppRecord(e){
             e.preventDefault()
@@ -115,65 +138,109 @@ function DisplayPanel({
                                 <button className="new-app-btn" onClick={()=>setContactsModalIsOpen(true)}>Add New Contact</button>
                                 {/* OUTPUT CLASS */}
                                 <div className="job-output">
-                                {displayOutPut.map(item => <div className='contacts-output'>{item.name}<br/> {item.phone}<br/> {item.email}<br/>  {new Date(item.date_contacted).toLocaleDateString()}</div>)}
+                                    <ul className="contacts-ul">
+                                        <li>Name</li>
+                                        <li>Phone</li>
+                                        <li>Email</li>
+                                        <li>Date Contacted</li>
+                                    </ul>
+                                    {displayOutPut.map(item => 
+                                    <ul className="contacts-ul">
+                                        <li>{item.name}</li>
+                                        <li>{item.phone}</li>
+                                        <li>{item.email}</li>
+                                        <li>{new Date(item.date_contacted).toLocaleDateString()}</li>
+                                    </ul>)}
                                 </div>
                             </div>
             )
                 case 'job-tracker':
                     return(
                         <div className="display-panel">
-                        <Modal closeTimeoutMS={100} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
-                            <div className="data-confirm">
-                                <h2>Data Submitted!</h2>
-                                <p>.jobfolder will be checking in on your progress</p>
-                                <button className="new-app-btn" onClick={()=> setJobFormFeedbackModalIsOpen(false)}>Close</button>
-                            </div>
-                        </Modal>
-                        <Modal style={{content: {position:'static'}}}closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
+                            <Modal closeTimeoutMS={100} isOpen={jobFormFeedbackModalIsOpen} onRequestClose={()=>setJobFormFeedbackModalIsOpen(false)}>
+                                <div className="data-confirm">
+                                    <h2>Data Submitted!</h2>
+                                    <p>.jobfolder will be checking in on your progress</p>
+                                    <button className="new-app-btn" onClick={()=> setJobFormFeedbackModalIsOpen(false)}>Close</button>
+                                </div>
+                            </Modal>
+                            <Modal style={{content: {position:'static'}}}closeTimeoutMS={100} isOpen={jobAppFormModalIsOpen} onRequestClose={()=> setJobAppFormModalIsOpen(false)}>
 
-                            {/* **added class** */}
-                            <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
-                                <label htmlFor="company_name">Company Name</label>
-                                <input className="signup-input" name="company_name" id="company_name"type="text"/>
-                                
-                                <label htmlFor="role">Role</label>
-                                <input className="signup-input" name="role" id="role"type="text"/>
-                                
-                                <label htmlFor="phone">Phone</label>
-                                <input className="signup-input" name="phone" id="phone"type="text"/>
-                                
-                                <label htmlFor="website">Website</label>
-                                <input className="signup-input" name="website" id="website"type="text"/>
-                                
-                                <label htmlFor="contact_name">Contact Name</label>
-                                <input className="signup-input" name="contact_name" id="contact_name"type="text"/>
-                                
-                                <label htmlFor="contact_phone">Contact Phone</label>
-                                <input className="signup-input" name="contact_phone" id="contact_phone"type="text"/>
-                                
-                                <label htmlFor="contact_email">Contact Email</label>
-                                <input className="signup-input" name="contact_email" id="contact_email"type="text"/>
-                                
-                                <label htmlFor="date_applied">Date Applied</label>
-                                <input className="signup-input" type="date" name="date_applied" id="date_applied"/>
-                                <input className="modal-btn" type="submit" value="Submit"/>
-                            </form>
-                        </Modal>
+                                {/* **added class** */}
+                                <form className="modal-form" onSubmit={(e)=>createNewAppRecord(e)} action="">
+                                    <label htmlFor="company_name">Company Name</label>
+                                    <input className="signup-input" name="company_name" id="company_name"type="text"/>
+                                    
+                                    <label htmlFor="role">Role</label>
+                                    <input className="signup-input" name="role" id="role"type="text"/>
+                                    
+                                    <label htmlFor="phone">Phone</label>
+                                    <input className="signup-input" name="phone" id="phone"type="text"/>
+                                    
+                                    <label htmlFor="website">Website</label>
+                                    <input className="signup-input" name="website" id="website"type="text"/>
+                                    
+                                    <label htmlFor="contact_name">Contact Name</label>
+                                    <input className="signup-input" name="contact_name" id="contact_name"type="text"/>
+                                    
+                                    <label htmlFor="contact_phone">Contact Phone</label>
+                                    <input className="signup-input" name="contact_phone" id="contact_phone"type="text"/>
+                                    
+                                    <label htmlFor="contact_email">Contact Email</label>
+                                    <input className="signup-input" name="contact_email" id="contact_email"type="text"/>
+                                    
+                                    <label htmlFor="date_applied">Date Applied</label>
+                                    <input className="signup-input" type="date" name="date_applied" id="date_applied"/>
+                                    <input className="modal-btn" type="submit" value="Submit"/>
+                                </form>
+                            </Modal>
                         
 
                         <h3 className="page-title">Job Tracker</h3>
                         <button className="new-app-btn" onClick={()=> setJobAppFormModalIsOpen(true)}>Add New Job</button>
-                        
+
 
                     {/* JOB-OUTPUT */}
-                    <div className="job-output">
-                        {displayOutPut.map(item => <div>{item.company_name} {item.role} {new Date(item.date_applied).toLocaleDateString()}</div>)}
+                        <div className="job-output">
+                            <Modal isOpen={interviewModalIsOpen} onRequestClose={()=>setInterviewModalIsOpen(false)}>
+                                <div>When did you interview with {companyName}</div>
+                                <form onSubmit={updateInterview} action="">
+                                    <label htmlFor="interview-date"></label>
+                                    <input type="date" name="date_interviewed" id="interview-date"/>
+                                    <input type="submit" value="Submit"/>
+                                </form>
+                            </Modal>
+                            <Modal isOpen={interviewFeedBackIsOpen} onRequestClose={()=>setInterviewFeedBackIsOpen(false)}>
+                                <h2>Congratulations!!</h2>
+                                <p>We updated your records</p>
+                                <p>Don't forget to write a thank you note for the interview. We'll be reminding you.</p>
+                                <button onClick={(e)=>setInterviewFeedBackIsOpen(false)}>Close</button>
+                            </Modal>
+                            <ul className="jobs-ul">
+                                <li>Company</li>
+                                <li>Role</li>
+                                <li>Date Applied</li>
+                                <li>Interviewed</li>
+                            </ul>
+                            {displayOutPut.map((item, idx) => 
+                                    <ul className="jobs-ul">
+                                        <li data-companyid={item.id} className={`company-name-${idx}`}>{item.company_name}</li>
+                                        <li className={`role-${idx}`}>{item.role}</li>
+                                        <li>{new Date(item.date_applied).toLocaleDateString()}</li>
+                                        <li>{item.interviewed ? 'Yes':<button onClick={(e)=>{
+                                                const companyEl = document.querySelector(`.company-name-${idx}`)
+                                                const companyName = companyEl.innerText
+                                                const roleEl = document.querySelector(`.company-name-${idx}`)
+                                                const roleName = roleEl.innerText
+                                                setInterviewModalIsOpen(true)
+                                                setCompanyName(companyName)
+                                                setCompanyId(companyEl.dataset.companyid)
+                                            }} >Update</button>
+                                            
+                                                }</li>
+                                    </ul>)}
+                        </div>
                     </div>
-
-                    
-                    
-                    </div>
-                    
                 )
                 case 'interview-questions':
                     return(
@@ -197,12 +264,14 @@ function DisplayPanel({
                         <button className="new-app-btn" onClick={()=> setIQFormModalIsOpen(true)}> Add New Interview Question</button>
 
                         <div className="job-output">
-                        {displayOutPut.map(item => 
+                        {displayOutPut.map((item, idx) => 
                             <div>
-                                <div>{item.question}</div>
-                                <div>{item.answer}</div>
+                                <ul className="IQ-ul">
+                                    <li className="IQ-li">{idx+1}. {item.question}</li>
+                                    <li className="IQ-li">{item.answer}</li>
+                                </ul>
+                                <button data-iq_id={item.id} onClick={(e)=> deleteIQ(e)}className="download-btn">Delete Question</button>
                             </div>
-                       
                     )}
                 </div>
                 </div>
@@ -233,12 +302,18 @@ function DisplayPanel({
 
                             <div className="job-output">
                                 {displayOutPut.map((item, idx) =>
-                                    <div>
-                                        <div className={`document-${idx}`} data-token={item.token}>{item.title}</div>})}
-                                        <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
-                                            <button className="download-btn">Download</button>
-                                        </a>
-                                    </div>
+                                    
+                                    <ul className="doc-ul">
+                                        {<li className={`document-${idx}`} data-token={item.token}>{item.title}</li>}
+                                        <li>
+                                            <a href={`http://localhost:3030/dashboard/download/${id}/${item.token}/${item.title}`}>
+                                                <button className="download-btn">Download</button>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button onClick={(e)=>deleteDoc(e)} data-doc_id={item.id} className="download-btn">Delete</button>
+                                        </li>
+                                    </ul>
                                     )
                                 }
                             </div>                          
