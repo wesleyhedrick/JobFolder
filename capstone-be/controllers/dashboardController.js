@@ -55,6 +55,7 @@ const loadDashboard = async (req, res) => {
                 user_id:id
             }   
         })
+
         jobCount = jobsAppliedTo.length
         dailyAppReality = getApplicationRatio(jobCount, createdAt)
         try {
@@ -64,7 +65,8 @@ const loadDashboard = async (req, res) => {
                     user_id: id
                 }
             })
-            res.json({jobCount, dailyAppGoal, jobsAppliedTo, contacts, inspiration, dailyAppReality, first})
+            res.json({jobCount, dailyAppGoal, jobsAppliedTo, 
+                contacts, inspiration, dailyAppReality, first})
         } catch(e){
             console.log(e)
         }
@@ -82,7 +84,7 @@ const uploadDoc = async (req, res) => {
     const {file} = req.files;
     file.mv(`./uploads/${id}-${token}-${file.name}`)
     await Documents.create({
-        user_id:id,
+        user_id:id, 
         title: file.name,
         doc_type,
         token
