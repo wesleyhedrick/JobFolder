@@ -47,11 +47,11 @@ Although research is not part of the project requirement, we decided to conduct 
 
 ![result-1](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide1.jpg)
 
-![result-1](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide2.jpg)
+![result-2](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide2.jpg)
 
-![result-1](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide3.jpg)
+![result-3](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide3.jpg)
 
-![result-1](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide4.jpg)
+![result-4](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/slide4.jpg)
 
 
 
@@ -68,3 +68,6 @@ Although research is not part of the project requirement, we decided to conduct 
 ##### <u>High fidelity</u>
 
 > Final look at what it should look like.
+
+
+![hi-fi](https://raw.githubusercontent.com/wesleyhedrick/Capstone/master/capstone-fe/src/components/images/hi-fi.png)
