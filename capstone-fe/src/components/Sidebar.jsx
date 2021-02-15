@@ -6,12 +6,8 @@ import { IoNewspaper } from "react-icons/io5";
 import { IoBriefcase } from "react-icons/io5";
 import { RiFilePaper2Fill } from "react-icons/ri";
 import { BsFillQuestionSquareFill } from "react-icons/bs";
-// import { RiContactsBookFill } from "react-icons/ri";
-// import { GoSignOut } from "react-icons/go";
-
-
-
-
+import { RiContactsBookFill } from "react-icons/ri";
+import { GoSignOut } from "react-icons/go";
 
 import axios from 'axios'   
 const navBarItems = [
@@ -25,7 +21,6 @@ const navBarItems = [
 ]    
 
 
-
 function Sidebar({id, getSummaryData}) {
     const history = useHistory();
     
@@ -34,26 +29,29 @@ function Sidebar({id, getSummaryData}) {
         history.push('/')
     }
 
-    const[showLinks, setShowLinks] = useState(true);
 
     return (
     <>
         <div className="sidebar-container">
-        <button className="toggle">toggle-btn</button>
         <h1 className="sidebar-title">.jobfolder</h1>
             <div className="sidebar">
             
                 {navBarItems.map(item => 
                 <div onClick={(e)=>getSummaryData(e)} className={item.value}> 
-                <div className="icons-container"> <p className="sidebar-icons" id="hidden-icons">{item.icon}</p></div> 
-                <div className="links-container"> <p className="sidebar-links" id={showLinks ? 
-                "hidden" : ''}>{item.content}</p></div>
-            </div>)
-                    }
-                <div className='contacts'onClick={(e)=>getSummaryData(e)}>Contacts</div>
-
-                <div onClick={(e)=>logOut(e)}>Log out</div>
+                <div className="icons-container"> <p className="sidebar-icons">{item.icon}</p></div> 
                 
+                <div className="links-container"> <p className="sidebar-links">{item.content}</p></div>
+                </div>)
+                    }
+
+
+                <div className="contact-link">
+                    <div className="contacts-icon"><p><RiContactsBookFill /></p></div>
+                        <div className='contacts' onClick={(e)=>getSummaryData(e)}>Contacts</div>
+                    </div>
+
+                    <div className="icons-container"><p className="sidebar-icons"><GoSignOut /></p></div>
+                    <div className="logout" onClick={(e)=>logOut(e)}>Log out</div>
                 </div>
         </div>
     </>

@@ -54,7 +54,6 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 1.7rem;
-
     padding: 3px 0;
 }
 
@@ -64,8 +63,36 @@ h1 {
     padding: 0 0 30px 0;
 }
 
-.toggle {
-    display: none;
+.contacts-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 3px 0;
+}
+
+.contacts {
+    color: black;
+    padding-left: 15px;
+    padding: 0 0 30px 0;
+    font-weight: 600;
+}
+
+.logout-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding: 3px 0;
+}
+
+.logout {
+    color: black;
+    padding-left: 15px;
+    padding: 0 0 30px 0;
+    font-weight: 600;
 }
 
 /* * End  Sidebars */
@@ -84,6 +111,28 @@ h1 {
     }
 }
 
-#hidden {
-    display: flex;
+@media (max-width: 850px) {
+    .sidebar-links {
+        display: none;
+    }
+
+    .contacts {
+        display: none;
+    }
+
+    .contacts-icon {
+        margin: 50px 0;
+    }
+
+    .logout {
+        display: none;
+    }
+
+    .logout-icon {
+        margin: 50px 0;
+    }
+
+    .sidebar-icons {
+        margin: 50px 0;
+    }
 }
