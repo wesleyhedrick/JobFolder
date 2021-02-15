@@ -19,7 +19,7 @@ Jobfolder is an app that helps users that are about to embark on a job hunt. Thi
 -   [Helmet](https://www.npmjs.com/package/helmet)
 -   [Morgan](https://www.npmjs.com/package/morgan) 
 -   [bcrypt](https://www.npmjs.com/package/bcrypt)
--   [express-fileupload]https://www.npmjs.com/package/express-fileupload
+-   [express-fileupload](https://www.npmjs.com/package/express-fileupload)
 -   [node schedule](https://www.npmjs.com/package/node-schedule)
 -   [nodemailer](https://nodemailer.com/about/)
 -   [node-cron](https://www.npmjs.com/package/node-cron)
