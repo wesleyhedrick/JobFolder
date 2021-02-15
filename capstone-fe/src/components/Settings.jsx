@@ -48,17 +48,16 @@ function Settings({name}){
 
                 <form onSubmit={(e)=> updateSettings(e)} className="settings-modal">
                     <div className="follow-up-modal">
-                    <label htmlFor="follow-up">Follow-up Reminders</label>
+                    <label htmlFor="follow-up">Follow-ups</label>
                     <input type="checkbox" id="follow-up" name="tenDayFollowUp"/>
                     </div>
 
                     <div className="ty-modal">
-                    <label htmlFor="ty-letter">Thank You Reminders</label>
+                    <label htmlFor="ty-letter">Thank-Yous</label>
                     <input type="checkbox" id="ty-letter" name="tyFollowUp"/>
                     </div>
                     <div className="iq-day">
                     <h2>IQ Emails</h2>
-                    <h2>Day of the week</h2>
                     </div>
                 
                     <div className="week-modal">
