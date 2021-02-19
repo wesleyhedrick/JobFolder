@@ -14,8 +14,12 @@
         rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
-.job-tracker, .resume, .thank-you, .cover, .interview-questions {
-    display: flex; 
+.job-tracker,
+.resume,
+.thank-you,
+.cover,
+.interview-questions {
+    display: flex;
     align-items: center;
 }
 .sidebar {
